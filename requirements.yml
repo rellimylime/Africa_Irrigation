@@ -1,0 +1,19 @@
+name: irrigation
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - geopandas==0.14.4
+  - shapely
+  - fiona
+  - matplotlib
+  - folium
+  - pyproj
+  - rasterio
+  - descartes
+  - requests
+  - pandas
+  - pip
+  - pip:
+    - pyyaml==6.0.1
+    - ipykernel==6.29.3
