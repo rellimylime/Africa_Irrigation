@@ -12,9 +12,9 @@ AQUA_World_path: 'Data/Raw/AQUASTAT Dissemination System.csv' # from https://dat
 
 
 # processed:
-Africa_CPIS_2000_shp_path: 'Data/Raw/CPIS/Africa_CPIS_2000.shp' # same as CPIS_2000_shp_path but filtered to Africa
-Africa_CPIS_2021_shp_path: 'Data/Raw/CPIS/Africa_CPIS_2021.shp' # same as CPIS_2021_shp_path but filtered to Africa
-Africa_CPIS_shp_path: 'Data/Raw/CPIS/Africa_CPIS.shp' # same as CPIS_2021_shp_path but filtered to Africa
+Africa_CPIS_2000_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2000.shp' # same as CPIS_2000_shp_path but filtered to Africa
+Africa_CPIS_2021_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2021.shp' # same as CPIS_2021_shp_path but filtered to Africa
+Africa_CPIS_shp_path: 'Data/Processed/CPIS/Africa_CPIS.shp' # same as CPIS_2021_shp_path but filtered to Africa
 
 AQUA_AfricaIrrigation_2000: 'Data/Processed/AQUA_AfricaIrrigation_2000.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in African countries in 2000
 AQUA_AfricaIrrigation_2020: 'Data/Processed/AQUA_AfricaIrrigation_2020.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in African countries in 2000
