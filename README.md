@@ -1,12 +1,6 @@
 # Africa_Irrigation
  Project exploring how much irrigation Center Pivots have accounted for in the context of the expansion of irrigation as a whole in SSA from 2000 to 2021. 
 
-
-
-
-
-
-
 ## Instructions
 
 1. Install [Conda](http://conda.io/)
@@ -45,7 +39,7 @@ Retrieved from https://data.apps.fao.org/aquastat/?lang=en on 06/20/24 using par
 
 All data is either created using the code in this repository or can be downloaded elsewhere. Refer to the `config.yaml` file for links to and descriptions of datasets.  
 
-#### Some numbers
+## Some numbers
 
 Unit: 1000 ha (10 km2)
 
