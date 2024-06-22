@@ -5,7 +5,7 @@ output_dir: 'Output'
 
 # raw:
 Africa_boundaries_shp_path: 'Data/Raw/Africa_Boundaries-shp' # from https://hub.arcgis.com/datasets/07610d73964e4d39ab62c4245d548625/explore
-African_countries_path: 'Data/Raw/african_countries.csv'
+African_countries_path: 'Data/Raw/african_countries.csv' # just a list of African countries
 CPIS_2000_shp_path: 'Data/Raw/CPIS/World_CPIS_2000.shp' # from https://github.com/DetectCPIS/global_cpis_shp; see readme for details
 CPIS_2021_shp_path: 'Data/Raw/CPIS/World_CPIS_2021.shp' # from https://github.com/DetectCPIS/global_cpis_shp; see readme for details
 AQUA_World_path: 'Data/Raw/AQUASTAT Dissemination System.csv' # from https://data.apps.fao.org/aquastat/?lang=en; see readme for details
@@ -21,6 +21,9 @@ AQUA_AfricaIrrigation_2020: 'Data/Processed/AQUA_AfricaIrrigation_2020.csv' # sa
 AQUA_AfricaIrrigation: 'Data/Processed/AQUA_AfricaIrrigation_All.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in Africa
 
 
-Africa_CPIS_2000_Areas_path: 'Data/Processed/Africa_CPIS_2000_Areas.csv' # from Africa_CPIS_2000.shp, area of CPIS per country and in total
-Africa_CPIS_2021_Areas_path: 'Data/Processed/Africa_CPIS_2021_Areas.csv' # from Africa_CPIS_2021.shp, area of CPIS per country and in total
+Africa_CPIS_2000_Areas_path: 'Data/Processed/Africa_CPIS_2000_Areas.csv' # from Africa_CPIS_2000.shp, areas of CPIS and their locations and total area in Africa
+Africa_CPIS_2021_Areas_path: 'Data/Processed/Africa_CPIS_2021_Areas.csv' # from Africa_CPIS_2021.shp, areas of CPIS and their locations and total area in Africa
 Africa_CPIS_Areas_path: 'Data/Processed/Africa_CPIS_Areas.csv' # 2000 and 2021 merged
+
+CPIS_Area_by_Country_2000_path: 'Data/Processed/Africa_CPIS_Area_By_Country_2000.csv' # from Africa_CPIS_2000.shp, total area of CPIS per country
+Comp_by_Country_2000_path: 'Data/Processed/Percent_CPIS_by_Country_2000.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country
