@@ -17,7 +17,7 @@ Africa_CPIS_2021_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2021.shp' # same as 
 Africa_CPIS_shp_path: 'Data/Processed/CPIS/Africa_CPIS.shp' # same as CPIS_2021_shp_path but filtered to Africa
 
 AQUA_AfricaIrrigation_2000: 'Data/Processed/AQUA_AfricaIrrigation_2000.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in African countries in 2000
-AQUA_AfricaIrrigation_2020: 'Data/Processed/AQUA_AfricaIrrigation_2020.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in African countries in 2000
+AQUA_AfricaIrrigation_2021: 'Data/Processed/AQUA_AfricaIrrigation_2021.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in African countries in 2000
 AQUA_AfricaIrrigation: 'Data/Processed/AQUA_AfricaIrrigation_All.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in Africa
 
 
@@ -25,5 +25,9 @@ Africa_CPIS_2000_Areas_path: 'Data/Processed/Africa_CPIS_2000_Areas.csv' # from 
 Africa_CPIS_2021_Areas_path: 'Data/Processed/Africa_CPIS_2021_Areas.csv' # from Africa_CPIS_2021.shp, areas of CPIS and their locations and total area in Africa
 Africa_CPIS_Areas_path: 'Data/Processed/Africa_CPIS_Areas.csv' # 2000 and 2021 merged
 
-CPIS_Area_by_Country_2000_path: 'Data/Processed/Africa_CPIS_Area_By_Country_2000.csv' # from Africa_CPIS_2000.shp, total area of CPIS per country
+CPIS_Area_by_Country_2000_path: 'Data/Processed/Africa_CPIS_2000_Area_By_Country.csv' # from Africa_CPIS_2000.shp, total area of CPIS per country
 Comp_by_Country_2000_path: 'Data/Processed/Percent_CPIS_by_Country_2000.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country
+
+Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' 
+
+
