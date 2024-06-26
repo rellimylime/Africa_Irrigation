@@ -35,6 +35,14 @@ Retrieved from https://data.apps.fao.org/aquastat/?lang=en on 06/20/24 using par
 - Area: World
 - Year: 2021, 2020, 2019, 2015, 2010, 2005, 2000
 
+Note: Two adjustments have been made to the original data for efficiency of code; Congo is now known as The Republic of Congo and "Côte d'Ivoire" has been replaced with "CÃ´te d'Ivoire" (both to ensure agreement with country names within the African Boundaries Shapefile).
+The following countries were not included in the AQUASTAT data:
+French Southern Territories
+Mayotte
+Reunion
+Swaziland 
+Western Sahara
+
 ### Other data
 
 All data is either created using the code in this repository or can be downloaded elsewhere. Refer to the `config.yaml` file for links to and descriptions of datasets.  
