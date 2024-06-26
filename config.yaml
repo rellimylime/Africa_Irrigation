@@ -26,8 +26,10 @@ Africa_CPIS_2021_Areas_path: 'Data/Processed/Africa_CPIS_2021_Areas.csv' # from 
 Africa_CPIS_Areas_path: 'Data/Processed/Africa_CPIS_Areas.csv' # 2000 and 2021 merged
 
 CPIS_Area_by_Country_2000_path: 'Data/Processed/Africa_CPIS_2000_Area_By_Country.csv' # from Africa_CPIS_2000.shp, total area of CPIS per country
-Comp_by_Country_2000_path: 'Data/Processed/Percent_CPIS_by_Country_2000.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country
+CPIS_Area_by_Country_2021_path: 'Data/Processed/Africa_CPIS_2021_Area_By_Country.csv' # from Africa_CPIS_2021.shp, total area of CPIS per country
+Comp_by_Country_2000_path: 'Data/Processed/Percent_CPIS_by_Country_2000.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
+Comp_by_Country_2021_path: 'Data/Processed/Percent_CPIS_by_Country_2021.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2021
 
-Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' 
+Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_Country_2000.csv merged with Africa_Boundaries.shp, used to make Fig2
 
 
