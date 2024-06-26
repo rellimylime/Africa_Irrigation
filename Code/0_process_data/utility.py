@@ -9,5 +9,5 @@ def load_config():
     return config
 
 #def make_output_path(file_name):
-#    return os.path.join((load_config())['base_path'], 'Output' )
+
     
