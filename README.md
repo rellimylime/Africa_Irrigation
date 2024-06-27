@@ -36,6 +36,7 @@ Retrieved from https://data.apps.fao.org/aquastat/?lang=en on 06/20/24 using par
 - Year: 2021, 2020, 2019, 2015, 2010, 2005, 2000
 
 Note: Two adjustments have been made to the original data for efficiency of code; Congo is now known as The Republic of Congo and "Côte d'Ivoire" has been replaced with "CÃ´te d'Ivoire" (both to ensure agreement with country names within the African Boundaries Shapefile).
+
 The following countries were not included in the AQUASTAT data:
 French Southern Territories
 Mayotte
@@ -47,18 +48,3 @@ Western Sahara
 
 All data is either created using the code in this repository or can be downloaded elsewhere. Refer to the `config.yaml` file for links to and descriptions of datasets.  
 
-## Some numbers
-
-Unit: 1000 ha (10 km2)
-
-Total Area Equipt for Irrigation in 2000: 10,548.11 ha
-Total Area Covered by Central Pivot Irrigation in 2000: 389.43 ha
-
-Total Area Equipt for Irrigation 2020: 15,762.89 ha
-Total Area Covered by Central Pivot Irrigation in 2021: 969.19 ha
-
-Percent of Irrigation that CPIS accounted for in:
-2000 - 3.69%
-2020* - 6.14%
-
-*CPIS data used was from 2021 whereas irrigation data was from 2020, see `config.yaml` for further details on data sources
