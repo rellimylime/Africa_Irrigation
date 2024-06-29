@@ -9,7 +9,7 @@ African_countries_path: 'Data/Raw/african_countries.csv' # just a list of Africa
 CPIS_2000_shp_path: 'Data/Raw/CPIS/World_CPIS_2000.shp' # from https://github.com/DetectCPIS/global_cpis_shp; see readme for details
 CPIS_2021_shp_path: 'Data/Raw/CPIS/World_CPIS_2021.shp' # from https://github.com/DetectCPIS/global_cpis_shp; see readme for details
 AQUA_World_path: 'Data/Raw/AQUASTAT Dissemination System.csv' # from https://data.apps.fao.org/aquastat/?lang=en; see readme for details
-
+Global_Aridity_Raster_path: 'Data/Raw/Global-AI_ET0_v3_annual/ai_v3_yr.tif' # from https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448
 
 # processed:
 Africa_CPIS_2000_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2000.shp' # same as CPIS_2000_shp_path but filtered to Africa
@@ -31,5 +31,8 @@ Comp_by_Country_2000_path: 'Data/Processed/Percent_CPIS_by_Country_2000.csv' # a
 Comp_by_Country_2021_path: 'Data/Processed/Percent_CPIS_by_Country_2021.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2021
 
 Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_Country_2000.csv merged with Africa_Boundaries.shp, used to make Fig2
+
+# 3_Aridity_refinement:
+Africa_Arid_Regions_path: 'Data/Processed/Africa_Arid_Regions.shp'
 
 
