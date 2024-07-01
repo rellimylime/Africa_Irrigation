@@ -1,5 +1,5 @@
 
-base_path: 'C:/Users/ermil/Documents/GitHub/Africa_Irrigation/'
+base_path: '/home/ermiller/Africa_Irrigation/'
 
 output_dir: 'Output'
 
@@ -33,6 +33,11 @@ Comp_by_Country_2021_path: 'Data/Processed/Percent_CPIS_by_Country_2021.csv' # a
 Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_Country_2000.csv merged with Africa_Boundaries.shp, used to make Fig2
 
 # 3_Aridity_refinement:
-Africa_Arid_Regions_path: 'Data/Processed/Africa_Arid_Regions.shp'
+Africa_Arid_Clipped_path: 'Data/Processed/Cliped_Aridity_Tif.tif'
+Africa_Arid_Regions_Filtered_path: 'Data/Processed/Africa_Arid_Regions.shp'
+
+Africa_Arid_Regions_path2: 'Data/Processed/Africa_Arid_Regions2.shp'
+
+Africa_Arid_Regions_tif_path: 'Data/Processed/Africa_Arid_Regions.tif'
 
 
