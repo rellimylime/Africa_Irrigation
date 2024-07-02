@@ -33,11 +33,13 @@ Comp_by_Country_2021_path: 'Data/Processed/Percent_CPIS_by_Country_2021.csv' # a
 Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_Country_2000.csv merged with Africa_Boundaries.shp, used to make Fig2
 
 # 3_Aridity_refinement:
-Africa_Arid_Clipped_path: 'Data/Processed/Cliped_Aridity_Tif.tif'
-Africa_Arid_Regions_Filtered_path: 'Data/Processed/Africa_Arid_Regions.shp'
-
-Africa_Arid_Regions_path2: 'Data/Processed/Africa_Arid_Regions2.shp'
-
+Africa_Arid_Regions_shp_path: 'Data/Processed/Africa_Arid_Regions.shp'
 Africa_Arid_Regions_tif_path: 'Data/Processed/Africa_Arid_Regions.tif'
+
+Africa_all_shp_path: 'Data/Processed/Africa_All_Arid.shp'
+Africa_semi_arid_shp_path: 'Data/Processed/Africa_Semi_Arid.shp'
+Africa_arid_shp_path: 'Data/Processed/Africa_Arid.shp'
+Africa_hyper_arid_shp_path: 'Data/Processed/Africa_Hyper_Arid.shp'
+
 
 
