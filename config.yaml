@@ -9,23 +9,52 @@ African_countries_path: 'Data/Raw/african_countries.csv' # just a list of Africa
 CPIS_2000_shp_path: 'Data/Raw/CPIS/World_CPIS_2000.shp' # from https://github.com/DetectCPIS/global_cpis_shp; see readme for details
 CPIS_2021_shp_path: 'Data/Raw/CPIS/World_CPIS_2021.shp' # from https://github.com/DetectCPIS/global_cpis_shp; see readme for details
 AQUA_World_path: 'Data/Raw/AQUASTAT Dissemination System.csv' # from https://data.apps.fao.org/aquastat/?lang=en; see readme for details
-Global_Aridity_Raster_path: 'Data/Raw/Global-AI_ET0_v3_annual/ai_v3_yr.tif' # from https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448
-Groundwater_Productivity_path: 'Data/Raw/GroundwaterProductivity/xyzASCII_gwprod_v1.txt' # from https://www2.bgs.ac.uk/groundwater/international/africanGroundwater/mapsDownload.html; see readme for details
 
-# processed:
-Africa_CPIS_2000_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2000.shp' # same as CPIS_2000_shp_path but filtered to Africa
-Africa_CPIS_2021_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2021.shp' # same as CPIS_2021_shp_path but filtered to Africa
-Africa_CPIS_shp_path: 'Data/Processed/CPIS/Africa_CPIS.shp' # same as CPIS_2021_shp_path but filtered to Africa
+Global_Aridity_Raster_path: 'Data/Raw/Global_Aridity_Map-tif/ai_v3_yr.tif' # from https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448
+Groundwater_Productivity_path: 'Data/Raw/Groundwater_Productivity-txt/xyzASCII_gwprod_v1.txt' # from https://www2.bgs.ac.uk/groundwater/international/africanGroundwater/mapsDownload.html; see README (1) for details
+Combined_CPIS_shp_path: 'Data/Raw/Combined_CPIS-shp' # A gift from Anna
+Africa_Cropland_tif_path: 'Data/Raw/Africa_Cropland-tif/af_cropland.tif' # from https://sedac.ciesin.columbia.edu/data/set/aglands-croplands-2000/data-download; see README (2) for details
 
+# Processed:
+
+## Process
+
+### 0_filter_AQUASTAT
 AQUA_AfricaIrrigation_2000: 'Data/Processed/AQUA_AfricaIrrigation_2000.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in African countries in 2000
 AQUA_AfricaIrrigation_2021: 'Data/Processed/AQUA_AfricaIrrigation_2021.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in African countries in 2000
 AQUA_AfricaIrrigation: 'Data/Processed/AQUA_AfricaIrrigation_All.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in Africa
 
+### 1_CPIS_by_Country
+Africa_CPIS_2000_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2000.shp' # same as CPIS_2000_shp_path but filtered to Africa
+Africa_CPIS_2021_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2021.shp' # same as CPIS_2021_shp_path but filtered to Africa
+Africa_CPIS_shp_path: 'Data/Processed/CPIS/Africa_CPIS.shp' # same as CPIS_2021_shp_path but filtered to Africa
 
+### 2_Trim_Aridity_Raster
+Africa_Arid_Regions_tif_path: 'Data/Processed/Africa_Arid_Regions.tif' # Global_Aridity_Raster_path trimmed to the area around africa
+Africa_Arid_Regions_tif_path2: 'Data/Processed/Africa_Arid_Regions2.tif' # Global_Aridity_Raster_path trimmed with Africa_Continent_shp_path
+
+### 3_Aridity_refinement:
+Africa_Arid_Regions_shp_path: 'Data/Processed/Africa_Arid_Regions-shp' # Detailed shapefile from Global_Aridity_Raster_path
+Africa_Continent_shp_path: 'Data/Processed/Africa_Boundaries-shp/Africa_Continent.shp' # Africa_Boundaries with country borders dissolved
+Africa_all_shp_path: 'Data/Processed/Africa_Arid_Regions_All-shp' # Global_Aridity_Raster_path with 1s for all elements < 5000 and 0s otherwise
+Africa_semi_arid_shp_path: 'Data/Processed/Africa_Semi_Arid-shp' # Africa_all_shp_path filtered to (2000, 5000)
+Africa_arid_shp_path: 'Data/Processed/Africa_Arid-shp' # Africa_all_shp_path filtered to (300, 2000)
+Africa_hyper_arid_shp_path: 'Data/Processed/Africa_Hyper_Arid-shp' # Africa_all_shp_path filtered to (0, 300)
+#Africa_arid_layered_shp_path: 'Data/Processed/Africa_Layered_Aridity-shp' # Africa_semi_arid_shp_path, Africa_arid_shp_path, and Africa_hyper_arid_shp_path merged
+Africa_Arid_by_Country_shp_path: 'Data/Processed/All_Arid_by_Country-shp/All_Arid_by_Country.shp' # Africa_all_shp_path overlayed with Africa_boundaries_shp_path to determine country
+
+### 4_CPIS_overlay
+CPIS_Arid_shp_path: 'Data/Processed/CPIS_Arid-shp/CPIS_All_Aridities.shp' # Combined_CPIS_shp_path filtered to arid boundary
+Cropland_tif_path: 'Data/Processed/Cropland_Nonzero_Africa.tif' # Africa_Cropland_tif_path converted to binary, 0 < value = 1
+
+## Analyze
+
+### 0_CPIS_vs_Total
 Africa_CPIS_2000_Areas_path: 'Data/Processed/Africa_CPIS_2000_Areas.csv' # from Africa_CPIS_2000.shp, areas of CPIS and their locations and total area in Africa
 Africa_CPIS_2021_Areas_path: 'Data/Processed/Africa_CPIS_2021_Areas.csv' # from Africa_CPIS_2021.shp, areas of CPIS and their locations and total area in Africa
 Africa_CPIS_Areas_path: 'Data/Processed/Africa_CPIS_Areas.csv' # 2000 and 2021 merged
 
+### 1_CPIS_Africa_Map
 CPIS_Area_by_Country_2000_path: 'Data/Processed/Africa_CPIS_2000_Area_By_Country.csv' # from Africa_CPIS_2000.shp, total area of CPIS per country
 CPIS_Area_by_Country_2021_path: 'Data/Processed/Africa_CPIS_2021_Area_By_Country.csv' # from Africa_CPIS_2021.shp, total area of CPIS per country
 Comp_by_Country_2000_path: 'Data/Processed/Percent_CPIS_by_Country_2000.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
@@ -33,16 +62,6 @@ Comp_by_Country_2021_path: 'Data/Processed/Percent_CPIS_by_Country_2021.csv' # a
 
 Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_Country_2000.csv merged with Africa_Boundaries.shp, used to make Fig2
 
-# 3_Aridity_refinement:
-Africa_Arid_Regions_shp_path: 'Data/Processed/Africa_Arid_Regions-shp' # Detailed shapefile from Global_Aridity_Raster_path
-Africa_Arid_Regions_tif_path: 'Data/Processed/Africa_Arid_Regions.tif' # Global_Aridity_Raster_path trimmed to the area around africa
+### 3_Groundwater:
+Groundwater_Prod_gpkg_path: 'Data/Processed/Groundwater_Prod.gpkg'
 
-Africa_all_shp_path: 'Data/Processed/Africa_Arid_Regions_All-shp' # Global_Aridity_Raster_path with 1s for all elements < 5000 and 0s otherwise
-Africa_semi_arid_shp_path: 'Data/Processed/Africa_Semi_Arid-shp' # Africa_all_shp_path filtered to (2000, 5000)
-Africa_arid_shp_path: 'Data/Processed/Africa_Arid-shp' # Africa_all_shp_path filtered to (300, 2000)
-Africa_hyper_arid_shp_path: 'Data/Processed/Africa_Hyper_Arid-shp' # Africa_all_shp_path filtered to (0, 300)
-
-
-Africa_arid_layered_shp_path: 'Data/Processed/Africa_Layered_Aridity-shp' # Africa_semi_arid_shp_path, Africa_arid_shp_path, and Africa_hyper_arid_shp_path merged
-
-CPIS_2021_Arid: 'Data/Processed/CPIS_2021_All-shp/CPIS_2021_All_Aridities.shp'

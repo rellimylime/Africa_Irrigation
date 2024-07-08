@@ -50,4 +50,6 @@ All data is either created using the code in this repository or can be downloade
 
 ##### Some References
 
-**Groundwater Productivity Data**: MacDonald, A M, Bonsor, H C, Ó Dochartaigh, B E, Taylor, R G.  2012.  Quantitative maps of groundwater resources in Africa.  Environmental Research Letters 7, 024009.
+**1. Groundwater Productivity Data**: MacDonald, A M, Bonsor, H C, Ó Dochartaigh, B E, Taylor, R G.  2012.  Quantitative maps of groundwater resources in Africa.  Environmental Research Letters 7, 024009.
+
+**2. Cropland Data**: Ramankutty, N., A.T. Evan, C. Monfreda, and J.A. Foley. 2010. Global Agricultural Lands: Croplands, 2000. Palisades, New York: NASA Socioeconomic Data and Applications Center (SEDAC). https://doi.org/10.7927/H4C8276G. Accessed: 03 July, 2024.
