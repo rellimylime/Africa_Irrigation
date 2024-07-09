@@ -29,19 +29,23 @@ Africa_CPIS_2000_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2000.shp' # same as 
 Africa_CPIS_2021_shp_path: 'Data/Processed/CPIS/Africa_CPIS_2021.shp' # same as CPIS_2021_shp_path but filtered to Africa
 Africa_CPIS_shp_path: 'Data/Processed/CPIS/Africa_CPIS.shp' # same as CPIS_2021_shp_path but filtered to Africa
 
-### 2_Trim_Aridity_Raster
+### 2_Aridity_refinement:
 Africa_Arid_Regions_tif_path: 'Data/Processed/Africa_Arid_Regions.tif' # Global_Aridity_Raster_path trimmed to the area around africa
-Africa_Arid_Regions_tif_path2: 'Data/Processed/Africa_Arid_Regions2.tif' # Global_Aridity_Raster_path trimmed with Africa_Continent_shp_path
+Africa_Arid_Regions_tif_path2: 'Data/Processed/Africa_Arid_Regions2.tif' # Global_Aridity_Raster_path trimmed using 
+# Africa_Arid_Regions_shp_path: 'Data/Processed/Africa_Arid_Regions-shp' # Detailed shapefile from Global_Aridity_Raster_path - did not use
 
-### 3_Aridity_refinement:
-Africa_Arid_Regions_shp_path: 'Data/Processed/Africa_Arid_Regions-shp' # Detailed shapefile from Global_Aridity_Raster_path
-Africa_Continent_shp_path: 'Data/Processed/Africa_Boundaries-shp/Africa_Continent.shp' # Africa_Boundaries with country borders dissolved
+Africa_Continent_shp_path: 'Data/Processed/Africa_Continent-shp/Africa_Continent.shp' # Africa_Boundaries with country borders dissolved
+
 Africa_all_shp_path: 'Data/Processed/Africa_Arid_Regions_All-shp' # Global_Aridity_Raster_path with 1s for all elements < 5000 and 0s otherwise
 Africa_semi_arid_shp_path: 'Data/Processed/Africa_Semi_Arid-shp' # Africa_all_shp_path filtered to (2000, 5000)
 Africa_arid_shp_path: 'Data/Processed/Africa_Arid-shp' # Africa_all_shp_path filtered to (300, 2000)
 Africa_hyper_arid_shp_path: 'Data/Processed/Africa_Hyper_Arid-shp' # Africa_all_shp_path filtered to (0, 300)
-#Africa_arid_layered_shp_path: 'Data/Processed/Africa_Layered_Aridity-shp' # Africa_semi_arid_shp_path, Africa_arid_shp_path, and Africa_hyper_arid_shp_path merged
+# Africa_arid_layered_shp_path: 'Data/Processed/Africa_Layered_Aridity-shp' # Africa_semi_arid_shp_path, Africa_arid_shp_path, and Africa_hyper_arid_shp_path merged
+
 Africa_Arid_by_Country_shp_path: 'Data/Processed/All_Arid_by_Country-shp/All_Arid_by_Country.shp' # Africa_all_shp_path overlayed with Africa_boundaries_shp_path to determine country
+
+### 3_Filter_Cropland
+Arid_Cropland_tif_path: 'Data/Processed/Arid_Cropland.tif' # Cropland with aridity < 0.5
 
 ### 4_CPIS_overlay
 CPIS_Arid_shp_path: 'Data/Processed/CPIS_Arid-shp/CPIS_All_Aridities.shp' # Combined_CPIS_shp_path filtered to arid boundary
