@@ -67,5 +67,6 @@ Comp_by_Country_2021_path: 'Data/Processed/Percent_CPIS_by_Country_2021.csv' # a
 Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_Country_2000.csv merged with Africa_Boundaries.shp, used to make Fig2
 
 ### 3_Groundwater:
-Groundwater_Prod_gpkg_path: 'Data/Processed/Groundwater_Prod.gpkg'
-
+Groundwater_Prod_gpkg_path: 'Data/Processed/Groundwater_Prod.gpkg' # Groundwater_Productivity_path .txt file made into geopackage
+Groundwater_Prod_Arid_Cropland_gpkg_path: 'Data/Processed/Groundwater_Prod_Arid_Cropland.gpkg' # Groundwater_Prod_gpkg_path filtered to arid cropland 
+CPIS_Groundwater_Prod_gpkg_path: 'Data/Processed/CPIS_Groundwater_Prod.gpkg' # Groundwater_Prod_gpkg_path filtered to CPIS
