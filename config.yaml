@@ -15,6 +15,9 @@ Groundwater_Productivity_path: 'Data/Raw/Groundwater_Productivity-txt/xyzASCII_g
 Combined_CPIS_shp_path: 'Data/Raw/Combined_CPIS-shp' # A gift from Anna
 Africa_Cropland_tif_path: 'Data/Raw/Africa_Cropland-tif/af_cropland.tif' # from https://sedac.ciesin.columbia.edu/data/set/aglands-croplands-2000/data-download; see README (2) for details
 
+
+Global_Dam_Data_csv_path: 'Data/Raw/globaldamsdatabase_global_coverage_november_2020.csv'
+
 # Processed:
 
 ## Process
@@ -45,7 +48,8 @@ Africa_hyper_arid_shp_path: 'Data/Processed/Africa_Hyper_Arid-shp' # Africa_all_
 Africa_Arid_by_Country_shp_path: 'Data/Processed/All_Arid_by_Country-shp/All_Arid_by_Country.shp' # Africa_all_shp_path overlayed with Africa_boundaries_shp_path to determine country
 
 ### 3_Filter_Cropland
-Arid_Cropland_tif_path: 'Data/Processed/Arid_Cropland.tif' # Cropland with aridity < 0.5
+Arid_Binary_Cropland_tif_path: 'Data/Processed/Arid_Binary_Cropland.tif' # Cropland with aridity < 0.5
+Arid_Cropland_tif_path: 'Data/Processed/Arid_Cropland.tif'
 
 ### 4_CPIS_overlay
 CPIS_Arid_shp_path: 'Data/Processed/CPIS_Arid-shp/CPIS_All_Aridities.shp' # Combined_CPIS_shp_path filtered to arid boundary
@@ -70,3 +74,6 @@ Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_
 Groundwater_Prod_gpkg_path: 'Data/Processed/Groundwater_Prod.gpkg' # Groundwater_Productivity_path .txt file made into geopackage
 Groundwater_Prod_Arid_Cropland_gpkg_path: 'Data/Processed/Groundwater_Prod_Arid_Cropland.gpkg' # Groundwater_Prod_gpkg_path filtered to arid cropland 
 CPIS_Groundwater_Prod_gpkg_path: 'Data/Processed/CPIS_Groundwater_Prod.gpkg' # Groundwater_Prod_gpkg_path filtered to CPIS
+
+### 4_Dams:
+Africa_Dam_csv_path: 'Data/Processed/Africa_Dams.csv'
