@@ -17,7 +17,10 @@ Africa_Cropland_tif_path: 'Data/Raw/Africa_Cropland-tif/af_cropland.tif' # from 
 
 
 Global_Dam_Data_csv_path: 'Data/Raw/globaldamsdatabase_global_coverage_november_2020.csv' # from https://sedac.ciesin.columbia.edu/data/set/grand-v1-dams-rev01/maps?facets=region:africa
-Global_Dam_Data_shp_path: 'Data/Raw/GDAT_data_v1/data/GDAT_v1_dams.shp' # Retrieved from https://zenodo.org/records/7616852 7/29/24
+Global_Dam_Data_shp_path: 'Data/Raw/GDAT_data_v1/data/GDAT_v1_dams.shp' # Retrieved from https://zenodo.org/records/7616852 7/29/24 (alternative dataset)
+
+Africa_Elevation_rast_path: 'Data/Raw/africa_dem/w001001.adf' # from https://databasin.org/datasets/2965da954b114ff3b47621e99e3b29ba/
+
 
 # Processed:
 
@@ -77,4 +80,8 @@ Groundwater_Prod_Arid_Cropland_gpkg_path: 'Data/Processed/Groundwater_Prod_Arid_
 CPIS_Groundwater_Prod_gpkg_path: 'Data/Processed/CPIS_Groundwater_Prod.gpkg' # Groundwater_Prod_gpkg_path filtered to CPIS
 
 ### 4_Dams:
-Africa_Dam_csv_path: 'Data/Processed/Africa_Dams.csv'
+Africa_Dam_csv_path: 'Data/Processed/Africa_Dams.csv' # Global_Dam_Data_csv_path filtered to only africa
+Africa_Elevation_Reprojected_tif_path: 'Data/Processed/Africa_Elevation_Reprojected.tif' # Africa_Elevation_rast_path reprojected to EPSG:3857 
+
+Dams_with_Gradients_gpkg_path: 'Data/Processed/Dam_Gradients.gpkg'
+CPIS_Classified_gpkg_path: 'Data/Processed/Classified_CPIS.gpkg'
