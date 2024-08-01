@@ -161,3 +161,6 @@ cython_debug/
 
 Data/*
 Nothing_to_see_here.ipynb*
+
+.DS_Store
+*/.DS_Store
