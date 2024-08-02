@@ -8,7 +8,7 @@
 2. Create environment and install requirements
 
 ```bash
-conda env create -f requirements.yml
+conda env create -n irrigation -f requirements.yml
 conda activate irrigation
 ```
 
