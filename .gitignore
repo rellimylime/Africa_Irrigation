@@ -162,6 +162,7 @@ cython_debug/
 Data/*
 Nothing_to_see_here.ipynb*
 Dams_Mess.ipynb*
+dem_3857.tif*
 
 .DS_Store
 */.DS_Store
