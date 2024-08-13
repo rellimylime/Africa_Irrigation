@@ -166,3 +166,5 @@ dem_3857.tif*
 
 .DS_Store
 */.DS_Store
+
+Output/percent_cropland_per_country.csv
