@@ -62,6 +62,8 @@ Cropland_tif_path: 'Data/Processed/Cropland_Nonzero_Africa.tif' # Africa_Croplan
 
 ### 4_Dam_processing
 Africa_Dam_csv_path: 'Data/Processed/Africa_Dams.csv' # Global_Dam_Data_csv_path filtered to only africa
+Africa_Dam_Irrigation_csv_path: 'Data/Processed/Africa_Dams_Irrigation.csv'
+Africa_Dam_Irrigation_Only_csv_path: 'Data/Processed/Africa_Dams_Irrigation_Only.csv'
 Africa_Dam_All_Arid_shp_path: 'Data/Processed/Africa_Dam_Arid-shp/Africa_Dam_All_Arid.shp' # Africa_Dam_csv_path trimmed to all arid regions
 Africa_Dam_Semi_Arid_shp_path: 'Data/Processed/Africa_Dam_Arid-shp/Africa_Dam_Semi_Arid.shp' # Africa_Dam_csv_path trimmed to semi arid regions
 Africa_Dam_Arid_shp_path: 'Data/Processed/Africa_Dam_Arid-shp/Africa_Dam_Arid.shp' # Africa_Dam_csv_path trimmed to arid regions
