@@ -44,11 +44,11 @@ Africa_Arid_Regions_tif_path2: 'Data/Processed/Africa_Arid_Regions2.tif' # Globa
 
 Africa_Continent_shp_path: 'Data/Processed/Africa_Continent-shp/Africa_Continent.shp' # Africa_Boundaries with country borders dissolved
 
-Africa_all_shp_path: 'Data/Processed/Africa_Arid_Regions_All-shp' # Global_Aridity_Raster_path with 1s for all elements < 5000 and 0s otherwise
-Africa_semi_arid_shp_path: 'Data/Processed/Africa_Semi_Arid-shp' # Africa_all_shp_path filtered to (2000, 5000)
-Africa_arid_shp_path: 'Data/Processed/Africa_Arid-shp' # Africa_all_shp_path filtered to (300, 2000)
-Africa_hyper_arid_shp_path: 'Data/Processed/Africa_Hyper_Arid-shp' # Africa_all_shp_path filtered to (0, 300)
-# Africa_arid_layered_shp_path: 'Data/Processed/Africa_Layered_Aridity-shp' # Africa_semi_arid_shp_path, Africa_arid_shp_path, and Africa_hyper_arid_shp_path merged
+Africa_All_shp_path: 'Data/Processed/Africa_Arid_Regions_All-shp' # Global_Aridity_Raster_path with 1s for all elements < 5000 and 0s otherwise
+Africa_Semi_Arid_shp_path: 'Data/Processed/Africa_Semi_Arid-shp' # Africa_all_shp_path filtered to (2000, 5000)
+Africa_Arid_shp_path: 'Data/Processed/Africa_Arid-shp' # Africa_all_shp_path filtered to (300, 2000)
+Africa_Hyper_Arid_shp_path: 'Data/Processed/Africa_Hyper_Arid-shp/Africa_Hyper_Arid.shp' # Africa_all_shp_path filtered to (0, 300)
+#Africa_arid_layered_shp_path: 'Data/Processed/Africa_Layered_Aridity-shp' # Africa_semi_arid_shp_path, Africa_arid_shp_path, and Africa_hyper_arid_shp_path merged
 
 Africa_Arid_by_Country_shp_path: 'Data/Processed/All_Arid_by_Country-shp/All_Arid_by_Country.shp' # Africa_all_shp_path overlayed with Africa_boundaries_shp_path to determine country
 
@@ -57,17 +57,33 @@ Arid_Binary_Cropland_tif_path: 'Data/Processed/Arid_Binary_Cropland.tif' # Cropl
 Arid_Cropland_tif_path: 'Data/Processed/Arid_Cropland.tif' # Cropland with aridity < 0.5 with values preserved
 
 ### 4_CPIS_overlay
-CPIS_Arid_shp_path: 'Data/Processed/CPIS_Arid-shp/CPIS_All_Aridities.shp' # Combined_CPIS_shp_path filtered to arid boundary
+Combined_CPIS_Reproj_shp_path: 'Data/Processed/Combined_CPIS_Reprojected-shp/Combined_CPIS_Reprojected.shp' # Combined_CPIS_shp_path reprojected to EPSG:3857
+
+Combined_CPIS_All_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/Combined_CPIS_All.shp' # Combined_CPIS_shp_path filtered to arid boundary
+Combined_CPIS_Semi_Arid_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/Combined_CPIS_Semi_Arid.shp' # Combined_CPIS_shp_path filtered to arid boundary
+Combined_CPIS_Arid_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/Combined_CPIS_Arid.shp' # Combined_CPIS_shp_path filtered to arid boundary
+Combined_CPIS_Hyper_Arid_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/Combined_CPIS_Hyper_Arid.shp' # Combined_CPIS_shp_path filtered to arid boundary
+
 Cropland_tif_path: 'Data/Processed/Cropland_Nonzero_Africa.tif' # Africa_Cropland_tif_path converted to binary, 0 < value = 1
 
-### 4_Dam_processing
+### 5_Dam_processing
 Africa_Dam_csv_path: 'Data/Processed/Africa_Dams.csv' # Global_Dam_Data_csv_path filtered to only africa
-Africa_Dam_Irrigation_csv_path: 'Data/Processed/Africa_Dams_Irrigation.csv'
-Africa_Dam_Irrigation_Only_csv_path: 'Data/Processed/Africa_Dams_Irrigation_Only.csv'
-Africa_Dam_All_Arid_shp_path: 'Data/Processed/Africa_Dam_Arid-shp/Africa_Dam_All_Arid.shp' # Africa_Dam_csv_path trimmed to all arid regions
-Africa_Dam_Semi_Arid_shp_path: 'Data/Processed/Africa_Dam_Arid-shp/Africa_Dam_Semi_Arid.shp' # Africa_Dam_csv_path trimmed to semi arid regions
-Africa_Dam_Arid_shp_path: 'Data/Processed/Africa_Dam_Arid-shp/Africa_Dam_Arid.shp' # Africa_Dam_csv_path trimmed to arid regions
-Africa_Dam_Hyper_Arid_shp_path: 'Data/Processed/Africa_Dam_Arid-shp/Africa_Dam_Hyper_Arid.shp' # Africa_Dam_csv_path trimmed to hyper arid regions
+Africa_Dam_Irrigation_csv_path: 'Data/Processed/Africa_Dams_Irrigation.csv' # Africa_Dam_csv_path filtered to dams that have 'Irrigation' listed under 'purpose'
+Africa_Dam_Irrigation_Only_csv_path: 'Data/Processed/Africa_Dams_Irrigation_Only.csv' # Africa_Dam_csv_path filtered to dams that ONLY have 'Irrigation' listed under 'purpose'
+Africa_Dam_All_shp_path: 'Data/Processed/Africa_Dam_Aridity_Layers-shp/Africa_Dam_All_Arid.shp' # Africa_Dam_csv_path trimmed to all arid regions
+Africa_Dam_Semi_Arid_shp_path: 'Data/Processed/Africa_Dam_Aridity_Layers-shp/Africa_Dam_Semi_Arid.shp' # Africa_Dam_csv_path trimmed to semi arid regions
+Africa_Dam_Arid_shp_path: 'Data/Processed/Africa_Dam_Aridity_Layers-shp/Africa_Dam_Arid.shp' # Africa_Dam_csv_path trimmed to arid regions
+Africa_Dam_Hyper_Arid_shp_path: 'Data/Processed/Africa_Dam_Aridity_Layers-shp/Africa_Dam_Hyper_Arid.shp' # Africa_Dam_csv_path trimmed to hyper arid regions
+
+### 6_AEI_trimming
+AEI_2015_cropped_tif_path: 'Data/Processed/G_AEI_2015_Cropped.tif' # Cropped to Africa
+AEI_2015_reproj_gpkg_path: 'Data/Processed/G_AEI_2015_Reprojected.gpkg' # Africa_AEI_2015_asc_path cropped to Africa and reprojected to EPSG:3857
+
+All_AEI_2015_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_All_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_All_shp_path
+Semi_Arid_AEI_2015_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Semi_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_Semi_Arid_shp_path
+Hyper_Arid_AEI_2015_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Hyper_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_Hyper_Arid_shp_path
+Arid_AEI_2015_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_Arid_shp_path
+
 
 ## Analyze
 
@@ -89,27 +105,35 @@ Groundwater_Prod_gpkg_path: 'Data/Processed/Groundwater_Prod.gpkg' # Groundwater
 Groundwater_Prod_Arid_Cropland_gpkg_path: 'Data/Processed/Groundwater_Prod_Arid_Cropland.gpkg' # Groundwater_Prod_gpkg_path filtered to arid cropland 
 CPIS_Groundwater_Prod_gpkg_path: 'Data/Processed/CPIS_Groundwater_Prod.gpkg' # Groundwater_Prod_gpkg_path filtered to CPIS
 
-### 4_Dams_Cropland:
-Africa_Dam_Reproj_shp_path: 'Data/Processed/Africa_Dams_Reprojected-shp/Dams_Reprojected.shp' # Africa_Dam_csv_path reprojected to EPSG:3857
-Africa_Dam_by_Country_shp_path: 'Data/Processed/Africa_Dam_by_Country-shp/Africa_Dam_by_Country.shp' # Africa_Dam_ReProj_shp_path including only reprojected geometries and from Africa_Dam_ReProj_shp_path and ISO3 values from Africa_Countries_Reproj_shp_path
+### 4_Dams_AEI/Cropland:
+#Africa_Dam_Reproj_shp_path: 'Data/Processed/Africa_Dams_Reprojected-shp/Dams_Reprojected.shp' # Africa_Dam_csv_path reprojected to EPSG:3857
+
+Dam_All_by_Country_shp_path: 'Data/Processed/Africa_Dam_by_Country-shp/Africa_All_Dam_by_Country.shp' # Africa_Dam_ReProj_shp_path including only reprojected geometries and from Africa_Dam_ReProj_shp_path and ISO3 values from Africa_Countries_Reproj_shp_path
+Dam_Semi_Arid_by_Country_shp_path: 'Data/Processed/Africa_Dam_by_Country-shp/Africa_Semi_Arid_Dam_by_Country.shp' # Africa_Dam_ReProj_shp_path including only reprojected geometries and from Africa_Dam_ReProj_shp_path and ISO3 values from Africa_Countries_Reproj_shp_path
+Dam_Arid_by_Country_shp_path: 'Data/Processed/Africa_Dam_by_Country-shp/Africa_Arid_Dam_by_Country.shp' # Africa_Dam_ReProj_shp_path including only reprojected geometries and from Africa_Dam_ReProj_shp_path and ISO3 values from Africa_Countries_Reproj_shp_path
+Dam_Hyper_Arid_by_Country_shp_path: 'Data/Processed/Africa_Dam_by_Country-shp/Africa_Hyper_Arid_Dam_by_Country.shp' # Africa_Dam_ReProj_shp_path including only reprojected geometries and from Africa_Dam_ReProj_shp_path and ISO3 values from Africa_Countries_Reproj_shp_path
 
 Arid_Cropland_Reproj_tif_path: 'Data/Processed/Arid_Cropland_Reproj.tif' # Arid_Cropland_tif_path reprojected to EPSG:3857
 Arid_Cropland_by_Country_shp_path: 'Data/Processed/Arid_Cropland_by_Country-shp/Arid_Cropland_by_Country.shp' # Arid_Cropland_Reproj_tif_path data by country using Africa_Countries_Reproj_shp_path
 
-Combined_CPIS_Reproj_shp_path: 'Data/Processed/Combined_CPIS_Reprojected-shp/Combined_CPIS_Reprojected.shp' # Combined_CPIS_shp_path reprojected to EPSG:3857
-Combined_CPIS_by_Country_shp_path: 'Data/Processed/Combined_CPIS_by_Country-shp/Combined_CPIS_by_Country.shp' # Combined_CPIS_Reproj_shp_path data by country using Africa_Countries_Reproj_shp_path
+Combined_CPIS_All_by_Country_shp_path: 'Data/Processed/Combined_CPIS_by_Country-shp/Combined_CPIS_All_by_Country.shp' # Combined_CPIS_All_shp_path data by country using Africa_Countries_Reproj_shp_path
+Combined_CPIS_Semi_Arid_by_Country_shp_path: 'Data/Processed/Combined_CPIS_by_Country-shp/Combined_CPIS_Semi_Arid_by_Country.shp' # Combined_CPIS_Semi_Arid_shp_path data by country using Africa_Countries_Reproj_shp_path
+Combined_CPIS_Arid_by_Country_shp_path: 'Data/Processed/Combined_CPIS_by_Country-shp/Combined_CPIS_Arid_by_Country.shp' # Combined_CPIS_Arid_shp_path data by country using Africa_Countries_Reproj_shp_path
+Combined_CPIS_Hyper_Arid_by_Country_shp_path: 'Data/Processed/Combined_CPIS_by_Country-shp/Combined_CPIS_Hyper_Arid_by_Country.shp' # Combined_CPIS_Hyper_Arid_shp_path data by country using Africa_Countries_Reproj_shp_path
 
-AEI_2015_cropped_tif_path: 'Data/Processed/G_AEI_2015_Cropped.tif' # Cropped to Africa
-AEI_2015_reproj_gpkg_path: 'Data/Processed/G_AEI_2015_Reprojected.gpkg' # Africa_AEI_2015_asc_path cropped to Africa and reprojected to EPSG:3857
-AEI_2015_by_Country_shp_path: 'Data/Processed/G_AEI_2015_by_Country-shp/G_AEI_2015_by_Country.shp' # AEI_2015_reproj_tif_path data by country using Africa_Countries_Reproj_shp_path
-Arid_AEI_2015_gpkg_path: 'Data/Processed/G_AEI_2015_Arid.gpkg' # AEI_2015_reproj_gpkg_path cropped by Africa_all_shp_path
+
+All_AEI_2015_by_Country_shp_path: 'Data/Processed/G_AEI_2015_by_Country-shp/G_AEI_2015_All_by_Country.shp' # All_AEI_2015_shp_path data by country using Africa_Countries_Reproj_shp_path
+Semi_Arid_AEI_2015_by_Country_shp_path: 'Data/Processed/G_AEI_2015_by_Country-shp/G_AEI_2015_Semi_Arid_by_Country.shp' # Semi_Arid_AEI_2015_shp_path data by country using Africa_Countries_Reproj_shp_path
+Arid_AEI_2015_by_Country_shp_path: 'Data/Processed/G_AEI_2015_by_Country-shp/G_AEI_2015_Arid_by_Country.shp' # Arid_AEI_2015_shp_path data by country using Africa_Countries_Reproj_shp_path
+Hyper_Arid_AEI_2015_by_Country_shp_path: 'Data/Processed/G_AEI_2015_by_Country-shp/G_AEI_2015_Hyper_Arid_by_Country.shp' # Hyper_Arid_AEI_2015_shp_path data by country using Africa_Countries_Reproj_shp_path
 
 Africa_Countries_Reproj_shp_path: 'Data/Processed/Africa_Countries_Reprojected-shp/Africa_Countries_Reprojected.shp' # Africa_Countries_shp_path reprojected to EPSG:3857
+
 
 Africa_Elevation_Reprojected_tif_path: 'Data/Processed/Africa_Elevation_Reprojected.tif' # Africa_Elevation_rast_path reprojected to EPSG:3857 
 
 
-Dams_with_Gradients_gpkg_path: 'Data/Processed/Dam_Gradients.gpkg' # Africa_Dam_csv_path with gradient direction
-CPIS_Classified_gpkg_path: 'Data/Processed/Classified_CPIS.gpkg' # Combined_CPIS_shp_path with 'upstream'/'downstream' classification
+#Dams_with_Gradients_gpkg_path: 'Data/Processed/Dam_Gradients.gpkg' # Africa_Dam_csv_path with gradient direction
+#CPIS_Classified_gpkg_path: 'Data/Processed/Classified_CPIS.gpkg' # Combined_CPIS_shp_path with 'upstream'/'downstream' classification
 
 
