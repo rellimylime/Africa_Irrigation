@@ -103,8 +103,8 @@ Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_
 
 ### 3_Groundwater:
 Groundwater_Prod_gpkg_path: 'Data/Processed/Groundwater_Prod.gpkg' # Groundwater_Productivity_path .txt file made into geopackage
-Groundwater_Prod_Arid_Cropland_gpkg_path: 'Data/Processed/Groundwater_Prod_Arid_Cropland.gpkg' # Groundwater_Prod_gpkg_path filtered to arid cropland 
-CPIS_Groundwater_Prod_gpkg_path: 'Data/Processed/CPIS_Groundwater_Prod.gpkg' # Groundwater_Prod_gpkg_path filtered to CPIS
+#Groundwater_Prod_Arid_Cropland_gpkg_path: 'Data/Processed/Groundwater_Prod_Arid_Cropland.gpkg' # Groundwater_Prod_gpkg_path filtered to arid cropland 
+#CPIS_Groundwater_Prod_gpkg_path: 'Data/Processed/CPIS_Groundwater_Prod.gpkg' # Groundwater_Prod_gpkg_path filtered to CPIS
 
 ### 4_Dams_AEI/Cropland:
 #Africa_Dam_Reproj_shp_path: 'Data/Processed/Africa_Dams_Reprojected-shp/Dams_Reprojected.shp' # Africa_Dam_csv_path reprojected to EPSG:3857
