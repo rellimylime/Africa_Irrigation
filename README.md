@@ -4,7 +4,8 @@
 ## Content
 Key:
 **Bold**: Indicates full description of figure or file
-_**Bold Underline**_: Indicates the file is necessary to produce the notebook's results
+
+**<ins>Bold Underline</ins>**: Indicates the file is necessary to produce the notebook's results
 
 ### Irrigation vs Center Pivot Expansion
 
