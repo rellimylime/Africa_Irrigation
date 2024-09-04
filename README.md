@@ -2,6 +2,9 @@
  Project exploring how much irrigation Center Pivots have accounted for in the context of the expansion of irrigation as a whole in SSA from 2000 to 2021. 
 
 ## Content
+Key:
+**Bold**: Indicates full description of figure or file
+_**Bold Underline**_: Indicates the file is necessary to produce the notebook's results
 
 ### Irrigation vs Center Pivot Expansion
 
@@ -26,38 +29,38 @@ Required Processing Notebooks:
 [_**0_filter_AQUASTAT**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_filter_AQUASTAT.ipynb):
 Output:
 
->**(a)**  <ins>```'AQUA_AfricaIrrigation'```</ins>:
+>**(a)**  **<ins>```'AQUA_AfricaIrrigation'```</ins>**:
 
 > >```'AQUA_World_path'``` filtered to Africa
 
->**(b)**  <ins>```'AQUA_SSAIrrigation'```</ins>:
+>**(b)**  **<ins>```'AQUA_SSAIrrigation'```</ins>**:
 
 > >```'AQUA_World_path'``` filtered to Sub-Saharan Africa
 
->**( c)**  <ins>```'AQUA_AfricaIrrigation_2000'```:
+>**( c)**  **<ins>```'AQUA_AfricaIrrigation_2000'```**:
 
 > >(a) filtered to the year 2000
 
->**(d)**  <ins>```'AQUA_AfricaIrrigation_2021'```:
+>**(d)**  **<ins>```'AQUA_AfricaIrrigation_2021'```**:
 
 > >(a) filtered to the year 2021
 
->**(e)**  <ins>```'AQUA_SSAIrrigation_2000'```:
+>**(e)**  **<ins>```'AQUA_SSAIrrigation_2000'```**:
 
 > >(b) filtered to the year 2000
 
->**(f)**  <ins>```'AQUA_SSAIrrigation_2021'```:
+>**(f)**  **<ins>```'AQUA_SSAIrrigation_2021'```**:
 
 > >(b) filtered to the year 2021
 
 [_**1_CPIS_by_country**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/1_CPIS_by_country.ipynb):
 Output:
 
->**(g)** <ins>```'Africa_CPIS_2000_shp_path'```</ins>:
+>**(g)** **<ins>```'Africa_CPIS_2000_shp_path'```</ins>**:
 
 > >(3) filtered to Africa with geometry area (```'Area_m2'```) column added
 
->**(h)** <ins>```'Africa_CPIS_2021_shp_path'```</ins>:
+>**(h)** **<ins>```'Africa_CPIS_2021_shp_path'```</ins>**:
 
 > >(4) filtered to Africa with geometry area (```'Area_m2'```) column added
 
@@ -82,8 +85,7 @@ Figure1 and Figure2 on the same axis
 >- The area covered by CPIS in all of Africa increased by 148.89% between 2000 and 2021.
 >- In 2000, center pivot irrigation systems made up 3.62% of the total area equipped with irrigation in all of Africa.
 >- In 2021, center pivot irrigation systems made up 5.95% of the total area equipped with irrigation in all of Africa."
-
----  
+  
 [16]
 >- The area equipped for irrigation in Sub-Saharan Africa increased by 94.60% between 2000 and 2021.
 >- The area covered by CPIS in Sub-Saharan Africa increased by 191.16% between 2000 and 2021.
@@ -157,9 +159,9 @@ Output:
 Figure containing outlines of each of the four aridity layers
 
 Results:
->**o)** ```'Comp_by_Country_2000_csv_path'```
+>**(o)** ```'Comp_by_Country_2000_csv_path'```
 >The area of all irrigation and of all CPIS per country and % (CPIS area / total irrigated area) per country in 2000
->**p)** ```'Comp_by_Country_2021_csv_path'```
+>**(p)** ```'Comp_by_Country_2021_csv_path'```
 >The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
 
 >**![1_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/1_Figure1.png)**
