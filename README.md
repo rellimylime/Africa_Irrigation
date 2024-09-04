@@ -13,6 +13,8 @@ Key:
 
 ### Irrigation vs Center Pivot Expansion
 
+-----
+
 ### [0_CPIS_vs_Total](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/0_CPIS_vs_Total.ipynb)
 
   
@@ -96,6 +98,8 @@ Figure1 and Figure2 on the same axis
 >- The area covered by CPIS in Sub-Saharan Africa increased by 191.16% between 2000 and 2021.
 >- In 2000, center pivot irrigation systems made up 6.81% of the total area equipped with irrigation in Sub-Saharan Africa.
 >- In 2021, center pivot irrigation systems made up 10.19% of the total area equipped with irrigation in Sub-Saharan Africa."
+
+----
 
 ### [1_CPIS_Africa_Map](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/1_CPIS_Africa_Map.ipynb)
 
