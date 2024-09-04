@@ -105,9 +105,10 @@ Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021
 #### Results:
 
 >**(o)** ```'Comp_by_Country_2000_csv_path'```
->The area of all irrigation and of all CPIS per country and % (CPIS area / total irrigated area) per country in 2000
+> >The area of all irrigation and of all CPIS per country and % (CPIS area / total irrigated area) per country in 2000
+>
 >**(p)** ```'Comp_by_Country_2021_csv_path'```
->The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
+> >The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
 >
 >**![1_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/1_Figure1.png)**
 > Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
