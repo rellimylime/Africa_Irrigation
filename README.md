@@ -3,9 +3,13 @@
 
 ## Content
 Key:
-**Bold**: Indicates full description of figure or file
 
-**<ins>Bold Underline</ins>**: Indicates the file is necessary to produce the notebook's results
+- **Bold**: Indicates full description of figure or file
+
+- **<ins>Bold Underline</ins>**: Indicates the file is necessary to produce the notebook's results
+
+- [Blue Underline](https://github.com/rellimylime/Africa_Irrigation/blob/main/README.md): Link
+
 
 ### Irrigation vs Center Pivot Expansion
 
