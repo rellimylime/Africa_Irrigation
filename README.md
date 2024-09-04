@@ -1,6 +1,124 @@
 # Africa_Irrigation
  Project exploring how much irrigation Center Pivots have accounted for in the context of the expansion of irrigation as a whole in SSA from 2000 to 2021. 
 
+## Content
+
+### Irrigation vs Center Pivot Expansion
+
+#### [0_CPIS_vs_Total](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/0_CPIS_vs_Total.ipynb)
+
+Raw data used:
+    **(1)** [```'Africa_boundaries_shp_path'```](https://hub.arcgis.com/datasets/07610d73964e4d39ab62c4245d548625/explore)
+    **(2)** [```'AQUA_World_path'```](https://data.apps.fao.org/aquastat/?lang=en&share=f-30f07e71-7f5e-4803-b98b-362511369dd4)
+    **(3)** [```'CPIS_2000_shp_path'```](https://github.com/DetectCPIS/global_cpis_shp) _instructions below_
+    **(4)** [```'CPIS_2021_shp_path'```](https://github.com/DetectCPIS/global_cpis_shp) _instructions below_
+
+Required Processing Notebooks:
+    [**0_filter_AQUASTAT**](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_filter_AQUASTAT.ipynb):
+        Output:
+            **(a)** ```'AQUA_AfricaIrrigation'```: 
+                ```'AQUA_World_path'``` filtered to Africa
+            **(b)** ```'AQUA_SSAIrrigation'```: 
+                ```'AQUA_World_path'``` filtered to Sub-Saharan Africa 
+            **(c)** ```'AQUA_AfricaIrrigation_2000'```:
+                (a) filtered to the year 2000
+            **(d)** ```'AQUA_AfricaIrrigation_2021'```:
+                (a) filtered to the year 2021
+            **(e)** ```'AQUA_SSAIrrigation_2000'```:
+                (b) filtered to the year 2000
+            **(f)** ```'AQUA_SSAIrrigation_2021'```:
+                (b) filtered to the year 2021
+                
+    [**1_CPIS_by_country**](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/1_CPIS_by_country.ipynb): 
+        Output:
+            **(g)** <ins>```'Africa_CPIS_2000_shp_path'```</ins>:
+                (3) filtered to Africa with geometry area (```'Area_m2'```) column added 
+
+            **(h)** ```'Africa_CPIS_2021_shp_path'```:
+                (4) filtered to Africa with geometry area (```'Area_m2'```) column added
+
+        Output:
+            [**1_Figure0**](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/0_Figure0.png)
+                Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021
+
+    Results:
+    ![**0_Figure1**](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/0_Figure1.png):
+        Compares growth of irrigation over all of Africa with CPIS growth
+    ![**0_Figure2**](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/0_Figure2.png)
+        Compares growth of irrigation over Sub-Saharan Africa with CPIS growth
+    ![**0_Figure3**](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/0_Figure3.png)
+        Figure1 and Figure2 on the same axis 
+    
+    [15]
+    "The area equipped for irrigation in all of Africa increased by 51.56% between 2000 and 2021.
+    The area covered by CPIS in all of Africa increased by 148.89% between 2000 and 2021.
+    -----
+    In 2000, center pivot irrigation systems made up 3.62% of the total area equipped with irrigation in all of Africa.
+    In 2021, center pivot irrigation systems made up 5.95% of the total area equipped with irrigation in all of Africa."
+
+    [16]
+    "The area equipped for irrigation in Sub-Saharan Africa increased by 94.60% between 2000 and 2021.
+    The area covered by CPIS in Sub-Saharan Africa increased by 191.16% between 2000 and 2021.
+    -----
+    In 2000, center pivot irrigation systems made up 6.81% of the total area equipped with irrigation in Sub-Saharan Africa.
+    In 2021, center pivot irrigation systems made up 10.19% of the total area equipped with irrigation in Sub-Saharan Africa."
+    
+#### [1_CPIS_Africa_Map](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/1_CPIS_Africa_Map.ipynb)
+
+Raw data used:
+    (1) [```'Africa_boundaries_shp_path'```](https://hub.arcgis.com/datasets/07610d73964e4d39ab62c4245d548625/explore)
+    (2) [```'AQUA_World_path'```](https://data.apps.fao.org/aquastat/?lang=en&share=f-30f07e71-7f5e-4803-b98b-362511369dd4)
+    (3) [```'CPIS_2000_shp_path'```](https://github.com/DetectCPIS/global_cpis_shp) _instructions below_
+    (4) [```'CPIS_2021_shp_path'```](https://github.com/DetectCPIS/global_cpis_shp) _instructions below_
+
+Required Processing Notebooks:
+    [0_filter_AQUASTAT](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_filter_AQUASTAT.ipynb):
+        (a) ```'AQUA_AfricaIrrigation'```: 
+            ```'AQUA_World_path'``` filtered to Africa
+        (b) ```'AQUA_SSAIrrigation'```: 
+            ```'AQUA_World_path'``` filtered to Sub-Saharan Africa 
+        (c) ```'AQUA_AfricaIrrigation_2000'```:
+            (a) filtered to the year 2000
+        (d) ```'AQUA_AfricaIrrigation_2021'```:
+            (a) filtered to the year 2021
+        (e) ```'AQUA_SSAIrrigation_2000'```:
+            (b) filtered to the year 2000
+        (f) ```'AQUA_SSAIrrigation_2021'```:
+            (b) filtered to the year 2021
+
+    [1_CPIS_by_country](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/1_CPIS_by_country.ipynb): 
+        (g) ```'Africa_CPIS_2000_shp_path'```
+        (h) ```'Africa_CPIS_2021_shp_path'```
+        
+        Output:
+            [1_Figure0](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/0_Figure0.png)
+                Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021
+
+    [2_Aridity_refinement](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_refinement.ipynb): 
+        (i) ```'Africa_All_shp_path'```
+        (j) ```'Africa_Semi_Arid_shp_path'```
+        (k) ```'Africa_Arid_shp_path'```
+        (l) ```'Africa_Hyper_Arid_shp_path'```
+
+        Output:
+            [2_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png)
+                Figure containing outlines of each of the four aridity layers
+
+Files Produced:
+    h) ```'Comp_by_Country_2000_csv_path'```
+    i) ```'Comp_by_Country_2021_csv_path'```
+
+
+
+
+
+
+
+-irrigation vs cp expantion
+-dam targeting ratios
+-gw targeting ratios
+
+
 ## Instructions
 
 1. Install [Conda](http://conda.io/)
@@ -34,8 +152,6 @@ Retrieved from https://data.apps.fao.org/aquastat/?lang=en on 06/20/24 using par
 - Variables: Environment, Irrigation and drainage development, Water resources, Water use 
 - Area: World
 - Year: 2021, 2020, 2019, 2015, 2010, 2005, 2000
-
-**Note**: Two adjustments have been made to the original data for efficiency of code; Congo is now known as The Republic of Congo and "Côte d'Ivoire" has been replaced with "CÃ´te d'Ivoire" (both to ensure agreement with country names within the African Boundaries Shapefile).
 
 The following countries were not included in the AQUASTAT data:
 French Southern Territories
