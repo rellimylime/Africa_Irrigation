@@ -55,6 +55,38 @@ Figure1 and Figure2 on the same axis
   </blockquote>
 </details>
 
+<details>
+  <summary><strong style="font-size:16px;">Required Processing Notebooks:</strong></summary>
+  <br>
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_filter_AQUASTAT.ipynb"><em><strong>0_Filter_AQUASTAT</strong></em></a>: Output:</p>
+  <blockquote>
+    <p><strong>(a)</strong> <strong><ins><code>'AQUA_AfricaIrrigation'</code></ins></strong>:</p>
+    <blockquote><code>'AQUA_World_path'</code> filtered to Africa</blockquote>
+    <p><strong>(b)</strong> <strong><ins><code>'AQUA_SSAIrrigation'</code></ins></strong>:</p>
+    <blockquote><code>'AQUA_World_path'</code> filtered to Sub-Saharan Africa</blockquote>
+    <p><strong>(c)</strong> <strong><ins><code>'AQUA_AfricaIrrigation_2000'</code></ins></strong>:</p>
+    <blockquote>(a) filtered to the year 2000</blockquote>
+    <p><strong>(d)</strong> <strong><ins><code>'AQUA_AfricaIrrigation_2021'</code></ins></strong>:</p>
+    <blockquote>(a) filtered to the year 2021</blockquote>
+    <p><strong>(e)</strong> <strong><ins><code>'AQUA_SSAIrrigation_2000'</code></ins></strong>:</p>
+    <blockquote>(b) filtered to the year 2000</blockquote>
+    <p><strong>(f)</strong> <strong><ins><code>'AQUA_SSAIrrigation_2021'</code></ins></strong>:</p>
+    <blockquote>(b) filtered to the year 2021</blockquote>
+  </blockquote>
+
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/1_CPIS_by_Country.ipynb"><em><strong>1_CPIS_by_Country</strong></em></a>: Output:</p>
+  <blockquote>
+    <p><strong>(g)</strong> <strong><ins><code>'Africa_CPIS_2000_shp_path'</code></ins></strong>:</p>
+    <blockquote>(3) filtered to Africa with geometry area (<code>'Area_m2'</code>) column added</blockquote>
+    <p><strong>(h)</strong> <strong><ins><code>'Africa_CPIS_2021_shp_path'</code></ins></strong>:</p>
+    <blockquote>(4) filtered to Africa with geometry area (<code>'Area_m2'</code>) column added</blockquote>
+  </blockquote>
+
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/0_Figure0.png"><strong>1_Figure0</strong></a>:</p>
+  <blockquote>
+    Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021
+  </blockquote>
+</details>
   
 
 #### Required Processing Notebooks:
