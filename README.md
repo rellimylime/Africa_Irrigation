@@ -42,7 +42,7 @@ Figure1 and Figure2 on the same axis
 >- In 2021, center pivot irrigation systems made up 10.19% of the total area equipped with irrigation in Sub-Saharan Africa."
   
 <details>
-<summary>#### Raw data used:</summary>
+<summary><strong style="font-size:16px;">Raw data required:</strong></summary>
 <br>
 >**(1)** [```'Africa_boundaries_shp_path'```](https://hub.arcgis.com/datasets/07610d73964e4d39ab62c4245d548625/explore)
 >
