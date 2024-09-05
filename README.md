@@ -188,7 +188,7 @@ Figure containing outlines of each of the four aridity layers
   
 #### Results:
 
->**![2_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/2_Figure1.png) **
+>![2_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/2_Figure1.png)
 > Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
   
 #### Raw data required:
@@ -220,9 +220,119 @@ Output:
 >- [1_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/1_Figure1.png)
   
 
+### [3_Dams_AEI_Targeting_Ratios](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/3_Dams_AEI_Targeting_Ratios.ipynb)
 
-  
-  
+#### Results
+
+>![3_Figure0](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/3_Figure0.png)
+> Targeting ratios and distance ranges plotted (over all arid area)  
+>
+>![3_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/3_Figure1.png)
+> Targeting ratios and distance ranges plotted (over semi-arid area)
+>
+>![3_Figure2](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/3_Figure2.png)
+> Targeting ratios and distance ranges plotted (over arid area)
+>
+>![3_Figure3](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/3_Figure3.png)
+> Targeting ratios and distance ranges plotted (over hyper-arid area)  
+
+#### Raw data required
+
+>(1) [```'Africa_boundaries_shp_path'```](https://hub.arcgis.com/datasets/07610d73964e4d39ab62c4245d548625/explore)
+>
+>(2) [```'AQUA_World_path'```](https://data.apps.fao.org/aquastat/?lang=en&share=f-30f07e71-7f5e-4803-b98b-362511369dd4)
+>
+>(5) [```'Global_Aridity_Raster_path'```](https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448)
+>
+>**(6)** [```'Combined_CPIS_shp_path'```] Generated using the following code
+> >- [File 1](https://github.com/anna-boser/Africa_corporate_irrigation/blob/main/code/0_process_data/0_subset_CPIS.py)
+> >- [File 2](https://github.com/anna-boser/Africa_corporate_irrigation/blob/main/code/0_process_data/1_combine_2000_2021_CPIS.py)
+>
+>**(7)** [```'Global_Dam_Data_csv_path'```](https://sedac.ciesin.columbia.edu/data/set/grand-v1-dams-rev01/maps?facets=region:africa)
+>
+>**(8)** [```'Africa_AEI_2015_asc_path'```](https://zenodo.org/records/7809342)
+>
+
+#### Required Processing Notebooks
+
+[_**2_Aridity_refinement**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_refinement.ipynb):
+Output:
+>(i) ```'Africa_Arid_Regions_tif_path'```
+> 
+>(j) ```'Africa_Arid_Regions_tif_path2'```
+> 
+>(k) ```'Africa_All_shp_path'```
+>
+>(l) ```'Africa_Semi_Arid_shp_path'```
+>
+>(m) ```'Africa_Arid_shp_path'```
+> 
+>(n) ```'Africa_Hyper_Arid_shp_path'```
+>
+>[2_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png)
+
+[ **4_CPIS_overlay** ](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/4_CPIS_overlay.ipynb)
+Output:
+>**(s)** **<ins>```'Combined_CPIS_Reproj_shp_path'```<\ins>**
+> > (6) reprojected to EPSG:3857
+>**(t)** **<ins>```'Combined_CPIS_All_shp_path'```<\ins>**
+> > (6) filterend to all aridity layers
+>
+>**(u)** **<ins>```'Combined_CPIS_Semi_Arid_shp_path'```<\ins>**
+> > (6) filtered to semi-arid areas
+>
+>**(v)** **<ins>```'Combined_CPIS_Arid_shp_path'```<\ins>**
+> > (6) filtered to arid areas
+>
+>**(w)** **<ins> ```'Cimbined_CPIS_Hyper_Arid_shp_path'```<\ins>**
+> > (6) filtered to hyper-arid areas
+
+[ **5_Dam_processing** ](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/5_Dam_processing.ipynb)
+Output:
+>**(x)** ```'Africa_Dam_csv_path'```
+> > (7) filtered to Africa
+>
+>**(y)** ```'Africa_Dam_Irrigation_csv_path'```
+> > (x) filtered to dams which have 'Irrigation' listed as a purpose
+>
+>**(z)** ```'Africa_Dam_Irrigation_Only_csv_path'```
+> > (x) filtered to dams which _only_ have 'Irrigation' listed as a purpose
+>
+>**(aa)** **<ins>```'Africa_Dam_Semi_Arid_shp_path'```<\ins>**
+> > (y) filtered to semi-arid area
+>
+>**(bb)** **<ins>```'Africa_Dam_Arid_shp_path'```<\ins>**
+> > (y) filtered to arid area
+>
+>**(cc)** **<ins>```'Africa_Dam_Hyper_Arid_shp_path'```<\ins>**
+> > (y) filtered to hyper-arid area
+>
+>**(dd)** **<ins>```'Africa_Dam_Semi_All_shp_path'```<\ins>**
+> > (y) filtered to all aridity layers
+
+[ **6_AEI_trimming** ](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_AEI_trimming.ipynb)
+Output:
+>**(ee)** ```'AEI_2015_cropped_tif_path'```
+> > (8) cropped to africa
+>
+>**(ff)** ```'AEI_2015_reproj_gpkg_path'```
+> > (ee) converted to a gdf and re projected to EPSG:3857
+>
+>**(gg)** **<ins>```'AEI_2015_Semi_Arid_shp_path'```<\ins>**
+> > (ff) trimmed to semi-arid area
+>
+>**(hh)** **<ins>```'AEI_2015_Arid_shp_path'```<\ins>**
+> > (ff) trimmed to arid area
+>
+>**(ii)** **<ins>```'AEI_2015_Hyper_Arid_shp_path'```<\ins>**
+> > (ff) trimmed to hyper-arid area
+>
+>**(jj)** **<ins>```'AEI_2015_All_shp_path'```<\ins>**
+> > (ff) trimmed to all aridity layers
+
+
+
+
 
 -irrigation vs cp expantion
 -dam targeting ratios

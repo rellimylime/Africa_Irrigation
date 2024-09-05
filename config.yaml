@@ -3,7 +3,6 @@ base_path: '/home/waves/data/Africa_Irrigation'
 
 # raw:
 Africa_boundaries_shp_path: 'Data/Raw/Africa_Boundaries-shp' # from https://hub.arcgis.com/datasets/07610d73964e4d39ab62c4245d548625/explore
-# African_Countries_csv_path: 'Data/Raw/african_countries.csv' # just a list of African countries
 CPIS_2000_shp_path: 'Data/Raw/World_CPIS-shp/World_CPIS_2000.shp' # from https://github.com/DetectCPIS/global_cpis_shp; see readme for details
 CPIS_2021_shp_path: 'Data/Raw/World_CPIS-shp/World_CPIS_2021.shp' # from https://github.com/DetectCPIS/global_cpis_shp; see readme for details
 AQUA_World_path: 'Data/Raw/AQUASTAT Dissemination System.csv' # from https://data.apps.fao.org/aquastat/?lang=en; see readme for details
@@ -151,3 +150,7 @@ Africa_Elevation_Reprojected_tif_path: 'Data/Processed/Africa_Elevation_Reprojec
 0_Figure3: 'Data/Output/Analyze/0_Figure3.png' # Figure1 and Figure2 on the same axis
 2_Figure1: 'Data/Output/Analyze/2_Figure1.png' # Four panel figure where each panel compares the area of CPIS and the area of irrigated land in 2000 and in 2021. Each figure is captioned by noting the percent of irrigated area that is CPIS in each year
 1_Figure1: 'Data/Output/Analyze/1_Figure1.png' # Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
+3_Figure0: 'Data/Output/Analyze/3_Figure0.png' # Targeting ratios and distance ranges plotted (over all arid area)
+3_Figure1: 'Data/Output/Analyze/3_Figure1.png' # Targeting ratios and distance ranges plotted (over semi-arid area)
+3_Figure2: 'Data/Output/Analyze/3_Figure2.png' # Targeting ratios and distance ranges plotted (over arid area)
+3_Figure3: 'Data/Output/Analyze/3_Figure3.png' # Targeting ratios and distance ranges plotted (over hyper-arid area)
