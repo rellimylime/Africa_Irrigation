@@ -232,47 +232,73 @@ Figure1 and Figure2 on the same axis
 <details>
   <summary><strong style="font-size:16px;">Required Processing Notebooks:</strong></summary>
   <br>
+  
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_Refinement.ipynb"><em><strong>2_Aridity_Refinement</strong></em></a>: Output:</p>
   <blockquote>
-    <p><strong>(i)</strong> <code>'Africa_Arid_Regions_tif_path'</code></p>
-    <p><strong>(j)</strong> <code>'Africa_Arid_Regions_tif_path2'</code></p>
-    <p><strong>(k)</strong> <code>'Africa_All_shp_path'</code></p>
-    <p><strong>(l)</strong> <code>'Africa_Semi_Arid_shp_path'</code></p>
-    <p><strong>(m)</strong> <code>'Africa_Arid_shp_path'</code></p>
-    <p><strong>(n)</strong> <code>'Africa_Hyper_Arid_shp_path'</code></p>
-    <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png">2_Figure1</a></p>
+    <p><strong>(i)</strong> <strong><ins><code>'Africa_Arid_Regions_tif_path'</code></ins></strong>:</p>
+    <blockquote>(5) trimmed by Africa bounding box</blockquote>
+    <p><strong>(j)</strong> <strong><ins><code>'Africa_Arid_Regions_tif_path2'</code></ins></strong>:</p>
+    <blockquote>(i) trimmed by (1)</blockquote>
+    <p><strong>(k)</strong> <strong><ins><code>'Africa_All_shp_path'</code></ins></strong>:</p>
+    <blockquote>(5) with 1s for all elements &lt; 5000 and 0s otherwise</blockquote>
+    <p><strong>(l)</strong> <code>'Africa_Semi_Arid_shp_path'</code>:</p>
+    <blockquote>(i) filtered to (2000, 5000)</blockquote>
+    <p><strong>(m)</strong> <code>'Africa_Arid_shp_path'</code>:</p>
+    <blockquote>(i) filtered to (300, 2000)</blockquote>
+    <p><strong>(n)</strong> <code>'Africa_Hyper_Arid_shp_path'</code>:</p>
+    <blockquote>(i) filtered to (0, 300)</blockquote>
+    <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png"><strong>2_Figure1</strong></a>: Figure containing outlines of each of the four aridity layers</p>
   </blockquote>
 
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/4_CPIS_overlay.ipynb"><em><strong>4_CPIS_Processing</strong></em></a>: Output:</p>
   <blockquote>
-    <p><strong>(s)</strong> <ins><strong><code>'Combined_CPIS_Reproj_shp_path'</code></strong></ins> (6) reprojected to EPSG:3857</p>
-    <p><strong>(t)</strong> <ins><strong><code>'Combined_CPIS_All_shp_path'</code></strong></ins> (6) filtered to all aridity layers</p>
-    <p><strong>(u)</strong> <ins><strong><code>'Combined_CPIS_Semi_Arid_shp_path'</code></strong></ins> (6) filtered to semi-arid areas</p>
-    <p><strong>(v)</strong> <ins><strong><code>'Combined_CPIS_Arid_shp_path'</code></strong></ins> (6) filtered to arid areas</p>
-    <p><strong>(w)</strong> <ins><strong><code>'Combined_CPIS_Hyper_Arid_shp_path'</code></strong></ins> (6) filtered to hyper-arid areas</p>
+    <p><strong>(s)</strong> <strong><ins><code>'Combined_CPIS_Reproj_shp_path'</code></ins></strong>:</p>
+    <blockquote>(6) reprojected to EPSG:3857</blockquote>
+    <p><strong>(t)</strong> <strong><ins><code>'Combined_CPIS_All_shp_path'</code></ins></strong>:</p>
+    <blockquote>(6) filtered to all aridity layers</blockquote>
+    <p><strong>(u)</strong> <strong><ins><code>'Combined_CPIS_Semi_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(6) filtered to semi-arid areas</blockquote>
+    <p><strong>(v)</strong> <strong><ins><code>'Combined_CPIS_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(6) filtered to arid areas</blockquote>
+    <p><strong>(w)</strong> <strong><ins><code>'Combined_CPIS_Hyper_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(6) filtered to hyper-arid areas</blockquote>
   </blockquote>
 
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/5_Dam_processing.ipynb"><em><strong>5_Dam_Processing</strong></em></a>: Output:</p>
   <blockquote>
-    <p><strong>(x)</strong> <code>'Africa_Dam_csv_path'</code> (7) filtered to Africa</p>
-    <p><strong>(y)</strong> <code>'Africa_Dam_Irrigation_csv_path'</code> (x) filtered to dams which have 'Irrigation' listed as a purpose</p>
-    <p><strong>(z)</strong> <code>'Africa_Dam_Irrigation_Only_csv_path'</code> (x) filtered to dams which _only_ have 'Irrigation' listed as a purpose</p>
-    <p><strong>(aa)</strong> <ins><strong><code>'Africa_Dam_Semi_Arid_shp_path'</code></strong></ins> (y) filtered to semi-arid area</p>
-    <p><strong>(bb)</strong> <ins><strong><code>'Africa_Dam_Arid_shp_path'</code></strong></ins> (y) filtered to arid area</p>
-    <p><strong>(cc)</strong> <ins><strong><code>'Africa_Dam_Hyper_Arid_shp_path'</code></strong></ins> (y) filtered to hyper-arid area</p>
-    <p><strong>(dd)</strong> <ins><strong><code>'Africa_Dam_Semi_All_shp_path'</code></strong></ins> (y) filtered to all aridity layers</p>
+    <p><strong>(x)</strong> <code>'Africa_Dam_csv_path'</code>:</p>
+    <blockquote>(7) filtered to Africa</blockquote>
+    <p><strong>(y)</strong> <code>'Africa_Dam_Irrigation_csv_path'</code>:</p>
+    <blockquote>(x) filtered to dams which have 'Irrigation' listed as a purpose</blockquote>
+    <p><strong>(z)</strong> <code>'Africa_Dam_Irrigation_Only_csv_path'</code>:</p>
+    <blockquote>(x) filtered to dams which _only_ have 'Irrigation' listed as a purpose</blockquote>
+    <p><strong>(aa)</strong> <strong><ins><code>'Africa_Dam_Semi_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(y) filtered to semi-arid area</blockquote>
+    <p><strong>(bb)</strong> <strong><ins><code>'Africa_Dam_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(y) filtered to arid area</blockquote>
+    <p><strong>(cc)</strong> <strong><ins><code>'Africa_Dam_Hyper_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(y) filtered to hyper-arid area</blockquote>
+    <p><strong>(dd)</strong> <strong><ins><code>'Africa_Dam_Semi_All_shp_path'</code></ins></strong>:</p>
+    <blockquote>(y) filtered to all aridity layers</blockquote>
   </blockquote>
 
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_AEI_trimming.ipynb"><em><strong>6_AEI_Processing</strong></em></a>: Output:</p>
   <blockquote>
-    <p><strong>(ee)</strong> <code>'AEI_2015_cropped_tif_path'</code> (8) cropped to Africa</p>
-    <p><strong>(ff)</strong> <code>'AEI_2015_reproj_gpkg_path'</code> (ee) converted to a GDF and re-projected to EPSG:3857</p>
-    <p><strong>(gg)</strong> <ins><strong><code>'AEI_2015_Semi_Arid_shp_path'</code></strong></ins> (ff) trimmed to semi-arid area</p>
-    <p><strong>(hh)</strong> <ins><strong><code>'AEI_2015_Arid_shp_path'</code></strong></ins> (ff) trimmed to arid area</p>
-    <p><strong>(ii)</strong> <ins><strong><code>'AEI_2015_Hyper_Arid_shp_path'</code></strong></ins> (ff) trimmed to hyper-arid area</p>
-    <p><strong>(jj)</strong> <ins><strong><code>'AEI_2015_All_shp_path'</code></strong></ins> (ff) trimmed to all aridity layers</p>
+    <p><strong>(ee)</strong> <code>'AEI_2015_cropped_tif_path'</code>:</p>
+    <blockquote>(8) cropped to Africa</blockquote>
+    <p><strong>(ff)</strong> <code>'AEI_2015_reproj_gpkg_path'</code>:</p>
+    <blockquote>(ee) converted to a GDF and re-projected to EPSG:3857</blockquote>
+    <p><strong>(gg)</strong> <strong><ins><code>'AEI_2015_Semi_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(ff) trimmed to semi-arid area</blockquote>
+    <p><strong>(hh)</strong> <strong><ins><code>'AEI_2015_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(ff) trimmed to arid area</blockquote>
+    <p><strong>(ii)</strong> <strong><ins><code>'AEI_2015_Hyper_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(ff) trimmed to hyper-arid area</blockquote>
+    <p><strong>(jj)</strong> <strong><ins><code>'AEI_2015_All_shp_path'</code></ins></strong>:</p>
+    <blockquote>(ff) trimmed to all aridity layers</blockquote>
   </blockquote>
 </details>
+
 
 
 
