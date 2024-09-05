@@ -141,13 +141,13 @@ Africa_Elevation_Reprojected_tif_path: 'Data/Processed/Africa_Elevation_Reprojec
 
 ## Process
 
-1_Figure0: 'Output/Process/1_Figure0.png' # Map for reference comparing CPIS in 2000 vs 2021 in all of Africa
-2_Figure1: 'Output/Process/2_Figure1.png' # Figure containing outlines of each aridity layer
+1_Figure0: 'Data/Output/Process/1_Figure0.png' # Map for reference comparing CPIS in 2000 vs 2021 in all of Africa
+2_Figure1: 'Data/Output/Process/2_Figure1.png' # Figure containing outlines of each aridity layer
 
 ## Analyze
 
-0_Figure1: 'Output/Analyze/0_Figure1.png' # Compares growth of irrigation over all of Africa with CPIS growth
-0_Figure2: 'Output/Analyze/0_Figure2.png' # Compares growth of irrigation over Sub-Saharan Africa with CPIS growth
-0_Figure3: 'Output/Analyze/0_Figure3.png' # Figure1 and Figure2 on the same axis
-
-1_Figure1: 'Output/Analyze/1_Figure1.png' # Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
+0_Figure1: 'Data/Output/Analyze/0_Figure1.png' # Compares growth of irrigation over all of Africa with CPIS growth
+0_Figure2: 'Data/Output/Analyze/0_Figure2.png' # Compares growth of irrigation over Sub-Saharan Africa with CPIS growth
+0_Figure3: 'Data/Output/Analyze/0_Figure3.png' # Figure1 and Figure2 on the same axis
+2_Figure1: 'Data/Output/Analyze/2_Figure1.png' # Four panel figure where each panel compares the area of CPIS and the area of irrigated land in 2000 and in 2021. Each figure is captioned by noting the percent of irrigated area that is CPIS in each year
+1_Figure1: 'Data/Output/Analyze/1_Figure1.png' # Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out

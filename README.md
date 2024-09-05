@@ -67,19 +67,19 @@ Output:
 >
 > >```'AQUA_World_path'``` filtered to Sub-Saharan Africa
 >
->**( c)**  **<ins>```'AQUA_AfricaIrrigation_2000'```**:
+>**( c)**  **<ins>```'AQUA_AfricaIrrigation_2000'```</ins>**:
 >
 > >(a) filtered to the year 2000
 >
->**(d)**  **<ins>```'AQUA_AfricaIrrigation_2021'```**:
+>**(d)**  **<ins>```'AQUA_AfricaIrrigation_2021'```</ins>**:
 >
 > >(a) filtered to the year 2021
 >
->**(e)**  **<ins>```'AQUA_SSAIrrigation_2000'```**:
+>**(e)**  **<ins>```'AQUA_SSAIrrigation_2000'```</ins>**:
 >
 > >(b) filtered to the year 2000
 >
->**(f)**  **<ins>```'AQUA_SSAIrrigation_2021'```**:
+>**(f)**  **<ins>```'AQUA_SSAIrrigation_2021'```</ins>**:
 >
 > >(b) filtered to the year 2021
 
@@ -95,7 +95,7 @@ Output:
 > >(4) filtered to Africa with geometry area (```'Area_m2'```) column added
 >
 >[**1_Figure0**](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/0_Figure0.png):
-Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021
+>Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021
 
 
 ----
@@ -103,12 +103,17 @@ Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021
 ### [1_CPIS_Africa_Map](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/1_CPIS_Africa_Map.ipynb)
 
 #### Results:
-
->**(o)** ```'Comp_by_Country_2000_csv_path'```
+>**(o)** ```'Comp_by_Country_2000_path'```
+> >The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
+>
+>**(p)** ```'Comp_by_Country_2021_path'```
+> >The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
+>
+>**(q)** ```'CPIS_Area_by_Country_2000_csv_path'```
 > >The area of all irrigation and of all CPIS per country and % (CPIS area / total irrigated area) per country in 2000
 >
->**(p)** ```'Comp_by_Country_2021_csv_path'```
-> >The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
+>**(r)** ```'CPIS_Area_by_Country_2000_csv_path'```
+> >The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2021
 >
 >**![1_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/1_Figure1.png)**
 > Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
@@ -177,19 +182,44 @@ Output:
 >[**2_Figure1**](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png)
 Figure containing outlines of each of the four aridity layers
 
+-----
 
+### [2_CPIS_by_Region](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/2_CPIS_by_Region.ipynb)
   
+#### Results:
+
+>**![2_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/2_Figure1.png) **
+> Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
   
-  
-  
-  
+#### Raw data required:
+
+>(1) [```'Africa_boundaries_shp_path'```](https://hub.arcgis.com/datasets/07610d73964e4d39ab62c4245d548625/explore)
+>
+>(2) [```'AQUA_World_path'```](https://data.apps.fao.org/aquastat/?lang=en&share=f-30f07e71-7f5e-4803-b98b-362511369dd4)
+>
+>(3) [```'CPIS_2000_shp_path'```](https://github.com/DetectCPIS/global_cpis_shp) _instructions below_
+>
+>(4) [```'CPIS_2021_shp_path'```](https://github.com/DetectCPIS/global_cpis_shp) _instructions below_
+>
+>(5) [```'Global_Aridity_Raster_path'```](https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448)
+
+
+#### Required Notebook:
+
+Follow instructions for [1_CPIS_Africa_Map](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/1_CPIS_Africa_Map.ipynb) _(above)_
+
+Output:
+>(o) ```'Comp_by_Country_2000_path'```
+>
+>(p) ```'Comp_by_Country_2021_path'```
+>
+>(q) **<ins>```'CPIS_Area_by_Country_2000_csv_path'```</ins>**
+>
+>(r) **<ins>```'CPIS_Area_by_Country_2000_csv_path'```</ins>**
+>
+>- [1_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/1_Figure1.png)
   
 
--irrigation vs cp expantion
-
--dam targeting ratios
-
--gw targeting ratios
 
   
   
