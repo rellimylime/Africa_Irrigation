@@ -82,9 +82,8 @@ Figure1 and Figure2 on the same axis
     <blockquote>(4) filtered to Africa with geometry area (<code>'Area_m2'</code>) column added</blockquote>
   </blockquote>
 
-  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/0_Figure0.png"><strong>1_Figure0</strong></a>:</p>
   <blockquote>
-    Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021
+    <p><strong><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/0_Figure0.png">1_Figure0</a></strong>: Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021</p>
   </blockquote>
 </details>
   
