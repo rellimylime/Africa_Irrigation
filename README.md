@@ -1,8 +1,23 @@
 # Africa_Irrigation
  Project exploring how much irrigation Center Pivots have accounted for in the context of the expansion of irrigation as a whole in SSA from 2000 to 2021. 
 
+## Instructions
+
+1. Install [Conda](http://conda.io/)
+
+
+2. Create environment and install requirements
+
+```bash
+conda env create -n irrigation -f requirements.yml
+conda activate irrigation
+```
+
+3. For each Notebook download the required raw data and run the required processing code before running the Notebook itself.
+
 ## Content
-Key:
+
+#### Key:
 
 - **Bold**: Indicates full description of figure or file
 
@@ -10,7 +25,6 @@ Key:
 
 - [Blue Underline](https://github.com/rellimylime/Africa_Irrigation/blob/main/README.md): Link
 
-For each Notebook download the required raw data and run the required processing code before running the Notebook itself.
 
 ### Irrigation vs Center Pivot Expansion
 

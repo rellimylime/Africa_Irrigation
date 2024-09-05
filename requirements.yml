@@ -1,23 +1,26 @@
 name: irrigation
 channels:
-  - conda-forge
+  - defaults
 dependencies:
-  - python=3.12
-  - gdal
-  - numpy
-  - geopandas==0.14.4
-  - shapely
-  - fiona
-  - matplotlib
-  - folium
-  - pyproj
-  - rasterio
-  - descartes
-  - requests
-  - pandas
   - affine
+  - descartes
+  - fiona
+  - folium
+  - gdal
+  - geopandas==0.14.4
+  - matplotlib
+  - numpy
+  - pandas
   - pip
-  - pip:
-    - pyyaml==6.0.1
-    - ipykernel==6.29.3
-    - tqdm==4.66.5
+  - pyproj
+  - python=3.12
+  - rasterio
+  - requests
+  - shapely
+  - ipykernel
+  - jupyter
+  - dask
+  - tqdm
+  - seaborn
+  - richdem
+prefix: /home/ermiller/miniconda3/envs/irrigation
