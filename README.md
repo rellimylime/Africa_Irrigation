@@ -316,26 +316,6 @@ Figure1 and Figure2 on the same axis
 
 
 
-
-
--irrigation vs cp expantion
--dam targeting ratios
--gw targeting ratios
-
-
-## Instructions
-
-1. Install [Conda](http://conda.io/)
-
-2. Create environment and install requirements
-
-```bash
-conda env create -n irrigation -f requirements.yml
-conda activate irrigation
-```
-
-3. Add data
-
 ### Shapefile containing Center Pivots across the World
 
 You can obtain the shp file containing the world's center pivots [here](https://github.com/DetectCPIS/global_cpis_shp). 
