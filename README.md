@@ -87,51 +87,6 @@ Figure1 and Figure2 on the same axis
   </blockquote>
 </details>
   
-
-#### Required Processing Notebooks:
-
-[_**0_Filter_AQUASTAT**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_filter_AQUASTAT.ipynb):
-Output:
-
->**(a)**  **<ins>```'AQUA_AfricaIrrigation'```</ins>**:
->
-> >```'AQUA_World_path'``` filtered to Africa
->
->**(b)**  **<ins>```'AQUA_SSAIrrigation'```</ins>**:
->
-> >```'AQUA_World_path'``` filtered to Sub-Saharan Africa
->
->**( c)**  **<ins>```'AQUA_AfricaIrrigation_2000'```</ins>**:
->
-> >(a) filtered to the year 2000
->
->**(d)**  **<ins>```'AQUA_AfricaIrrigation_2021'```</ins>**:
->
-> >(a) filtered to the year 2021
->
->**(e)**  **<ins>```'AQUA_SSAIrrigation_2000'```</ins>**:
->
-> >(b) filtered to the year 2000
->
->**(f)**  **<ins>```'AQUA_SSAIrrigation_2021'```</ins>**:
->
-> >(b) filtered to the year 2021
-
-[_**1_CPIS_by_Country**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/1_CPIS_by_Country.ipynb):
-Output:
-
->**(g)** **<ins>```'Africa_CPIS_2000_shp_path'```</ins>**:
->
-> >(3) filtered to Africa with geometry area (```'Area_m2'```) column added
->
->**(h)** **<ins>```'Africa_CPIS_2021_shp_path'```</ins>**:
->
-> >(4) filtered to Africa with geometry area (```'Area_m2'```) column added
->
->[**1_Figure0**](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/0_Figure0.png):
->Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021
-
-
 ----
 
 ### [1_CPIS_Africa_Map](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/1_CPIS_Africa_Map.ipynb)
