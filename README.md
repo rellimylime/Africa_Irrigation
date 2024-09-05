@@ -56,7 +56,7 @@ Figure1 and Figure2 on the same axis
 
 #### Required Processing Notebooks:
 
-[_**0_filter_AQUASTAT**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_filter_AQUASTAT.ipynb):
+[_**0_Filter_AQUASTAT**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_filter_AQUASTAT.ipynb):
 Output:
 
 >**(a)**  **<ins>```'AQUA_AfricaIrrigation'```</ins>**:
@@ -83,7 +83,7 @@ Output:
 >
 > >(b) filtered to the year 2021
 
-[_**1_CPIS_by_country**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/1_CPIS_by_country.ipynb):
+[_**1_CPIS_by_Country**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/1_CPIS_by_Country.ipynb):
 Output:
 
 >**(g)** **<ins>```'Africa_CPIS_2000_shp_path'```</ins>**:
@@ -134,7 +134,7 @@ Output:
 
 #### Required Processing Notebooks:
 
-[_**0_filter_AQUASTAT**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_filter_AQUASTAT.ipynb):
+[_**0_Filter_AQUASTAT**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_Filter_AQUASTAT.ipynb):
 Output:
 
 >(a)  ```'AQUA_AfricaIrrigation'```
@@ -159,7 +159,7 @@ Output:
 >
 > [1_Figure0](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/0_Figure0.png)
 
-[_**2_Aridity_refinement**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_refinement.ipynb):
+[_**2_Aridity_Refinement**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_Refinement.ipynb):
 Output:
 >**(i)** <ins>**```'Africa_Arid_Regions_tif_path'```**
 > > (5) trimmed by Africa bounding box
@@ -207,7 +207,6 @@ Figure containing outlines of each of the four aridity layers
 #### Required Notebook:
 
 Follow instructions for [1_CPIS_Africa_Map](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/1_CPIS_Africa_Map.ipynb) _(above)_
-
 Output:
 >(o) ```'Comp_by_Country_2000_path'```
 >
@@ -215,10 +214,11 @@ Output:
 >
 >(q) **<ins>```'CPIS_Area_by_Country_2000_csv_path'```</ins>**
 >
->(r) **<ins>```'CPIS_Area_by_Country_2000_csv_path'```</ins>**
+>(r) **<ins>```'CPIS_Area_by_Country_2021_csv_path'```</ins>**
 >
 >- [1_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/1_Figure1.png)
-  
+
+-----
 
 ### [3_Dams_AEI_Targeting_Ratios](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/3_Dams_AEI_Targeting_Ratios.ipynb)
 
@@ -255,7 +255,7 @@ Output:
 
 #### Required Processing Notebooks
 
-[_**2_Aridity_refinement**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_refinement.ipynb):
+[_**2_Aridity_Refinement**_](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_Refinement.ipynb):
 Output:
 >(i) ```'Africa_Arid_Regions_tif_path'```
 > 
@@ -271,7 +271,7 @@ Output:
 >
 >[2_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png)
 
-[ **4_CPIS_overlay** ](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/4_CPIS_overlay.ipynb)
+[ **4_CPIS_Processing** ](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/4_CPIS_overlay.ipynb)
 Output:
 >**(s)** **<ins>```'Combined_CPIS_Reproj_shp_path'```<\ins>**
 > > (6) reprojected to EPSG:3857
@@ -287,7 +287,7 @@ Output:
 >**(w)** **<ins> ```'Cimbined_CPIS_Hyper_Arid_shp_path'```<\ins>**
 > > (6) filtered to hyper-arid areas
 
-[ **5_Dam_processing** ](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/5_Dam_processing.ipynb)
+[ **5_Dam_Processing** ](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/5_Dam_processing.ipynb)
 Output:
 >**(x)** ```'Africa_Dam_csv_path'```
 > > (7) filtered to Africa
@@ -310,7 +310,7 @@ Output:
 >**(dd)** **<ins>```'Africa_Dam_Semi_All_shp_path'```<\ins>**
 > > (y) filtered to all aridity layers
 
-[ **6_AEI_trimming** ](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_AEI_trimming.ipynb)
+[ **6_AEI_Processing** ](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_AEI_trimming.ipynb)
 Output:
 >**(ee)** ```'AEI_2015_cropped_tif_path'```
 > > (8) cropped to africa
