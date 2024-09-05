@@ -106,8 +106,50 @@ Figure1 and Figure2 on the same axis
 >
 >**![1_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/1_Figure1.png)**
 > Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
-  
 
+<details>
+  <summary><strong style="font-size:16px;">Raw Data Required:</strong></summary>
+  <br>
+  <p><strong>(1)</strong> <a href="https://hub.arcgis.com/datasets/07610d73964e4d39ab62c4245d548625/explore"><code>'Africa_boundaries_shp_path'</code></a></p>
+  <p><strong>(2)</strong> <a href="https://data.apps.fao.org/aquastat/?lang=en&share=f-30f07e71-7f5e-4803-b98b-362511369dd4"><code>'AQUA_World_path'</code></a></p>
+  <p><strong>(3)</strong> <a href="https://github.com/DetectCPIS/global_cpis_shp"><code>'CPIS_2000_shp_path'</code></a> <em>_instructions below_</em></p>
+  <p><strong>(4)</strong> <a href="https://github.com/DetectCPIS/global_cpis_shp"><code>'CPIS_2021_shp_path'</code></a> <em>_instructions below_</em></p>
+  <p><strong>(5)</strong> <a href="https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448"><code>'Global_Aridity_Raster_path'</code></a></p>
+</details>
+
+<details>
+  <summary><strong style="font-size:16px;">Required Processing Notebooks:</strong></summary>
+  <br>
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/0_Filter_AQUASTAT.ipynb"><em><strong>0_Filter_AQUASTAT</strong></em></a>: Output:</p>
+  <blockquote>
+    <p><strong>(a)</strong> <code>'AQUA_AfricaIrrigation'</code></p>
+    <p><strong>(b)</strong> <code>'AQUA_SSAIrrigation'</code></p>
+    <p><strong>(c)</strong> <ins><strong><code>'AQUA_AfricaIrrigation_2000'</code></strong></ins></p>
+    <p><strong>(d)</strong> <ins><strong><code>'AQUA_AfricaIrrigation_2021'</code></strong></ins></p>
+    <p><strong>(e)</strong> <code>'AQUA_SSAIrrigation_2000'</code></p>
+    <p><strong>(f)</strong> <code>'AQUA_SSAIrrigation_2021'</code></p>
+  </blockquote>
+
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/1_CPIS_by_country.ipynb"><em><strong>1_CPIS_by_Country</strong></em></a>: Output:</p>
+  <blockquote>
+    <p><strong>(g)</strong> <ins><strong><code>'Africa_CPIS_2000_shp_path'</code></strong></ins></p>
+    <p><strong>(h)</strong> <ins><strong><code>'Africa_CPIS_2021_shp_path'</code></strong></ins></p>
+    <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/0_Figure0.png"><strong>1_Figure0</strong></a>: Maps of CPIS placement (3,4) layered on Africa boundaries (1) for 2000 and 2021</p>
+  </blockquote>
+
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_Refinement.ipynb"><em><strong>2_Aridity_Refinement</strong></em></a>: Output:</p>
+  <blockquote>
+    <p><strong>(i)</strong> <ins><strong><code>'Africa_Arid_Regions_tif_path'</code></strong></ins>: (5) trimmed by Africa bounding box</p>
+    <p><strong>(j)</strong> <ins><strong><code>'Africa_Arid_Regions_tif_path2'</code></strong></ins>: (i) trimmed by (1)</p>
+    <p><strong>(k)</strong> <ins><strong><code>'Africa_All_shp_path'</code></strong></ins>: (5) with 1s for all elements < 5000 and 0s otherwise</p>
+    <p><strong>(l)</strong> <code>'Africa_Semi_Arid_shp_path'</code>: (i) filtered to (2000, 5000)</p>
+    <p><strong>(m)</strong> <code>'Africa_Arid_shp_path'</code>: (i) filtered to (300, 2000)</p>
+    <p><strong>(n)</strong> <code>'Africa_Hyper_Arid_shp_path'</code>: (i) filtered to (0, 300)</p>
+    <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png"><strong>2_Figure1</strong></a>: Figure containing outlines of each of the four aridity layers</p>
+  </blockquote>
+</details>
+
+-----
 #### Raw data required:
 
 >(1) [```'Africa_boundaries_shp_path'```](https://hub.arcgis.com/datasets/07610d73964e4d39ab62c4245d548625/explore)
