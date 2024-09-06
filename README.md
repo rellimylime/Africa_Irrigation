@@ -120,7 +120,7 @@ Figure1 and Figure2 on the same axis
 > Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
 >
 <details>
-  <summary><strong style="font-size:16px;">Other Outputs:</strong></summary>
+  <summary><strong style="font-size:16px;">File Outputs:</strong></summary>
   <br>
   <p><strong>(o)</strong> <code>'Comp_by_Country_2000_path'</code>:</p>
   <blockquote>The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000</blockquote>
@@ -224,6 +224,7 @@ Figure1 and Figure2 on the same axis
   </blockquote>
 </details>
 
+### CPIS Watersource Exploration
 -----
 
 ### [3_Dams_AEI_Targeting_Ratios](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/3_Dams_AEI_Targeting_Ratios.ipynb)
@@ -338,7 +339,7 @@ Figure1 and Figure2 on the same axis
 >![4_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/4_Figure1.png) Groundwater targeting ratio plotted with CI for each productivity level  
 >
 <details>
-  <summary><strong style="font-size:16px;">Other Output(s):</strong></summary>
+  <summary><strong style="font-size:16px;">File Output:</strong></summary>
   <br>
   <p><strong>(kk)</strong> <code>'Groundwater_Prod_gpkg_path'</code>:</p>
   <blockquote>(9) converted to a GDF and reprojected to EPSG:3857</blockquote>
