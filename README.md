@@ -350,18 +350,12 @@ Figure1 and Figure2 on the same axis
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_Refinement.ipynb"><em><strong>2_Aridity_Refinement</strong></em></a>: Output:</p>
   <blockquote>
     <p>(i) <code>'Africa_Arid_Regions_tif_path'</code>:</p>
-    <blockquote>(5) trimmed by Africa bounding box</blockquote>
     <p>(j) <code>'Africa_Arid_Regions_tif_path2'</code>:</p>
-    <blockquote>(i) trimmed by (1)</blockquote>
     <p>(k) <strong><ins><code>'Africa_All_shp_path'</code></ins></strong>:</p>
-    <blockquote>(5) with 1s for all elements &lt; 5000 and 0s otherwise</blockquote>
     <p>(l) <code>'Africa_Semi_Arid_shp_path'</code>:</p>
-    <blockquote>(i) filtered to (2000, 5000)</blockquote>
     <p>(m) <code>'Africa_Arid_shp_path'</code>:</p>
-    <blockquote>(i) filtered to (300, 2000)</blockquote>
     <p>(n) <code>'Africa_Hyper_Arid_shp_path'</code>:</p>
-    <blockquote>(i) filtered to (0, 300)</blockquote>
-    <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png">2_Figure1</a>: Figure containing outlines of each of the four aridity layers</p>
+    <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png">2_Figure1</a></p>
   </blockquote>
 
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/4_CPIS_Processing.ipynb"><em><strong>4_CPIS_Processing</strong></em></a>: Output:</p>
@@ -372,9 +366,17 @@ Figure1 and Figure2 on the same axis
     <p>(v) <code>'Combined_CPIS_Arid_shp_path'</code>:</p>
     <p>(w) <code>'Combined_CPIS_Hyper_Arid_shp_path'</code>:</p>
   </blockquote>
-4_CPIS_Processing
 
-6_AEI_Processing
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_AEI_trimming.ipynb"><em><strong>6_AEI_Processing</strong></em></a>: Output:</p>
+  <blockquote>
+    <p>(ee) <code>'AEI_2015_cropped_tif_path'</code>:</p>
+    <p>(ff) <code>'AEI_2015_reproj_gpkg_path'</code>:</p>
+    <p>(gg) <code>'AEI_2015_Semi_Arid_shp_path'</code>:</p>
+    <p>(hh) <code>'AEI_2015_Arid_shp_path'</code>:</p>
+    <p>(ii) <code>'AEI_2015_Hyper_Arid_shp_path'</code>:</p>
+    <p>(jj) <strong><ins><code>'AEI_2015_All_shp_path'</code></ins></strong>:</p>
+  </blockquote>
+</details>
 
 ### Shapefile containing Center Pivots across the World
 
