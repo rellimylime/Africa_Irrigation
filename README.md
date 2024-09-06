@@ -107,20 +107,25 @@ Figure1 and Figure2 on the same axis
 ### [1_CPIS_Africa_Map](https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/1_analyze_data/1_CPIS_Africa_Map.ipynb)
 
 #### Results:
->**(o)** ```'Comp_by_Country_2000_path'```
-> >The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
->
->**(p)** ```'Comp_by_Country_2021_path'```
-> >The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
->
->**(q)** ```'CPIS_Area_by_Country_2000_csv_path'```
-> >The area of all irrigation and of all CPIS per country and % (CPIS area / total irrigated area) per country in 2000
->
->**(r)** ```'CPIS_Area_by_Country_2000_csv_path'```
-> >The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2021
->
+
 >**![1_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/1_Figure1.png)**
 > Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
+>
+<details>
+  <summary><strong style="font-size:16px;">File Outputs:</strong></summary>
+  <br>
+  <p><strong>(o)</strong> <code>'Comp_by_Country_2000_path'</code>:</p>
+  <blockquote>The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000</blockquote>
+
+  <p><strong>(p)</strong> <code>'Comp_by_Country_2021_path'</code>:</p>
+  <blockquote>The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2021</blockquote>
+
+  <p><strong>(q)</strong> <code>'CPIS_Area_by_Country_2000_csv_path'</code>:</p>
+  <blockquote>The area of all irrigation and of all CPIS per country and % (CPIS area / total irrigated area) per country in 2000</blockquote>
+
+  <p><strong>(r)</strong> <code>'CPIS_Area_by_Country_2021_csv_path'</code>:</p>
+  <blockquote>The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2021</blockquote>
+</details>
 
 <details>
   <summary><strong style="font-size:16px;">Raw Data Required:</strong></summary>
