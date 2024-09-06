@@ -20,9 +20,9 @@ conda activate irrigation
 
 #### Key:
 
-- **Bold**: Indicates full description of figure or file
+- **Bold**: Indicates full description (& first appearance) of figure or file
 
-- **<ins>Bold Underline</ins>**: Indicates the file is necessary to produce the notebook's results
+- **<ins>Bold Underline</ins>**: Indicates the file is used explicitly to produce a notebook's results
 
 - [Blue Underline](https://github.com/rellimylime/Africa_Irrigation/blob/main/README.md): Link
 
@@ -44,17 +44,25 @@ Compares growth of irrigation over Sub-Saharan Africa with CPIS growth
 >**![0_Figure3](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/0_Figure3.png)**
 Figure1 and Figure2 on the same axis
 
->[15]
->- The area equipped for irrigation in all of Africa increased by 51.56% between 2000 and 2021.
->- The area covered by CPIS in all of Africa increased by 148.89% between 2000 and 2021.
->- In 2000, center pivot irrigation systems made up 3.62% of the total area equipped with irrigation in all of Africa.
->- In 2021, center pivot irrigation systems made up 5.95% of the total area equipped with irrigation in all of Africa."
-  
-[16]
->- The area equipped for irrigation in Sub-Saharan Africa increased by 94.60% between 2000 and 2021.
->- The area covered by CPIS in Sub-Saharan Africa increased by 191.16% between 2000 and 2021.
->- In 2000, center pivot irrigation systems made up 6.81% of the total area equipped with irrigation in Sub-Saharan Africa.
->- In 2021, center pivot irrigation systems made up 10.19% of the total area equipped with irrigation in Sub-Saharan Africa."
+<details>
+  <summary><strong style="font-size:16px;">Irrigation Area Growth Results:</strong></summary>
+  <br>
+  <p><strong>[15]</strong></p>
+  <ul>
+    <li>The area equipped for irrigation in all of Africa increased by 51.56% between 2000 and 2021.</li>
+    <li>The area covered by CPIS in all of Africa increased by 148.89% between 2000 and 2021.</li>
+    <li>In 2000, center pivot irrigation systems made up 3.62% of the total area equipped with irrigation in all of Africa.</li>
+    <li>In 2021, center pivot irrigation systems made up 5.95% of the total area equipped with irrigation in all of Africa.</li>
+  </ul>
+  <p><strong>[16]</strong></p>
+  <ul>
+    <li>The area equipped for irrigation in Sub-Saharan Africa increased by 94.60% between 2000 and 2021.</li>
+    <li>The area covered by CPIS in Sub-Saharan Africa increased by 191.16% between 2000 and 2021.</li>
+    <li>In 2000, center pivot irrigation systems made up 6.81% of the total area equipped with irrigation in Sub-Saharan Africa.</li>
+    <li>In 2021, center pivot irrigation systems made up 10.19% of the total area equipped with irrigation in Sub-Saharan Africa.</li>
+  </ul>
+</details>
+
   
 <details>
   <summary><strong style="font-size:16px;">Raw data required:</strong></summary>
@@ -112,7 +120,7 @@ Figure1 and Figure2 on the same axis
 > Dual map of Africa comparing percent AEI that is CPIS from 2000 to 2021 with non-SSA and non-arid regions hashed out
 >
 <details>
-  <summary><strong style="font-size:16px;">File Outputs:</strong></summary>
+  <summary><strong style="font-size:16px;">Other Outputs:</strong></summary>
   <br>
   <p><strong>(o)</strong> <code>'Comp_by_Country_2000_path'</code>:</p>
   <blockquote>The area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000</blockquote>
@@ -329,8 +337,13 @@ Figure1 and Figure2 on the same axis
 
 >![4_Figure1](https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Analyze/4_Figure1.png) Groundwater targeting ratio plotted with CI for each productivity level  
 >
-> **(kk)** ```'Groundwater_Prod_gpkg_path'```
-> >  (9) converted to a gdf and reporjected to epsg=3857
+<details>
+  <summary><strong style="font-size:16px;">Other Output(s):</strong></summary>
+  <br>
+  <p><strong>(kk)</strong> <code>'Groundwater_Prod_gpkg_path'</code>:</p>
+  <blockquote>(9) converted to a GDF and reprojected to EPSG:3857</blockquote>
+</details>
+
 
 <details>
   <summary><strong style="font-size:16px;">Raw data required:</strong></summary>
