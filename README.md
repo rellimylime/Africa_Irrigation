@@ -327,21 +327,22 @@ Figure1 and Figure2 on the same axis
 > **(kk)** ```'Groundwater_Prod_gpkg_path'```
 > >  (9) converted to a gdf and reporjected to epsg=3857
 
-#### Raw data required
+<details>
+  <summary><strong style="font-size:16px;">Raw data required:</strong></summary>
+  <br>
+  <p>(5) <a href="https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448"><code>'Global_Aridity_Raster_path'</code></a></p>
+  
+  <p>(6) <code>'Combined_CPIS_shp_path'</code> Generated using the following code:</p>
+  <ul>
+    <li><a href="https://github.com/anna-boser/Africa_corporate_irrigation/blob/main/code/0_process_data/0_subset_CPIS.py">File 1</a></li>
+    <li><a href="https://github.com/anna-boser/Africa_corporate_irrigation/blob/main/code/0_process_data/1_combine_2000_2021_CPIS.py">File 2</a></li>
+  </ul>
+  
+  <p>(8) <a href="https://zenodo.org/records/7809342"><code>'Africa_AEI_2015_asc_path'</code></a></p>
+  
+  <p><strong>(9)</strong> <a href="https://www2.bgs.ac.uk/groundwater/international/africanGroundwater/mapsDownload.html"><code>'Groundwater_Productivity_path'</code></a></p>
+</details>
 
-> (5) [```'Global_Aridity_Raster_path'```](https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448)
->
-> (6) ```'Combined_CPIS_shp_path'``` Generated using the following code:
->- [File 1](https://github.com/anna-boser/Africa_corporate_irrigation/blob/main/code/0_process_data/0_subset_CPIS.py)
->- [File 2](https://github.com/anna-boser/Africa_corporate_irrigation/blob/main/code/0_process_data/1_combine_2000_2021_CPIS.py)
->
-> (8) ['Africa_AEI_2015_asc_path'](https://zenodo.org/records/7809342)
->
-> **(9)** [```'Groundwater_Productivity_path'```](https://www2.bgs.ac.uk/groundwater/international/africanGroundwater/mapsDownload.html)
-
-
-
-#### Required Processing Notebooks
 
 <details>
   <summary><strong style="font-size:16px;">Required Processing Notebooks:</strong></summary>
@@ -349,32 +350,32 @@ Figure1 and Figure2 on the same axis
   
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/2_Aridity_Refinement.ipynb"><em><strong>2_Aridity_Refinement</strong></em></a>: Output:</p>
   <blockquote>
-    <p>(i) <code>'Africa_Arid_Regions_tif_path'</code>:</p>
-    <p>(j) <code>'Africa_Arid_Regions_tif_path2'</code>:</p>
-    <p>(k) <strong><ins><code>'Africa_All_shp_path'</code></ins></strong>:</p>
-    <p>(l) <code>'Africa_Semi_Arid_shp_path'</code>:</p>
-    <p>(m) <code>'Africa_Arid_shp_path'</code>:</p>
-    <p>(n) <code>'Africa_Hyper_Arid_shp_path'</code>:</p>
+    <p>(i) <code>'Africa_Arid_Regions_tif_path'</code></p>
+    <p>(j) <code>'Africa_Arid_Regions_tif_path2'</code></p>
+    <p>(k) <strong><ins><code>'Africa_All_shp_path'</code></ins></strong></p>
+    <p>(l) <code>'Africa_Semi_Arid_shp_path'</code></p>
+    <p>(m) <code>'Africa_Arid_shp_path'</code></p>
+    <p>(n) <code>'Africa_Hyper_Arid_shp_path'</code></p>
     <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Output/Process/2_Figure1.png">2_Figure1</a></p>
   </blockquote>
 
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/4_CPIS_Processing.ipynb"><em><strong>4_CPIS_Processing</strong></em></a>: Output:</p>
   <blockquote>
-    <p>(s) <code>'Combined_CPIS_Reproj_shp_path'</code>:</p>
-    <p>(t) <strong><ins><code>'Combined_CPIS_All_shp_path'</code></ins></strong>:</p>
-    <p>(u) <code>'Combined_CPIS_Semi_Arid_shp_path'</code>:</p>
-    <p>(v) <code>'Combined_CPIS_Arid_shp_path'</code>:</p>
-    <p>(w) <code>'Combined_CPIS_Hyper_Arid_shp_path'</code>:</p>
+    <p>(s) <code>'Combined_CPIS_Reproj_shp_path'</code></p>
+    <p>(t) <strong><ins><code>'Combined_CPIS_All_shp_path'</code></ins></strong></p>
+    <p>(u) <code>'Combined_CPIS_Semi_Arid_shp_path'</code></p>
+    <p>(v) <code>'Combined_CPIS_Arid_shp_path'</code></p>
+    <p>(w) <code>'Combined_CPIS_Hyper_Arid_shp_path'</code></p>
   </blockquote>
 
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_AEI_trimming.ipynb"><em><strong>6_AEI_Processing</strong></em></a>: Output:</p>
   <blockquote>
-    <p>(ee) <code>'AEI_2015_cropped_tif_path'</code>:</p>
-    <p>(ff) <code>'AEI_2015_reproj_gpkg_path'</code>:</p>
-    <p>(gg) <code>'AEI_2015_Semi_Arid_shp_path'</code>:</p>
-    <p>(hh) <code>'AEI_2015_Arid_shp_path'</code>:</p>
-    <p>(ii) <code>'AEI_2015_Hyper_Arid_shp_path'</code>:</p>
-    <p>(jj) <strong><ins><code>'AEI_2015_All_shp_path'</code></ins></strong>:</p>
+    <p>(ee) <code>'AEI_2015_cropped_tif_path'</code></p>
+    <p>(ff) <code>'AEI_2015_reproj_gpkg_path'</code></p>
+    <p>(gg) <code>'AEI_2015_Semi_Arid_shp_path'</code></p>
+    <p>(hh) <code>'AEI_2015_Arid_shp_path'</code></p>
+    <p>(ii) <code>'AEI_2015_Hyper_Arid_shp_path'</code></p>
+    <p>(jj) <strong><ins><code>'AEI_2015_All_shp_path'</code></ins></strong></p>
   </blockquote>
 </details>
 
