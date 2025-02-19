@@ -39,6 +39,9 @@ AQUA_SSAIrrigation_2021: 'Data/Processed/AQUA_SSAIrrigation_2021.csv' # same as 
 Africa_CPIS_2000_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS_2000.shp' # same as CPIS_2000_shp_path but filtered to Africa
 Africa_CPIS_2021_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS_2021.shp' # same as CPIS_2021_shp_path but filtered to Africa
 
+SSA_CPIS_2000_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS_2000.shp' # Africa_CPIS_2000_shp_path filtered to SSA
+SSA_CPIS_2021_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS_2021.shp' # Africa_CPIS_2021_shp_path filtered to SSA
+
 
 Africa_CPIS_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS.shp' # same as CPIS_2021_shp_path but filtered to Africa
 
@@ -69,6 +72,7 @@ Combined_CPIS_Semi_Arid_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-s
 Combined_CPIS_Arid_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/Combined_CPIS_Arid.shp' # Combined_CPIS_shp_path filtered to arid boundary
 Combined_CPIS_Hyper_Arid_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/Combined_CPIS_Hyper_Arid.shp' # Combined_CPIS_shp_path filtered to arid boundary
 
+SSA_Combined_CPIS_All_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/SSA_Combined_CPIS_All.shp' # Combined_CPIS_All_shp_path filtered to SSA
 
 ### 5_Dam_Processing
 Africa_Dam_csv_path: 'Data/Processed/Africa_Dams.csv' # Global_Dam_Data_csv_path filtered to only africa
