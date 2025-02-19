@@ -1,4 +1,4 @@
-
+#base_path: '/'
 base_path: '/home/waves/data/Africa_Irrigation'
 
 # raw:
@@ -22,7 +22,7 @@ Africa_Countries_shp_path: 'Data/Raw/Africa_Countries-shp' # from https://open.a
 
 # Processed:
 
-## Process
+## 0_process_data
 
 ### 0_filter_AQUASTAT
 AQUA_AfricaIrrigation: 'Data/Processed/AQUA_AfricaIrrigation.csv' # same as AQUASTAT_World_path but filtered to area equipped for irrigation in Africa
@@ -48,13 +48,13 @@ Africa_Arid_Regions_tif_path2: 'Data/Processed/Africa_Arid_Regions2.tif' # Globa
 
 Africa_Continent_shp_path: 'Data/Processed/Africa_Continent-shp/Africa_Continent.shp' # Africa_Boundaries with country borders dissolved
 
-Africa_All_shp_path: 'Data/Processed/Africa_Arid_Regions_All-shp' # Global_Aridity_Raster_path with 1s for all elements < 5000 and 0s otherwise
+Africa_All_shp_path: 'Data/Processed/Africa_Arid_Regions_All-shp/Africa_Arid_Regions_All-shp.shp' # Global_Aridity_Raster_path with 1s for all elements < 5000 and 0s otherwise
 Africa_Semi_Arid_shp_path: 'Data/Processed/Africa_Semi_Arid-shp' # Africa_all_shp_path filtered to (2000, 5000)
 Africa_Arid_shp_path: 'Data/Processed/Africa_Arid-shp' # Africa_all_shp_path filtered to (300, 2000)
 Africa_Hyper_Arid_shp_path: 'Data/Processed/Africa_Hyper_Arid-shp/Africa_Hyper_Arid.shp' # Africa_all_shp_path filtered to (0, 300)
 #Africa_arid_layered_shp_path: 'Data/Processed/Africa_Layered_Aridity-shp' # Africa_semi_arid_shp_path, Africa_arid_shp_path, and Africa_hyper_arid_shp_path merged
 
-Africa_Arid_by_Country_shp_path: 'Data/Processed/All_Arid_by_Country-shp/All_Arid_by_Country.shp' # Africa_all_shp_path overlayed with Africa_boundaries_shp_path to determine country
+SSA_Arid_by_Country_shp_path: 'Data/Processed/SSA_All_Arid_by_Country-shp/SSA_All_Arid_by_Country.shp' # Africa_all_shp_path overlayed with Africa_boundaries_shp_path to label by country and filtered to SSA countries
 
 ### 3_Filter_Cropland
 Arid_Cropland_tif_path: 'Data/Processed/Arid_Cropland.tif' # Cropland with aridity < 0.5 with values preserved
@@ -90,7 +90,7 @@ AEI_2015_Hyper_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AE
 AEI_2015_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_Arid_shp_path
 
 
-## Analyze
+## 1_analyze_data
 
 ### 1_CPIS_Africa_Map
 CPIS_Area_by_Country_2000_csv_path: 'Data/Processed/Africa_CPIS_2000_Area_By_Country.csv' # from Africa_CPIS_2000.shp, total area of CPIS per country
@@ -113,11 +113,6 @@ Groundwater_Prod_gpkg_path: 'Data/Processed/Groundwater_Prod.gpkg' # Groundwater
 Arid_Cropland_Reproj_tif_path: 'Data/Processed/Arid_Cropland_Reproj.tif' # Arid_Cropland_tif_path reprojected to EPSG:3857
 Arid_Cropland_by_Country_shp_path: 'Data/Processed/Arid_Cropland_by_Country-shp/Arid_Cropland_by_Country.shp' # Arid_Cropland_Reproj_tif_path data by country using Africa_Countries_Reproj_shp_path
 
-
-
-
-
-
 Africa_Countries_Reproj_shp_path: 'Data/Processed/Africa_Countries_Reprojected-shp/Africa_Countries_Reprojected.shp' # Africa_Countries_shp_path reprojected to EPSG:3857
 
 
@@ -126,6 +121,9 @@ Africa_Elevation_Reprojected_tif_path: 'Data/Processed/Africa_Elevation_Reprojec
 
 #Dams_with_Gradients_gpkg_path: 'Data/Processed/Dam_Gradients.gpkg' # Africa_Dam_csv_path with gradient direction
 #CPIS_Classified_gpkg_path: 'Data/Processed/Classified_CPIS.gpkg' # Combined_CPIS_shp_path with 'upstream'/'downstream' classification
+
+## 2_Dam_Analysis
+
 
 
 # Output (see readme for aditional details)
