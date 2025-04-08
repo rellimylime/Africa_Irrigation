@@ -329,7 +329,7 @@ Figure1 and Figure2 on the same axis
     <blockquote>(ff) trimmed to all aridity layers</blockquote>
   </blockquote>
 
-  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_MEIER_AEI_Processing.ipynb"><em><strong>6_AEI_Processing</strong></em></a>: Output:</p>
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_MEIER_AEI_Processing.ipynb"><em><strong>6_MEIER_AEI_Processing</strong></em></a>: Output:</p>
   <blockquote>
     <p><strong>(ee)</strong> <code>'AEI_MEIER_2015_cropped_tif_path'</code>:</p>
     <blockquote>(8) cropped to Africa</blockquote>
