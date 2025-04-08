@@ -13,12 +13,20 @@ Combined_CPIS_shp_path: 'Data/Raw/Combined_CPIS-shp' # A gift from Anna
 Africa_Cropland_tif_path: 'Data/Raw/Africa_Cropland-tif/af_cropland.tif' # from https://sedac.ciesin.columbia.edu/data/set/aglands-croplands-2000/data-download; see README (2) for details
 
 Africa_AEI_2015_asc_path: 'Data/Raw/G_AEI_2015.ASC' # From https://zenodo.org/records/7809342
+Africa_MEIER_AEI_2015_asc_path: 'Data/Raw/MEIER_G_AEI_2015.ASC' # From https://zenodo.org/records/7809342 
 
 Global_Dam_Data_csv_path: 'Data/Raw/globaldamsdatabase_global_coverage_november_2020.csv' # from https://sedac.ciesin.columbia.edu/data/set/grand-v1-dams-rev01/maps?facets=region:africa
 #Global_Dam_Data_shp_path: 'Data/Raw/GDAT_data_v1/data/GDAT_v1_dams.shp' # Retrieved from https://zenodo.org/records/7616852 7/29/24 (alternative dataset)
 
 Africa_Elevation_rast_path: 'Data/Raw/africa_dem' # from https://databasin.org/datasets/2965da954b114ff3b47621e99e3b29ba/
 Africa_Countries_shp_path: 'Data/Raw/Africa_Countries-shp' # from https://open.africa/dataset/africa-shapefiles
+
+
+#--------------------------------------------
+
+
+GDW_barrier_shp_path: 'Data/Raw/GDW_dams/GDW_v1_0_shp/GDW_barriers_v1_0.shp' # from https://www.globaldamwatch.org/database
+
 
 # Processed:
 
@@ -39,8 +47,8 @@ AQUA_SSAIrrigation_2021: 'Data/Processed/AQUA_SSAIrrigation_2021.csv' # same as 
 Africa_CPIS_2000_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS_2000.shp' # same as CPIS_2000_shp_path but filtered to Africa
 Africa_CPIS_2021_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS_2021.shp' # same as CPIS_2021_shp_path but filtered to Africa
 
-SSA_CPIS_2000_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS_2000.shp' # Africa_CPIS_2000_shp_path filtered to SSA
-SSA_CPIS_2021_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS_2021.shp' # Africa_CPIS_2021_shp_path filtered to SSA
+SSA_CPIS_2000_shp_path: 'Data/Processed/SSA_CPIS-shp/SSA_CPIS_2000.shp' # Africa_CPIS_2000_shp_path filtered to SSA
+SSA_CPIS_2021_shp_path: 'Data/Processed/SSA_CPIS-shp/SSA_CPIS_2021.shp' # Africa_CPIS_2021_shp_path filtered to SSA
 
 
 Africa_CPIS_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS.shp' # same as CPIS_2021_shp_path but filtered to Africa
@@ -79,6 +87,7 @@ Africa_Dam_csv_path: 'Data/Processed/Africa_Dams.csv' # Global_Dam_Data_csv_path
 Africa_Dam_Irrigation_csv_path: 'Data/Processed/Africa_Dams_Irrigation.csv' # Africa_Dam_csv_path filtered to dams that have 'Irrigation' listed under 'purpose'
 Africa_Dam_Irrigation_Only_csv_path: 'Data/Processed/Africa_Dams_Irrigation_Only.csv' # Africa_Dam_csv_path filtered to dams that ONLY have 'Irrigation' listed under 'purpose'
 
+# These are all SSA filtered (this can be adjusted by changing ssa_iso to african_isos in the 'Filter the dam data' cell)
 Africa_Dam_All_shp_path: 'Data/Processed/Africa_Dam_Aridity_Layers-shp/Africa_Dam_All_Arid.shp' # Africa_Dam_csv_path trimmed to all arid regions
 Africa_Dam_Semi_Arid_shp_path: 'Data/Processed/Africa_Dam_Aridity_Layers-shp/Africa_Dam_Semi_Arid.shp' # Africa_Dam_csv_path trimmed to semi arid regions
 Africa_Dam_Arid_shp_path: 'Data/Processed/Africa_Dam_Aridity_Layers-shp/Africa_Dam_Arid.shp' # Africa_Dam_csv_path trimmed to arid regions
@@ -93,14 +102,22 @@ AEI_2015_Semi_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI
 AEI_2015_Hyper_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Hyper_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_Hyper_Arid_shp_path
 AEI_2015_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_Arid_shp_path
 
+### 6_MEIER_AEI_Processing
+AEI_MEIER_2015_cropped_tif_path: 'Data/Processed/G_MEIER_AEI_2015_Cropped.tif' # Africa_MEIER_AEI_2015_asc_path cropped to Africa
+AEI_MEIER_2015_reproj_gpkg_path: 'Data/Processed/G_MEIER_AEI_2015_Reprojected.gpkg' # Africa_MEIER_AEI_2015_asc_path cropped to Africa and reprojected to EPSG:3857 
+
+AEI_MEIER_2015_All_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_All_Arid.shp' # AEI_MEIER_2015_reproj_gpkg_path cropped by Africa_All_shp_path
+AEI_MEIER_2015_Semi_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Semi_Arid.shp' # AEI_MEIER_2015_reproj_gpkg_path cropped by Africa_Semi_Arid_shp_path
+AEI_MEIER_2015_Hyper_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Hyper_Arid.shp' # AEI_MEIER_2015_reproj_gpkg_path cropped by Africa_Hyper_Arid_shp_path
+AEI_MEIER_2015_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Arid.shp' # AEI_MEIER_2015_reproj_gpkg_path cropped by Africa_Arid_shp_path
 
 ## 1_analyze_data
 
 ### 1_CPIS_Africa_Map
-CPIS_Area_by_Country_2000_csv_path: 'Data/Processed/Africa_CPIS_2000_Area_By_Country.csv' # from Africa_CPIS_2000.shp, total area of CPIS per country
-CPIS_Area_by_Country_2021_csv_path: 'Data/Processed/Africa_CPIS_2021_Area_By_Country.csv' # from Africa_CPIS_2021.shp, total area of CPIS per country
-Comp_by_Country_2000_path: 'Data/Processed/Percent_CPIS_by_Country_2000.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
-Comp_by_Country_2021_path: 'Data/Processed/Percent_CPIS_by_Country_2021.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2021
+CPIS_Area_SSA_by_Country_2000_csv_path: 'Data/Processed/Africa_CPIS_2000_Area_By_Country.csv' # from Africa_CPIS_2000.shp, total area of CPIS per country
+CPIS_Area_SSA_by_Country_2021_csv_path: 'Data/Processed/Africa_CPIS_2021_Area_By_Country.csv' # from Africa_CPIS_2021.shp, total area of CPIS per country
+Comp_by_Country_2000_csv_path: 'Data/Processed/Percent_CPIS_by_Country_2000.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
+Comp_by_Country_2021_csv_path: 'Data/Processed/Percent_CPIS_by_Country_2021.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2021
 
 Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_Country_2000.csv merged with Africa_Boundaries.shp, used to make Fig2
 

@@ -313,7 +313,7 @@ Figure1 and Figure2 on the same axis
     <blockquote>(y) filtered to all aridity layers</blockquote>
   </blockquote>
 
-  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_AEI_trimming.ipynb"><em><strong>6_AEI_Processing</strong></em></a>: Output:</p>
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_AEI_Processing.ipynb"><em><strong>6_AEI_Processing</strong></em></a>: Output:</p>
   <blockquote>
     <p><strong>(ee)</strong> <code>'AEI_2015_cropped_tif_path'</code>:</p>
     <blockquote>(8) cropped to Africa</blockquote>
@@ -326,6 +326,22 @@ Figure1 and Figure2 on the same axis
     <p><strong>(ii)</strong> <strong><ins><code>'AEI_2015_Hyper_Arid_shp_path'</code></ins></strong>:</p>
     <blockquote>(ff) trimmed to hyper-arid area</blockquote>
     <p><strong>(jj)</strong> <strong><ins><code>'AEI_2015_All_shp_path'</code></ins></strong>:</p>
+    <blockquote>(ff) trimmed to all aridity layers</blockquote>
+  </blockquote>
+
+  <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_MEIER_AEI_Processing.ipynb"><em><strong>6_AEI_Processing</strong></em></a>: Output:</p>
+  <blockquote>
+    <p><strong>(ee)</strong> <code>'AEI_MEIER_2015_cropped_tif_path'</code>:</p>
+    <blockquote>(8) cropped to Africa</blockquote>
+    <p><strong>(ff)</strong> <code>'AEI_MEIER_2015_reproj_gpkg_path'</code>:</p>
+    <blockquote>(ee) converted to a GDF and re-projected to EPSG:3857</blockquote>
+    <p><strong>(gg)</strong> <strong><ins><code>'AEI_MEIER_2015_Semi_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(ff) trimmed to semi-arid area</blockquote>
+    <p><strong>(hh)</strong> <strong><ins><code>'AEI_MEIER_2015_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(ff) trimmed to arid area</blockquote>
+    <p><strong>(ii)</strong> <strong><ins><code>'AEI_MEIER_2015_Hyper_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(ff) trimmed to hyper-arid area</blockquote>
+    <p><strong>(jj)</strong> <strong><ins><code>'AEI_MEIER_2015_All_shp_path'</code></ins></strong>:</p>
     <blockquote>(ff) trimmed to all aridity layers</blockquote>
   </blockquote>
 </details>
