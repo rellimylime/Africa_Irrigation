@@ -258,6 +258,8 @@ Figure1 and Figure2 on the same axis
   </blockquote>
   <p><strong>(7)</strong> <a href="https://sedac.ciesin.columbia.edu/data/set/grand-v1-dams-rev01/maps?facets=region:africa"><code>'Global_Dam_Data_csv_path'</code></a></p>
   <p><strong>(8)</strong> <a href="https://zenodo.org/records/7809342"><code>'Africa_AEI_2015_asc_path'</code></a></p>
+  <p><strong>(9)</strong> <a href="https://zenodo.org/records/7809342"><code>'Africa_AEI_2000_asc_path'</code></a></p>
+  <p><strong>(10)</strong> <a href="https://zenodo.org/records/7809342"><code>'Africa_MEIER_AEI_2015_asc_path'</code></a></p>
 </details>
 
 <details>
@@ -327,22 +329,28 @@ Figure1 and Figure2 on the same axis
     <blockquote>(ff) trimmed to hyper-arid area</blockquote>
     <p><strong>(jj)</strong> <strong><ins><code>'AEI_2015_All_shp_path'</code></ins></strong>:</p>
     <blockquote>(ff) trimmed to all aridity layers</blockquote>
+    <p><strong>(kk)</strong> <code>'AEI_2000_cropped_tif_path'</code>:</p>
+    <blockquote>(9) cropped to Africa</blockquote>
+    <p><strong>(ll)</strong> <code>'AEI_2000_reproj_gpkg_path'</code>:</p>
+    <blockquote>(kk) converted to a GDF and re-projected to EPSG:3857</blockquote>
+    <p><strong>(mm)</strong> <code>'AEI_2000_All_shp_path'</code>:</p>
+    <blockquote>(kk) trimmed to all aridity layers</blockquote>
   </blockquote>
 
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_MEIER_AEI_Processing.ipynb"><em><strong>6_MEIER_AEI_Processing</strong></em></a>: Output:</p>
   <blockquote>
-    <p><strong>(ee)</strong> <code>'AEI_MEIER_2015_cropped_tif_path'</code>:</p>
-    <blockquote>(8) cropped to Africa</blockquote>
-    <p><strong>(ff)</strong> <code>'AEI_MEIER_2015_reproj_gpkg_path'</code>:</p>
-    <blockquote>(ee) converted to a GDF and re-projected to EPSG:3857</blockquote>
-    <p><strong>(gg)</strong> <strong><ins><code>'AEI_MEIER_2015_Semi_Arid_shp_path'</code></ins></strong>:</p>
-    <blockquote>(ff) trimmed to semi-arid area</blockquote>
-    <p><strong>(hh)</strong> <strong><ins><code>'AEI_MEIER_2015_Arid_shp_path'</code></ins></strong>:</p>
-    <blockquote>(ff) trimmed to arid area</blockquote>
-    <p><strong>(ii)</strong> <strong><ins><code>'AEI_MEIER_2015_Hyper_Arid_shp_path'</code></ins></strong>:</p>
-    <blockquote>(ff) trimmed to hyper-arid area</blockquote>
-    <p><strong>(jj)</strong> <strong><ins><code>'AEI_MEIER_2015_All_shp_path'</code></ins></strong>:</p>
-    <blockquote>(ff) trimmed to all aridity layers</blockquote>
+    <p><strong>(nn)</strong> <code>'AEI_MEIER_2015_cropped_tif_path'</code>:</p>
+    <blockquote>(10) cropped to Africa</blockquote>
+    <p><strong>(oo)</strong> <code>'AEI_MEIER_2015_reproj_gpkg_path'</code>:</p>
+    <blockquote>(nn) converted to a GDF and re-projected to EPSG:3857</blockquote>
+    <p><strong>(pp)</strong> <strong><ins><code>'AEI_MEIER_2015_Semi_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(oo) trimmed to semi-arid area</blockquote>
+    <p><strong>(qq)</strong> <strong><ins><code>'AEI_MEIER_2015_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(oo) trimmed to arid area</blockquote>
+    <p><strong>(rr)</strong> <strong><ins><code>'AEI_MEIER_2015_Hyper_Arid_shp_path'</code></ins></strong>:</p>
+    <blockquote>(oo) trimmed to hyper-arid area</blockquote>
+    <p><strong>(ss)</strong> <strong><ins><code>'AEI_MEIER_2015_All_shp_path'</code></ins></strong>:</p>
+    <blockquote>(oo) trimmed to all aridity layers</blockquote>
   </blockquote>
 </details>
 
@@ -358,7 +366,7 @@ Figure1 and Figure2 on the same axis
   <summary><strong style="font-size:16px;">File Output:</strong></summary>
   <br>
   <p><strong>(kk)</strong> <code>'Groundwater_Prod_gpkg_path'</code>:</p>
-  <blockquote>(9) converted to a GDF and reprojected to EPSG:3857</blockquote>
+  <blockquote>(11) converted to a GDF and reprojected to EPSG:3857</blockquote>
 </details>
 
 
@@ -374,8 +382,8 @@ Figure1 and Figure2 on the same axis
   </ul>
   
   <p>(8) <a href="https://zenodo.org/records/7809342"><code>'Africa_AEI_2015_asc_path'</code></a></p>
-  
-  <p><strong>(9)</strong> <a href="https://www2.bgs.ac.uk/groundwater/international/africanGroundwater/mapsDownload.html"><code>'Groundwater_Productivity_path'</code></a></p>
+  <p>(9) <a href="https://zenodo.org/records/7809342"><code>'Africa_AEI_2000_asc_path'</code></a></p>
+  <p><strong>(11)</strong> <a href="https://www2.bgs.ac.uk/groundwater/international/africanGroundwater/mapsDownload.html"><code>'Groundwater_Productivity_path'</code></a></p>
 </details>
 
 
@@ -401,6 +409,7 @@ Figure1 and Figure2 on the same axis
     <p>(u) <code>'Combined_CPIS_Semi_Arid_shp_path'</code></p>
     <p>(v) <code>'Combined_CPIS_Arid_shp_path'</code></p>
     <p>(w) <code>'Combined_CPIS_Hyper_Arid_shp_path'</code></p>
+    <p>(x) <code>'SSA_Combined_CPIS_All_shp_path'</code></p>
   </blockquote>
 
   <p><a href="https://github.com/rellimylime/Africa_Irrigation/blob/main/Code/0_process_data/6_AEI_trimming.ipynb"><em><strong>6_AEI_Processing</strong></em></a>: Output:</p>
