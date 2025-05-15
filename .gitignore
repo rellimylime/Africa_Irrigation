@@ -159,7 +159,11 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+# Data directory
 Data/*
+
+# Archive folder - experimental/unused notebooks
+Code/Archive/
 Nothing_to_see_here.ipynb*
 Dams_Mess.ipynb*
 dem_3857.tif*
@@ -168,6 +172,7 @@ dem_3857.tif*
 5_Dams_Elevation.ipynb*
 5_Dams_Elevation_v2.ipynb*
 6_Dams_Elevation_v3.ipynb*
+Anna_groundwater.ipynb*
 
 
 .DS_Store

@@ -13,6 +13,7 @@ Combined_CPIS_shp_path: 'Data/Raw/Combined_CPIS-shp' # A gift from Anna
 Africa_Cropland_tif_path: 'Data/Raw/Africa_Cropland-tif/af_cropland.tif' # from https://sedac.ciesin.columbia.edu/data/set/aglands-croplands-2000/data-download; see README (2) for details
 
 Africa_AEI_2015_asc_path: 'Data/Raw/G_AEI_2015.ASC' # From https://zenodo.org/records/7809342
+Africa_AEI_2000_asc_path: 'Data/Raw/G_AEI_2000.ASC' # From https://zenodo.org/records/7809342
 Africa_MEIER_AEI_2015_asc_path: 'Data/Raw/MEIER_G_AEI_2015.ASC' # From https://zenodo.org/records/7809342 
 
 Global_Dam_Data_csv_path: 'Data/Raw/globaldamsdatabase_global_coverage_november_2020.csv' # from https://sedac.ciesin.columbia.edu/data/set/grand-v1-dams-rev01/maps?facets=region:africa
@@ -22,6 +23,9 @@ Africa_Elevation_rast_path: 'Data/Raw/africa_dem' # from https://databasin.org/d
 Africa_Countries_shp_path: 'Data/Raw/Africa_Countries-shp' # from https://open.africa/dataset/africa-shapefiles
 
 
+AridAfrica_Barriers_shp_path: 'Data/Raw/AridAfrica_Barriers-shp' # from https://code.earthengine.google.com/dbec0a510527b5b728043b949da64c02
+No_Crop_Vectorized_Command_Area_shp_path: 'Data/Raw/No_Crop_Vectorized_Command_Area-shp' # from https://code.earthengine.google.com/4f8dde95dd1e6b853c020b5b1a4771ff
+No_Crop_All_Height_Initial_CA_shp_path: 'Data/Raw/No_Crop_All_Height_Initial_CA-shp' # from https://code.earthengine.google.com/4f8dde95dd1e6b853c020b5b1a4771ff
 #--------------------------------------------
 
 
@@ -49,7 +53,6 @@ Africa_CPIS_2021_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS_2021.shp'
 
 SSA_CPIS_2000_shp_path: 'Data/Processed/SSA_CPIS-shp/SSA_CPIS_2000.shp' # Africa_CPIS_2000_shp_path filtered to SSA
 SSA_CPIS_2021_shp_path: 'Data/Processed/SSA_CPIS-shp/SSA_CPIS_2021.shp' # Africa_CPIS_2021_shp_path filtered to SSA
-
 
 Africa_CPIS_shp_path: 'Data/Processed/Africa_CPIS-shp/Africa_CPIS.shp' # same as CPIS_2021_shp_path but filtered to Africa
 
@@ -80,12 +83,16 @@ Combined_CPIS_Semi_Arid_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-s
 Combined_CPIS_Arid_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/Combined_CPIS_Arid.shp' # Combined_CPIS_shp_path filtered to arid boundary
 Combined_CPIS_Hyper_Arid_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/Combined_CPIS_Hyper_Arid.shp' # Combined_CPIS_shp_path filtered to arid boundary
 
-SSA_Combined_CPIS_All_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/SSA_Combined_CPIS_All.shp' # Combined_CPIS_All_shp_path filtered to SSA
+SSA_Combined_CPIS_All_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp/SSA_Combined_CPIS_All.shp' # Combined_CPIS_All_shp_path filtered to SSA and with year column added
 
 ### 5_Dam_Processing
 Africa_Dam_csv_path: 'Data/Processed/Africa_Dams.csv' # Global_Dam_Data_csv_path filtered to only africa
 Africa_Dam_Irrigation_csv_path: 'Data/Processed/Africa_Dams_Irrigation.csv' # Africa_Dam_csv_path filtered to dams that have 'Irrigation' listed under 'purpose'
 Africa_Dam_Irrigation_Only_csv_path: 'Data/Processed/Africa_Dams_Irrigation_Only.csv' # Africa_Dam_csv_path filtered to dams that ONLY have 'Irrigation' listed under 'purpose'
+
+GDW_Arid_SSA_Final_shp_path: 'Data/Processed/GDW_Arid_SSA_Final-shp/GDW_Arid_SSA_Final.shp' # GDW_barrier_shp_path filtered to arid regions and SSA and manually corrected 
+GDW_Arid_SSA_Final_Irr_shp_path: 'Data/Processed/GDW_Arid_SSA_Final-shp/GDW_Arid_SSA_Final_Irr.shp' # GDW_Arid_SSA_Final_shp_path filtered to dams that have 'Irrigation' listed under 'purpose'
+
 
 # These are all SSA filtered (this can be adjusted by changing ssa_iso to african_isos in the 'Filter the dam data' cell)
 Africa_Dam_All_shp_path: 'Data/Processed/Africa_Dam_Aridity_Layers-shp/Africa_Dam_All_Arid.shp' # Africa_Dam_csv_path trimmed to all arid regions
@@ -101,6 +108,11 @@ AEI_2015_All_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_
 AEI_2015_Semi_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Semi_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_Semi_Arid_shp_path
 AEI_2015_Hyper_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Hyper_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_Hyper_Arid_shp_path
 AEI_2015_Arid_shp_path: 'Data/Processed/G_AEI_2015_Aridity_Layers-shp/G_AEI_2015_Arid.shp' # AEI_2015_reproj_gpkg_path cropped by Africa_Arid_shp_path
+
+AEI_2000_cropped_tif_path: 'Data/Processed/G_AEI_2000_Cropped.tif' # Cropped to Africa
+AEI_2000_reproj_gpkg_path: 'Data/Processed/G_AEI_2000_Reprojected.gpkg' # Africa_AEI_2000_asc_path cropped to Africa and reprojected to EPSG:3857
+
+AEI_2000_All_shp_path: 'Data/Processed/G_AEI_2000_All_Arid-shp/G_AEI_2000_All_Arid.shp' # AEI_2000_reproj_gpkg_path cropped by Africa_All_shp_path
 
 ### 6_MEIER_AEI_Processing
 AEI_MEIER_2015_cropped_tif_path: 'Data/Processed/G_MEIER_AEI_2015_Cropped.tif' # Africa_MEIER_AEI_2015_asc_path cropped to Africa
