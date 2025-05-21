@@ -90,6 +90,7 @@ africa_iso_countries_filtered = {
     "ZWE": ["Zimbabwe"]
 }
 
+# SSA Countries with ISOs only Arid regions
 africa_arid_iso_countries_filtered = {
     "AGO": ["Angola"],
     "BEN": ["Benin"],
@@ -144,8 +145,16 @@ africa_iso_countries = {
     "TUN": ["Tunisia"]
 }
 
-
+# Define African regions using ISO codes from utility
+regions_dict = {
+    "Northern Africa": ["DZA", "EGY", "LBY", "MAR", "SDN", "TUN", "ESH"],
+    "Southern Africa": ["BWA", "SWZ", "LSO", "NAM", "ZAF", "ZMB", "ZWE"],
+    "East Africa": ["BDI", "COM", "DJI", "ERI", "ETH", "KEN", "MDG", "MWI", "MUS", "MYT", "MOZ", "REU", "RWA", "SYC", "SOM", "TZA", "UGA"],
+    "West Africa": ["BEN", "BFA", "CPV", "CIV", "GMB", "GHA", "GIN", "GNB", "LBR", "MLI", "MRT", "NER", "NGA", "SEN", "SLE", "TGO"],
+    "Central Africa": ["AGO", "CMR", "CAF", "TCD", "COG", "GNQ", "GAB", "COG", "STP"]
+}
 
 # ISO code lists for easy access
 ssa_iso = list(africa_iso_countries_filtered.keys())
 africa_iso = list(africa_iso_countries.keys())
+region_names = list(regions_dict.keys())

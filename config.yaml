@@ -14,6 +14,7 @@ Africa_Cropland_tif_path: 'Data/Raw/Africa_Cropland-tif/af_cropland.tif' # from 
 
 Africa_AEI_2015_asc_path: 'Data/Raw/G_AEI_2015.ASC' # From https://zenodo.org/records/7809342
 Africa_AEI_2000_asc_path: 'Data/Raw/G_AEI_2000.ASC' # From https://zenodo.org/records/7809342
+Africa_AEI_1980_asc_path: 'Data/Raw/G_AEI_1980.ASC' # From https://zenodo.org/records/7809342
 Africa_MEIER_AEI_2015_asc_path: 'Data/Raw/MEIER_G_AEI_2015.ASC' # From https://zenodo.org/records/7809342 
 
 Global_Dam_Data_csv_path: 'Data/Raw/globaldamsdatabase_global_coverage_november_2020.csv' # from https://sedac.ciesin.columbia.edu/data/set/grand-v1-dams-rev01/maps?facets=region:africa
@@ -25,6 +26,7 @@ Africa_Countries_shp_path: 'Data/Raw/Africa_Countries-shp' # from https://open.a
 
 AridAfrica_Barriers_shp_path: 'Data/Raw/AridAfrica_Barriers-shp' # from https://code.earthengine.google.com/dbec0a510527b5b728043b949da64c02
 No_Crop_Vectorized_Command_Area_shp_path: 'Data/Raw/No_Crop_Vectorized_Command_Area-shp' # from https://code.earthengine.google.com/4f8dde95dd1e6b853c020b5b1a4771ff
+No_Crop_Initial_CA_shp_path: 'Data/Raw/No_Crop_Initial_CA-shp/Initial_CA_Masks_No.shp' # from https://code.earthengine.google.com/4f8dde95dd1e6b853c020b5b1a4771ff
 No_Crop_All_Height_Initial_CA_shp_path: 'Data/Raw/No_Crop_All_Height_Initial_CA-shp' # from https://code.earthengine.google.com/4f8dde95dd1e6b853c020b5b1a4771ff
 #--------------------------------------------
 
@@ -113,6 +115,9 @@ AEI_2000_cropped_tif_path: 'Data/Processed/G_AEI_2000_Cropped.tif' # Cropped to 
 AEI_2000_reproj_gpkg_path: 'Data/Processed/G_AEI_2000_Reprojected.gpkg' # Africa_AEI_2000_asc_path cropped to Africa and reprojected to EPSG:3857
 
 AEI_2000_All_shp_path: 'Data/Processed/G_AEI_2000_All_Arid-shp/G_AEI_2000_All_Arid.shp' # AEI_2000_reproj_gpkg_path cropped by Africa_All_shp_path
+
+AEI_2015_All_SSA_tif_path: 'Data/Processed/AEI_2015_All_SSA.tif' # Africa_AEI_2015_asc_path masked using SSA_Arid_by_Country_shp_path
+AEI_1980_All_SSA_tif_path: 'Data/Processed/AEI_1980_All_SSA.tif' # Africa_AEI_1980_asc_path masked using SSA_Arid_by_Country_shp_path
 
 ### 6_MEIER_AEI_Processing
 AEI_MEIER_2015_cropped_tif_path: 'Data/Processed/G_MEIER_AEI_2015_Cropped.tif' # Africa_MEIER_AEI_2015_asc_path cropped to Africa

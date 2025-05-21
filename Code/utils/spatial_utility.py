@@ -4,8 +4,8 @@ from scipy.spatial import cKDTree
 from shapely.ops import unary_union
 from tqdm import tqdm
 
-# Import functions from utility.py
-from utility import load_config, resolve_path
+# Import functions from utility.py (use relative import for package)
+from .utility import load_config, resolve_path
 
 # Common spatial operations
 def calculate_nearest_distances(src_gdf, target_gdf):
