@@ -12,12 +12,14 @@ Groundwater_Productivity_path: 'Data/Raw/Groundwater_Productivity-txt/xyzASCII_g
 Combined_CPIS_shp_path: 'Data/Raw/Combined_CPIS-shp' # A gift from Anna
 Africa_Cropland_tif_path: 'Data/Raw/Africa_Cropland-tif/af_cropland.tif' # from https://sedac.ciesin.columbia.edu/data/set/aglands-croplands-2000/data-download; see README (2) for details
 
-Africa_AEI_2015_asc_path: 'Data/Raw/G_AEI_2015.ASC' # From https://zenodo.org/records/7809342
-Africa_AEI_2005_asc_path: 'Data/Raw/G_AEI_2005.ASC' # From https://zenodo.org/records/7809342
-Africa_AEI_2000_asc_path: 'Data/Raw/G_AEI_2000.ASC' # From https://zenodo.org/records/7809342
-Africa_AEI_1995_asc_path: 'Data/Raw/G_AEI_1995.ASC' # From https://zenodo.org/records/7809342
-Africa_AEI_1985_asc_path: 'Data/Raw/G_AEI_1985.ASC' # From https://zenodo.org/records/7809342
 Africa_AEI_1980_asc_path: 'Data/Raw/G_AEI_1980.ASC' # From https://zenodo.org/records/7809342
+Africa_AEI_1985_asc_path: 'Data/Raw/G_AEI_1985.ASC' # From https://zenodo.org/records/7809342
+Africa_AEI_1990_asc_path: 'Data/Raw/G_AEI_1990.ASC' # From https://zenodo.org/records/7809342
+Africa_AEI_1995_asc_path: 'Data/Raw/G_AEI_1995.ASC' # From https://zenodo.org/records/7809342
+Africa_AEI_2000_asc_path: 'Data/Raw/G_AEI_2000.ASC' # From https://zenodo.org/records/7809342
+Africa_AEI_2005_asc_path: 'Data/Raw/G_AEI_2005.ASC' # From https://zenodo.org/records/7809342
+Africa_AEI_2010_asc_path: 'Data/Raw/G_AEI_2010.ASC' # From https://zenodo.org/records/7809342
+Africa_AEI_2015_asc_path: 'Data/Raw/G_AEI_2015.ASC' # From https://zenodo.org/records/7809342
 Africa_MEIER_AEI_2015_asc_path: 'Data/Raw/MEIER_G_AEI_2015.ASC' # From https://zenodo.org/records/7809342 
 
 Global_Dam_Data_csv_path: 'Data/Raw/globaldamsdatabase_global_coverage_november_2020.csv' # from https://sedac.ciesin.columbia.edu/data/set/grand-v1-dams-rev01/maps?facets=region:africa
