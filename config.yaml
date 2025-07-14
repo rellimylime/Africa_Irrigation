@@ -141,7 +141,7 @@ CPIS_Area_SSA_by_Country_2021_csv_path: 'Data/Processed/Africa_CPIS_2021_Area_By
 Comp_by_Country_2000_csv_path: 'Data/Processed/Percent_CPIS_by_Country_2000.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2000
 Comp_by_Country_2021_csv_path: 'Data/Processed/Percent_CPIS_by_Country_2021.csv' # area of all irrigation and of CPIS per country and % (CPIS area / total irrigated area) per country in 2021
 
-Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000.shp' # Percent_CPIS_by_Country_2000.csv merged with Africa_Boundaries.shp, used to make Fig2
+Merged_Areas_2000: 'Data/Processed/Merged_Area_Data_2000-shp' # Percent_CPIS_by_Country_2000.csv merged with Africa_Boundaries.shp, used to make Fig2
 
 ### 3_Groundwater:
 Groundwater_Prod_gpkg_path: 'Data/Processed/Groundwater_Prod.gpkg' # Groundwater_Productivity_path .txt file made into geopackage
@@ -167,7 +167,14 @@ Africa_Elevation_Reprojected_tif_path: 'Data/Processed/Africa_Elevation_Reprojec
 
 ## 2_Dam_Analysis
 
+### 7_Prep_Descriptive_Stats
+No_Crop_Vectorized_CA_UniLayer_shp_path: 'Data/Processed/No_Crop_Vectorized_UniLayer_CA-shp' # No_Crop_Vectorized_Command_Area_shp_path with overlapping geometries merged with n_merged and merged_GDW_IDs columns added to describe the number of geometries that were merged and their corresponding GDW_IDs
+No_Crop_Initial_CA_UniLayer_shp_path: 'Data/Processed/No_Crop_Initial_UniLayer_CA-shp' # No_Crop_Initial_CA_shp_path with overlapping geometries merged with n_merged and merged_GDW_IDs columns added to describe the number of geometries that were merged and their corresponding GDW_IDs
 
+Irrigation_Inside_CA_2000_csv_path: 'Data/Processed/Irrigation_Inside_CA_2000.csv' # Contains the area of irrigation inside the No_Crop_Vectorized_Command_Area_shp_path in 2000
+Irrigation_Outside_CA_2000_csv_path: 'Data/Processed/Irrigation_Outside_CA_2000.csv' # Contains the area of irrigation outside the No_Crop_Vectorized_Command_Area_shp_path in 2000
+Irrigation_Inside_CA_2015_csv_path: 'Data/Processed/Irrigation_Inside_CA_2015.csv' # Contains the area of irrigation inside the No_Crop_Vectorized_Command_Area_shp_path in 2015
+Irrigation_Outside_CA_2015_csv_path: 'Data/Processed/Irrigation_Outside_CA_2015.csv' # Contains the area of irrigation outside the No_Crop_Vectorized_Command_Area_shp_path in 2015
 
 # Output (see readme for aditional details)
 
