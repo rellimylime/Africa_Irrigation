@@ -3,6 +3,9 @@ import geopandas as gpd
 from scipy.spatial import cKDTree
 from shapely.ops import unary_union
 from tqdm import tqdm
+import rasterio
+from rasterio.warp import calculate_default_transform, reproject, Resampling
+
 
 # Import functions from utility.py (use relative import for package)
 from .utility import load_config, resolve_path
@@ -151,6 +154,51 @@ def load_and_reproject(file_path, target_crs="EPSG:3857"):
     except Exception as e:
         print(f"Error loading {file_path}: {e}")
         return None
+    
+def load_raster_and_reproject(file_path, target_crs="EPSG:4326"):
+    """
+    Load a raster file and reproject it to the target CRS.
+    
+    Parameters:
+    - file_path : str
+    - target_crs : str (e.g., 'EPSG:4326')
+    
+    Returns:
+    - reprojected_data : np.ndarray
+    - transform : Affine
+    - metadata : dict
+    """
+    file_path = resolve_path(file_path)
+    with rasterio.open(file_path) as src:
+        if src.crs.to_string() == target_crs:
+            data = src.read(1)
+            return data, src.transform, src.meta.copy()
+        
+        transform, width, height = calculate_default_transform(
+            src.crs, target_crs, src.width, src.height, *src.bounds)
+        
+        kwargs = src.meta.copy()
+        kwargs.update({
+            'crs': target_crs,
+            'transform': transform,
+            'width': width,
+            'height': height
+        })
+
+        reprojected_data = np.empty((height, width), dtype=src.meta['dtype'])
+
+        reproject(
+            source=rasterio.band(src, 1),
+            destination=reprojected_data,
+            src_transform=src.transform,
+            src_crs=src.crs,
+            dst_transform=transform,
+            dst_crs=target_crs,
+            resampling=Resampling.nearest
+        )
+
+        return reprojected_data, transform, kwargs
+
 
 def load_aei_dataset(dataset_type="standard", target_crs="EPSG:3857"):
     """
