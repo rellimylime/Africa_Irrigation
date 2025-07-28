@@ -96,7 +96,7 @@ SSA_Combined_CPIS_All_shp_path: 'Data/Processed/Combined_CPIS_Aridity_Layers-shp
 Africa_Dam_csv_path: 'Data/Processed/Africa_Dams.csv' # Global_Dam_Data_csv_path filtered to only africa
 Africa_Dam_Irrigation_csv_path: 'Data/Processed/Africa_Dams_Irrigation.csv' # Africa_Dam_csv_path filtered to dams that have 'Irrigation' listed under 'purpose'
 Africa_Dam_Irrigation_Only_csv_path: 'Data/Processed/Africa_Dams_Irrigation_Only.csv' # Africa_Dam_csv_path filtered to dams that ONLY have 'Irrigation' listed under 'purpose'
-
+                                                                                      # 
 GDW_Arid_SSA_Final_shp_path: 'Data/Processed/GDW_Arid_SSA_Final-shp/GDW_Arid_SSA_Final.shp' # GDW_barrier_shp_path filtered to arid regions and SSA and manually corrected 
 GDW_Arid_SSA_Final_Irr_shp_path: 'Data/Processed/GDW_Arid_SSA_Final-shp/GDW_Arid_SSA_Final_Irr.shp' # GDW_Arid_SSA_Final_shp_path filtered to dams that have 'Irrigation' listed under 'purpose'
 
@@ -168,8 +168,10 @@ Africa_Elevation_Reprojected_tif_path: 'Data/Processed/Africa_Elevation_Reprojec
 ## 2_Dam_Analysis
 
 ### 7_Prep_Descriptive_Stats
-No_Crop_Vectorized_CA_UniLayer_shp_path: 'Data/Processed/No_Crop_Vectorized_UniLayer_CA-shp' # No_Crop_Vectorized_Command_Area_shp_path with overlapping geometries merged with n_merged and merged_GDW_IDs columns added to describe the number of geometries that were merged and their corresponding GDW_IDs
+No_Crop_Vectorized_CA_UniLayer_shp_path: 'Data/Processed/No_Crop_Vectorized_UniLayer_CA-shp' # No_Crop_Vectorized_Command_Area_shp_path with overlapping geometries merged with n_merged and merged_GDW_IDs columns added to describe the number of geometries that were merged and their corresponding GDW_IDs 
+
 No_Crop_Initial_CA_UniLayer_shp_path: 'Data/Processed/No_Crop_Initial_UniLayer_CA-shp' # No_Crop_Initial_CA_shp_path with overlapping geometries merged with n_merged and merged_GDW_IDs columns added to describe the number of geometries that were merged and their corresponding GDW_IDs
+                                                                                       # This folder also contains merged_CA_####.shp, the merged CAs of dams from each year group 
 
 Irrigation_Inside_CA_2000_csv_path: 'Data/Processed/Irrigation_Inside_CA_2000.csv' # Contains the area of irrigation inside the No_Crop_Vectorized_Command_Area_shp_path in 2000
 Irrigation_Outside_CA_2000_csv_path: 'Data/Processed/Irrigation_Outside_CA_2000.csv' # Contains the area of irrigation outside the No_Crop_Vectorized_Command_Area_shp_path in 2000
