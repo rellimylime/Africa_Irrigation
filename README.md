@@ -10,7 +10,7 @@ Africa_Irrigation/
 ├── Code/
 │   ├── 0_process_data/    (download, filter, preprocess datasets)
 │   ├── 1_analyze_data/    (CPIS expansion and irrigation trend analyses)
-│   └── 2_dam_analysis/    (dam and groundwater related analyses)
+│   └── 2_dam_analysis/    (dam related analyses)
 │
 ├── Data/
 │   ├── Raw/               (external inputs, unmodified)
