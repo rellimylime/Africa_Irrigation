@@ -30,8 +30,8 @@ Each folder has its own README with inputs, outputs, and run notes. The exact lo
 
 2. Create the environment and install requirements:
 
+Copy code:
 ```bash
-Copy code
 conda env create -n irrigation -f requirements.yml
 conda activate irrigation
 ```
@@ -70,7 +70,9 @@ Results at a glance:
 
 ### B. Country and regional distribution
 Notebook: [Code/1_analyze_data/1_CPIS_Africa_Map.ipynb](Code/1_analyze_data/1_CPIS_Africa_Map.ipynb)
+
 Related notebook: [Code/1_analyze_data/2_CPIS_by_Region.ipynb](Code/1_analyze_data/2_CPIS_by_Region.ipynb)
+
 Representative figure: [Output/Analyze/1_Figure1.png](Output/Analyze/1_Figure1.png)
 
 What it shows:
@@ -89,9 +91,11 @@ Folder: [Code/2_dam_analysis](Code/2_dam_analysis)
 Notebooks:
 
 - Dams and proximity targeting ratios: [Code/2_dam_analysis/3_Dams_AEI_Targeting_Ratios.ipynb](Code/2_dam_analysis/3_Dams_AEI_Targeting_Ratios.ipynb)
+
 Figures: [Output/Analyze/3_Figure0.png](Output/Analyze/3_Figure0.png) to [Output/Analyze/3_Figure3.png](Output/Analyze/3_Figure3.png)
 
 - Groundwater productivity and CPIS: [Code/2_dam_analysis/4_Groundwater.ipynb](Code/2_dam_analysis/4_Groundwater.ipynb)
+
 Figure: [Output/Analyze/4_Figure1.png](Output/Analyze/4_Figure1.png)
 
 What it tests:
@@ -109,7 +113,9 @@ Headline takeaways (see sub-READMEs for details):
 - Confidence intervals and sensitivity checks are reported in the figures and tables.
 
 ### Data sources (primary)
-Citations and links for the main external datasets. All paths are configured in [config.yaml](config.yaml). Preprocessing steps are documented in the [Code/0_process_data](Code/0_process_data) sub-README.
+Citations and links for the main external datasets. All paths are configured in [config.yaml](config.yaml). 
+
+Preprocessing steps are documented in the [Code/0_process_data](Code/0_process_data) sub-README.
 
 - CPIS shapefiles, 2000 and 2021, DetectCPIS project (see repository for download instructions).
 
