@@ -22,8 +22,9 @@ Africa_Irrigation/
 │
 ├── config.yaml            (all dataset locations and brief descriptions)
 └── README.md              (this file)
-Each folder has its own README with inputs, outputs, and run notes. The exact locations of datasets used in any notebook are specified in config.yaml.
 ```
+Each folder has its own README with inputs, outputs, and run notes. The exact locations of datasets used in any notebook are specified in config.yaml.
+
 
 ## Setup
 1. Install Conda
