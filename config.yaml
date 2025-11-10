@@ -75,7 +75,11 @@ Africa_Arid_shp_path: 'Data/Processed/Africa_Arid-shp' # Africa_all_shp_path fil
 Africa_Hyper_Arid_shp_path: 'Data/Processed/Africa_Hyper_Arid-shp/Africa_Hyper_Arid.shp' # Africa_all_shp_path filtered to (0, 300)
 #Africa_arid_layered_shp_path: 'Data/Processed/Africa_Layered_Aridity-shp' # Africa_semi_arid_shp_path, Africa_arid_shp_path, and Africa_hyper_arid_shp_path merged
 
-SSA_Arid_by_Country_shp_path: 'Data/Processed/SSA_All_Arid_by_Country-shp/SSA_All_Arid_by_Country.shp' # Africa_all_shp_path overlayed with Africa_boundaries_shp_path to label by country and filtered to SSA countries
+SSA_All_by_Country_shp_path: 'Data/Processed/SSA_All_Arid_by_Country-shp/SSA_All_Arid_by_Country.shp' # Africa_all_shp_path overlayed with Africa_boundaries_shp_path to label by country and filtered to SSA countries
+SSA_Semi_Arid_by_Country_shp_path: 'Data/Processed/SSA_Semi_Arid_by_Country-shp/SSA_Semi_Arid_by_Country.shp'
+SSA_Arid_by_Country_shp_path: 'Data/Processed/SSA_Arid_by_Country-shp/SSA_Arid_by_Country.shp'
+SSA_Hyper_Arid_by_Country_shp_path: 'Data/Processed/SSA_Hyper_Arid_by_Country-shp'
+
 
 ### 3_Filter_Cropland
 Arid_Cropland_tif_path: 'Data/Processed/Arid_Cropland.tif' # Cropland with aridity < 0.5 with values preserved
@@ -121,8 +125,8 @@ AEI_2000_reproj_gpkg_path: 'Data/Processed/G_AEI_2000_Reprojected.gpkg' # Africa
 
 AEI_2000_All_shp_path: 'Data/Processed/G_AEI_2000_All_Arid-shp/G_AEI_2000_All_Arid.shp' # AEI_2000_reproj_gpkg_path cropped by Africa_All_shp_path
 
-AEI_2015_All_SSA_tif_path: 'Data/Processed/AEI_2015_All_SSA.tif' # Africa_AEI_2015_asc_path masked using SSA_Arid_by_Country_shp_path
-AEI_1980_All_SSA_tif_path: 'Data/Processed/AEI_1980_All_SSA.tif' # Africa_AEI_1980_asc_path masked using SSA_Arid_by_Country_shp_path
+AEI_2015_All_SSA_tif_path: 'Data/Processed/AEI_2015_All_SSA.tif' # Africa_AEI_2015_asc_path masked using SSA_All_by_Country_shp_path
+AEI_1980_All_SSA_tif_path: 'Data/Processed/AEI_1980_All_SSA.tif' # Africa_AEI_1980_asc_path masked using SSA_All_by_Country_shp_path
 
 ### 6_MEIER_AEI_Processing
 AEI_MEIER_2015_cropped_tif_path: 'Data/Processed/G_MEIER_AEI_2015_Cropped.tif' # Africa_MEIER_AEI_2015_asc_path cropped to Africa
@@ -183,14 +187,14 @@ Irrigation_Outside_CA_2000_raster_path: 'Data/Processed/Irrigation_Outside_CA_20
 Irrigation_Inside_CA_2015_raster_path: 'Data/Processed/Irrigation_Inside_CA_2015.asc' # Africa_AEI_2015_asc_path masked to area inside No_Crop_Vectorized_CA_UniLayer_shp_path 
 Irrigation_Outside_CA_2015_raster_path: 'Data/Processed/Irrigation_Outside_CA_2015.asc' # Africa_AEI_2015_asc_path masked to area outside No_C
 
-Irrigation_Arid_SSA_1985_tif_path: 'Data/Processed/Irrigation_Arid_SSA_1985.tif' # Africa_AEI_1985_asc_path masked to SSA_Arid_by_Country_shp_path
-Irrigation_Arid_SSA_1980_tif_path: 'Data/Processed/Irrigation_Arid_SSA_1980.tif' # Africa_AEI_1980_asc_path masked to SSA_Arid_by_Country_shp_path
-Irrigation_Arid_SSA_1990_tif_path: 'Data/Processed/Irrigation_Arid_SSA_1990.tif' # Africa_AEI_1990_asc_path masked to SSA_Arid_by_Country_shp_path
-Irrigation_Arid_SSA_1995_tif_path: 'Data/Processed/Irrigation_Arid_SSA_1995.tif' # Africa_AEI_1995_asc_path masked to SSA_Arid_by_Country_shp_path
-Irrigation_Arid_SSA_2000_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2000.tif' # Africa_AEI_2000_asc_path masked to SSA_Arid_by_Country_shp_path
-Irrigation_Arid_SSA_2005_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2005.tif' # Africa_AEI_2005_asc_path masked to SSA_Arid_by_Country_shp_path
-Irrigation_Arid_SSA_2010_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2010.tif' # Africa_AEI_2010_asc_path masked to SSA_Arid_by_Country_shp_path
-Irrigation_Arid_SSA_2015_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2015.tif' # Africa_AEI_2015_asc_path masked to SSA_Arid_by_Country_shp_path
+Irrigation_Arid_SSA_1985_tif_path: 'Data/Processed/Irrigation_Arid_SSA_1985.tif' # Africa_AEI_1985_asc_path masked to SSA_All_by_Country_shp_path
+Irrigation_Arid_SSA_1980_tif_path: 'Data/Processed/Irrigation_Arid_SSA_1980.tif' # Africa_AEI_1980_asc_path masked to SSA_All_by_Country_shp_path
+Irrigation_Arid_SSA_1990_tif_path: 'Data/Processed/Irrigation_Arid_SSA_1990.tif' # Africa_AEI_1990_asc_path masked to SSA_All_by_Country_shp_path
+Irrigation_Arid_SSA_1995_tif_path: 'Data/Processed/Irrigation_Arid_SSA_1995.tif' # Africa_AEI_1995_asc_path masked to SSA_All_by_Country_shp_path
+Irrigation_Arid_SSA_2000_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2000.tif' # Africa_AEI_2000_asc_path masked to SSA_All_by_Country_shp_path
+Irrigation_Arid_SSA_2005_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2005.tif' # Africa_AEI_2005_asc_path masked to SSA_All_by_Country_shp_path
+Irrigation_Arid_SSA_2010_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2010.tif' # Africa_AEI_2010_asc_path masked to SSA_All_by_Country_shp_path
+Irrigation_Arid_SSA_2015_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2015.tif' # Africa_AEI_2015_asc_path masked to SSA_All_by_Country_shp_path
 
 
 # Output (see readme for aditional details)

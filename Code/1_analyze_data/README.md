@@ -16,9 +16,6 @@ This folder contains notebooks that analyze irrigation and center pivot irrigati
 - **3_Dams_AEI_Targeting_Ratios.ipynb**  
   (transition notebook – located here for convenience, but part of the dam analysis workflow) Calculates CPIS targeting ratios relative to dam proximity in different aridity zones.
 
-- **4_Groundwater.ipynb**  
-  (transition notebook – also part of the dam analysis workflow) Explores the relationship between groundwater productivity and CPIS siting.
-
 ## Inputs
 
 - Processed irrigation area tables (from AQUASTAT).  
@@ -36,4 +33,4 @@ All dataset paths are configured in `config.yaml`.
 ## Notes
 
 - For reproducibility, run the preprocessing notebooks in `Code/0_process_data` first.  
-- This folder’s analyses focus primarily on spatial and temporal comparisons of irrigation and CPIS; dam- and groundwater-specific analyses are described in more detail in `Code/2_dam_analysis`.
+- This folder’s analyses focus primarily on spatial and temporal comparisons of irrigation and CPIS; dam-specific analyses are described in more detail in `Code/2_dam_analysis`.
