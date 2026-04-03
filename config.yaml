@@ -169,7 +169,7 @@ Africa_Elevation_Reprojected_tif_path: 'Data/Processed/Africa_Elevation_Reprojec
 #Dams_with_Gradients_gpkg_path: 'Data/Processed/Dam_Gradients.gpkg' # Africa_Dam_csv_path with gradient direction
 #CPIS_Classified_gpkg_path: 'Data/Processed/Classified_CPIS.gpkg' # Combined_CPIS_shp_path with 'upstream'/'downstream' classification
 
-## 2_Dam_Analysis
+## 2_water_source_analysis
 
 ### 7_Prep_Descriptive_Stats
 No_Crop_Vectorized_CA_UniLayer_shp_path: 'Data/Processed/No_Crop_Vectorized_UniLayer_CA-shp' # No_Crop_Vectorized_Command_Area_shp_path with overlapping geometries merged with n_merged and merged_GDW_IDs columns added to describe the number of geometries that were merged and their corresponding GDW_IDs 
@@ -196,6 +196,31 @@ Irrigation_Arid_SSA_2005_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2005.tif'
 Irrigation_Arid_SSA_2010_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2010.tif' # Africa_AEI_2010_asc_path masked to SSA_All_by_Country_shp_path
 Irrigation_Arid_SSA_2015_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2015.tif' # Africa_AEI_2015_asc_path masked to SSA_All_by_Country_shp_path
 
+### 5_NDWI_Analysis
+Sentinel2_dir_path: 'Data/Raw/Sentinel2' # Sentinel-2 Level-2A surface reflectance imagery (bands B03 Green and B8A NIR); obtain via Copernicus Open Access Hub (https://browser.dataspace.copernicus.eu/) or export from Google Earth Engine — see 5_ndwi_analysis.ipynb for GEE script
+NDWI_output_tif_path: 'Data/Processed/CPIS_NDWI.tif' # NDWI raster (Green - NIR)/(Green + NIR) cropped to arid SSA CPIS extent
+Active_CPIS_shp_path: 'Data/Processed/Active_CPIS-shp/Active_CPIS.shp' # CPIS polygons where mean NDWI > 0 (actively irrigated)
+Inactive_CPIS_shp_path: 'Data/Processed/Inactive_CPIS-shp/Inactive_CPIS.shp' # CPIS polygons where mean NDWI <= 0 (fallow or abandoned)
+CPIS_NDWI_stats_csv_path: 'Data/Processed/CPIS_NDWI_Stats.csv' # Mean, median, std NDWI per CPIS polygon
+
+### 6_DEM_Flow_Analysis
+CPIS_Elevation_Classified_shp_path: 'Data/Processed/CPIS_Elevation_Classified-shp/CPIS_Elevation_Classified.shp' # CPIS polygons classified as feasible, infeasible_elevation, or infeasible_distance relative to nearest dam
+Dam_CPIS_Profiles_csv_path: 'Data/Processed/Dam_CPIS_Elevation_Profiles.csv' # Pairwise dam-CPIS elevation statistics (distance, elevation at each point, elevation difference)
+
+### 7_Groundwater_GP_Regression
+GP_Groundwater_Prediction_tif_path: 'Data/Processed/GP_Groundwater_Prediction.tif' # Gaussian Process regression predicted groundwater productivity on a regular grid over arid SSA
+GP_Groundwater_Uncertainty_tif_path: 'Data/Processed/GP_Groundwater_Uncertainty.tif' # GP prediction uncertainty (1 sigma) — high values indicate data-sparse regions where future sampling would add the most value
+CPIS_GP_Groundwater_csv_path: 'Data/Processed/CPIS_GP_Groundwater.csv' # GP-predicted groundwater productivity and uncertainty at each CPIS centroid
+
+### 8_Anomaly_Detection
+CPIS_Feature_Matrix_csv_path: 'Data/Processed/CPIS_Feature_Matrix.csv' # Feature matrix for each CPIS polygon used as input to Isolation Forest (distance to dam, elevation diff, aridity index, groundwater productivity, elevation, log CPIS area)
+CPIS_Anomaly_Scores_csv_path: 'Data/Processed/CPIS_Anomaly_Scores.csv' # Isolation Forest anomaly scores and classification (anomaly / normal) for each CPIS
+CPIS_Anomalies_shp_path: 'Data/Processed/CPIS_Anomalies-shp/CPIS_Anomalies.shp' # CPIS flagged as anomalies — systems unexplained by surface water or groundwater; priorities for future fieldwork
+
+### 5_Spatial_Statistics
+CPIS_GWR_Results_csv_path: 'Data/Processed/CPIS_GWR_Results.csv' # GWR local R² and local coefficients (groundwater, aridity, elevation) per sampled CPIS centroid
+CPIS_Flow_Connectivity_shp_path: 'Data/Processed/CPIS_Flow_Connectivity-shp/CPIS_Flow_Connectivity.shp' # Elevation-feasible CPIS reclassified by D8 flow path connectivity to nearest dam
+
 
 # Output (see readme for aditional details)
 
@@ -215,3 +240,6 @@ Irrigation_Arid_SSA_2015_tif_path: 'Data/Processed/Irrigation_Arid_SSA_2015.tif'
 3_Figure1: 'Data/Output/Analyze/3_Figure1.png' # Targeting ratios and distance ranges plotted (over semi-arid area)
 3_Figure2: 'Data/Output/Analyze/3_Figure2.png' # Targeting ratios and distance ranges plotted (over arid area)
 3_Figure3: 'Data/Output/Analyze/3_Figure3.png' # Targeting ratios and distance ranges plotted (over hyper-arid area)
+5_Figure0: 'Data/Output/Analyze/5_Figure0.png' # Bivariate cross-K function: all CPIS vs dams, with 99% CSR envelope (optionally split by elevation class)
+5_Figure2: 'Data/Output/Analyze/5_Figure2.png' # GWR local R² and local coefficient maps (groundwater, aridity, elevation effect on dam distance)
+5_Figure3: 'Data/Output/Analyze/5_Figure3.png' # D8 flow path connectivity map and distance distribution for elevation-feasible CPIS
