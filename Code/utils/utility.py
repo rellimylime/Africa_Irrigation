@@ -1,43 +1,77 @@
 import os
-import inspect
-import yaml
-import numpy as np
-import pandas as pd
-import geopandas as gpd
-from scipy.spatial import cKDTree
-from shapely.ops import unary_union
-from tqdm import tqdm
+import ast
 
-# Access to project base_path
-def load_config():
-    with open('../../config.yaml', 'r') as file:
-        config = yaml.safe_load(file)
+try:
+    import yaml
+except ModuleNotFoundError:  # pragma: no cover - fallback when PyYAML is unavailable
+    yaml = None
+
+# Locate config.yaml relative to this file (project root), not relative to CWD.
+# This means load_config/resolve_path work regardless of where notebooks are run from.
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_config = None
+
+
+def _parse_simple_yaml(text):
+    """Parse the repository's simple key/value config without PyYAML.
+
+    This fallback supports the config layout used in this repo:
+    - one ``key: value`` pair per line
+    - quoted strings
+    - booleans, numbers, and ``null``-like values
+    - full-line and trailing comments
+    """
+    config = {}
+
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if ":" not in line:
+            continue
+
+        key, value = line.split(":", 1)
+        key = key.strip()
+        value = value.strip()
+        if not key:
+            continue
+
+        if "#" in value:
+            value = value.split("#", 1)[0].rstrip()
+
+        if not value:
+            config[key] = None
+            continue
+
+        try:
+            config[key] = ast.literal_eval(value)
+        except Exception:
+            lowered = value.lower()
+            if lowered in {"null", "none", "~"}:
+                config[key] = None
+            elif lowered == "true":
+                config[key] = True
+            elif lowered == "false":
+                config[key] = False
+            else:
+                config[key] = value
+
     return config
 
-def resolve_path(relative_path):
-    """Resolve a relative path using the base_path from config."""
-    config = load_config()
-    return os.path.join(config['base_path'], relative_path)
+def load_config():
+    global _config
+    if _config is None:
+        with open(os.path.join(_REPO_ROOT, 'config.yaml'), 'r', encoding='utf-8') as f:
+            text = f.read()
+        if yaml is not None:
+            _config = yaml.safe_load(text)
+        else:
+            _config = _parse_simple_yaml(text)
+    return _config
 
-def resolve_direct_path(base_path, relative_path):
-    """Resolve a relative path using a directly provided base_path.
-    
-    This function allows files to define their own base_path and paths
-    without relying on the config.yaml file.
-    
-    Parameters:
-    -----------
-    base_path : str
-        The base path to use for resolution
-    relative_path : str
-        The relative path to resolve
-        
-    Returns:
-    --------
-    str
-        The resolved absolute path
-    """
-    return os.path.join(base_path, relative_path)
+def resolve_path(relative_path):
+    """Resolve a config-relative path to an absolute path using base_path."""
+    return os.path.join(load_config()['base_path'], relative_path)
 
 # SSA countries with ISOs dictionary
 africa_iso_countries_filtered = {
@@ -90,49 +124,6 @@ africa_iso_countries_filtered = {
     "ZWE": ["Zimbabwe"]
 }
 
-# SSA Countries with ISOs only Arid regions
-africa_arid_iso_countries_filtered = {
-    "AGO": ["Angola"],
-    "BEN": ["Benin"],
-    "BWA": ["Botswana"],
-    "BFA": ["Burkina Faso"],
-    "BDI": ["Burundi"],
-    "CMR": ["Cameroon"],
-    "CAF": ["Central African Republic"],
-    "TCD": ["Chad"],
-    "CIV": ["Côte d'Ivoire", "CÃ´te d'Ivoire"],
-    "COD": ["Democratic Republic of the Congo"],
-    "DJI": ["Djibouti"],
-    "ERI": ["Eritrea"],
-    "SWZ": ["Eswatini", "Swaziland"],
-    "ETH": ["Ethiopia"],
-    "GMB": ["Gambia"],
-    "GHA": ["Ghana"],
-    "GIN": ["Guinea"],
-    "KEN": ["Kenya"],
-    "LSO": ["Lesotho"],
-    "MDG": ["Madagascar"],
-    "MWI": ["Malawi"],
-    "MLI": ["Mali"],
-    "MRT": ["Mauritania"],
-    "MOZ": ["Mozambique"],
-    "NAM": ["Namibia"],
-    "NER": ["Niger"],
-    "NGA": ["Nigeria"],
-    "SEN": ["Senegal"],
-    "SYC": ["Seychelles"],
-    "SLE": ["Sierra Leone"],
-    "SOM": ["Somalia"],
-    "ZAF": ["South Africa"],
-    "SSD": ["South Sudan"],
-    "SDN": ["Sudan"],
-    "TZA": ["Tanzania"],
-    "TGO": ["Togo"],
-    "UGA": ["Uganda"],
-    "ZMB": ["Zambia"],
-    "ZWE": ["Zimbabwe"]
-}
-
 # Full Africa countries with ISOs dictionary (includes North Africa)
 africa_iso_countries = {
     **africa_iso_countries_filtered,  # Include all SSA countries
@@ -151,7 +142,7 @@ regions_dict = {
     "Southern Africa": ["BWA", "SWZ", "LSO", "NAM", "ZAF", "ZMB", "ZWE"],
     "East Africa": ["BDI", "COM", "DJI", "ERI", "ETH", "KEN", "MDG", "MWI", "MUS", "MYT", "MOZ", "REU", "RWA", "SYC", "SOM", "TZA", "UGA"],
     "West Africa": ["BEN", "BFA", "CPV", "CIV", "GMB", "GHA", "GIN", "GNB", "LBR", "MLI", "MRT", "NER", "NGA", "SEN", "SLE", "TGO"],
-    "Central Africa": ["AGO", "CMR", "CAF", "TCD", "COG", "GNQ", "GAB", "COG", "STP"]
+    "Central Africa": ["AGO", "CMR", "CAF", "TCD", "COG", "GNQ", "GAB", "STP"]
 }
 
 # ISO code lists for easy access
