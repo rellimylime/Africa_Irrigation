@@ -1,8 +1,12 @@
 # Africa_Irrigation
 
-Project assessing how much of irrigation expansion in Africa, and in Sub-Saharan Africa (SSA), is attributable to center pivot irrigation systems (CPIS) from 2000 to 2021, and investigating the water sources that supply those systems.
+Project assessing whether irrigation expansion in arid Sub-Saharan Africa is occurring inside modeled large-dam command areas or outside centralized dam infrastructure. Center pivot irrigation systems (CPIS), DEM-based dam accessibility, NDWI activity classification, and groundwater context are used as supporting evidence for interpreting decentralized irrigation expansion.
 
 ## Research Context
+
+Current paper focus: over the past 20 years, has irrigation expansion occurred predominantly within areas supported by large-scale dam infrastructure, or has arid Sub-Saharan Africa shifted toward irrigation outside modeled command areas?
+
+The command-area growth analysis in `Code/paper1_command_area_growth/` is the primary paper workflow. CPIS and water-source analyses help interpret the mechanism, but they are supporting evidence rather than the main result.
 
 Chen et al. (2023) produced the first global inventory of CPIS in arid regions using instance segmentation on Sentinel-2 imagery. Their work answers **where CPIS are**. This project answers **where their water comes from**.
 
@@ -10,13 +14,15 @@ The core finding, presented at AGU Fall Meeting 2024 and the Mantell Symposium: 
 
 ## Repository structure
 
+Paper branch note: final paper work now lives in `Code/paper1_command_area_growth/`, with final outputs under `Output/Paper1_CommandAreaGrowth/` and paper-specific processed data under `Data/Processed/Paper1_CommandAreaGrowth/`. The `Code/2_water_source_analysis/` notebooks are supporting evidence.
+
 ```txt
 Africa_Irrigation/
 │
 ├── Code/
 │   ├── 0_process_data/             (download, filter, preprocess datasets)
 │   ├── 1_analyze_data/             (CPIS expansion and irrigation trend analyses)
-│   └── 2_water_source_analysis/    (NDWI, DEM flow, groundwater GP, anomaly detection)
+│   └── 2_water_source_analysis/    (NDWI, DEM flow, groundwater productivity, dam-explained classification)
 │
 ├── Data/
 │   ├── Raw/               (external inputs, unmodified)
@@ -49,7 +55,7 @@ conda activate irrigation
 
 2. Run the preprocessing notebooks in Code/0_process_data as needed.
 
-3. Run the analysis notebooks in Code/1_analyze_data or Code/2_water_source_analysis.
+3. Run the canonical paper workflow in Code/paper1_command_area_growth. Use Code/1_analyze_data and Code/2_water_source_analysis for supporting analyses.
 
 4. See outputs under Output/Process and Output/Analyze.
 
@@ -57,11 +63,13 @@ Detailed, step-by-step instructions are in the sub-READMEs inside each code fold
 
 ## Methods
 
+- **Command-area growth analysis** - Year-specific dam command areas are filtered by dam commissioning year, dissolved to avoid overlap double-counting, and used to split gridded irrigation into inside/outside command-area components.
+- **Growth decomposition** - Irrigation expansion is decomposed into inside-command-area and outside-command-area growth by year and country.
 - **Geospatial expansion analysis** — CPIS area and count tracked from 2000 to 2021 against total area equipped for irrigation (AEI), disaggregated by country, region, and aridity class.
 - **NDWI remote sensing** — Sentinel-2 Normalized Difference Water Index used to classify CPIS as actively irrigated vs fallow or abandoned, providing a cleaned denominator for water source analysis.
-- **DEM-based flow modeling** — SRTM elevation data and RichDEM flow direction used to assess whether each CPIS is topographically downslope from its nearest dam, distinguishing elevation-feasible from infeasible surface water access.
-- **Gaussian process regression** — MacDonald et al. (2012) categorical groundwater productivity interpolated into a continuous, uncertainty-quantified surface using sklearn GaussianProcessRegressor.
-- **Isolation Forest anomaly detection** — Multi-feature outlier detection flags CPIS that are simultaneously far from serviceable dams and in low-groundwater areas, identifying systems whose water sources remain unexplained.
+- **DEM-based flow modeling** — HDMA Africa DEM tiles plus RichDEM flow direction are used to assess whether each CPIS is topographically downslope from its nearest dam, distinguishing elevation-feasible from infeasible surface water access.
+- **Groundwater productivity overlay** — MacDonald et al. / BGS groundwater productivity classes are assigned directly to CPIS centroids from the source-map grid.
+- **Dam-explained irrigation classification** - Distance and elevation feasibility classify CPIS as dam-accessible proxies or least explained by large-dam infrastructure; groundwater and NDWI are interpretive overlays.
 - **Bivariate Cross-K function** — Tests spatial clustering of CPIS relative to dams at increasing distance bands against a Monte Carlo CSR null, capturing co-location signal the targeting ratio cannot.
 - **Geographically Weighted Regression (GWR)** — Local regression with adaptive bandwidth reveals spatial non-stationarity in what drives dam proximity, producing coefficient maps rather than a single global estimate.
 - **D8 flow path connectivity** — Hydrological tracing from elevation-feasible CPIS downstream to dams, replacing Euclidean distance with actual flow-path distance.
@@ -105,7 +113,7 @@ What it shows:
 - Country-level maps of new dams constructed 2000–2021.
 
 ### D. CPIS–dam spatial association
-Notebook: [Code/2_water_source_analysis/5_spatial_statistics.ipynb](Code/2_water_source_analysis/5_spatial_statistics.ipynb)
+Notebook: [Code/2_water_source_analysis/7_spatial_statistics.ipynb](Code/2_water_source_analysis/7_spatial_statistics.ipynb)
 
 What it tests:
 
@@ -116,7 +124,7 @@ What it tests:
 Headline takeaway: A motivating CDF in the notebook shows the raw distance distribution; the cross-K, GWR, and flow-path analyses then unpack the spatial structure the simple distance metric cannot reveal.
 
 ### E. NDWI-based activity classification
-Notebook: [Code/2_water_source_analysis/1_ndwi_analysis.ipynb](Code/2_water_source_analysis/1_ndwi_analysis.ipynb)
+Notebook: [Code/2_water_source_analysis/2_ndwi_analysis.ipynb](Code/2_water_source_analysis/2_ndwi_analysis.ipynb)
 
 What it does:
 
@@ -127,7 +135,7 @@ What it does:
 Note: Requires Sentinel-2 imagery download (GEE export script included in notebook).
 
 ### F. DEM-based flow and elevation accessibility
-Notebook: [Code/2_water_source_analysis/2_dem_flow_analysis.ipynb](Code/2_water_source_analysis/2_dem_flow_analysis.ipynb)
+Notebook: [Code/2_water_source_analysis/4_dem_flow_analysis.ipynb](Code/2_water_source_analysis/4_dem_flow_analysis.ipynb)
 
 What it does:
 
@@ -138,28 +146,28 @@ What it does:
 
 Headline takeaway: A substantial fraction of CPIS that appear "nearby" a dam by radial distance are uphill from it, explaining the weak concentration patterns in the distance-based targeting ratios.
 
-### G. Gaussian process groundwater regression
-Notebook: [Code/2_water_source_analysis/3_groundwater_gp_regression.ipynb](Code/2_water_source_analysis/3_groundwater_gp_regression.ipynb)
+### G. Groundwater productivity overlay
+Notebook: [Code/2_water_source_analysis/5_groundwater_productivity_overlay.ipynb](Code/2_water_source_analysis/5_groundwater_productivity_overlay.ipynb)
 
 What it does:
 
-- Fits a Gaussian Process regression (ConstantKernel × RBF + WhiteKernel) to the MacDonald et al. (2012) categorical groundwater productivity data.
-- Produces a continuous prediction surface and a 1σ uncertainty raster over arid SSA.
-- Predicts GP groundwater productivity at each CPIS centroid for use in anomaly detection.
+- Uses the MacDonald et al. / BGS groundwater productivity source map as a categorical 5 km yield-class layer.
+- Assigns the nearest source-map productivity value, class, and yield range to each CPIS centroid.
+- Exports CPIS groundwater productivity values for dam-explained classification context and spatial statistics.
 
-### H. Isolation Forest anomaly detection
-Notebook: [Code/2_water_source_analysis/4_anomaly_detection.ipynb](Code/2_water_source_analysis/4_anomaly_detection.ipynb)
+### H. Dam-explained irrigation classification
+Notebook: [Code/2_water_source_analysis/6_dam_explained_irrigation_classification.ipynb](Code/2_water_source_analysis/6_dam_explained_irrigation_classification.ipynb)
 
 What it does:
 
-- Builds a six-feature matrix per CPIS: distance to dam, elevation difference, aridity index, groundwater productivity, elevation, and log CPIS area.
-- Fits Isolation Forest to identify the most anomalous 5% of systems.
-- Maps anomalies and compares feature distributions between anomalous and normal CPIS.
+- Classifies each CPIS as a dam-accessible proxy, near-dam-but-uphill, or distant from large dams.
+- Reports least-dam-explained CPIS as the supporting water-source interpretation for the command-area growth question.
+- Joins NDWI activity and groundwater productivity after classification as context.
 
-Headline takeaway: Anomalous CPIS — far from dams, uphill, in low-groundwater zones — mark where future fieldwork, satellite monitoring, and water policy attention are most needed.
+Headline takeaway: The main support analysis should report which CPIS are least explained by large-dam access, then ask whether those systems are active and whether local groundwater or other surface-water sources plausibly explain them.
 
 ### I. Spatial statistics
-Notebook: [Code/2_water_source_analysis/5_spatial_statistics.ipynb](Code/2_water_source_analysis/5_spatial_statistics.ipynb)
+Notebook: [Code/2_water_source_analysis/7_spatial_statistics.ipynb](Code/2_water_source_analysis/7_spatial_statistics.ipynb)
 
 What it does:
 
@@ -182,7 +190,7 @@ Preprocessing steps are documented in the [Code/0_process_data](Code/0_process_d
 - Area Equipped for Irrigation rasters, 2000 and 2015, including MEIER products where used.
 - Groundwater productivity maps for Africa (MacDonald et al. 2012).
 - Sentinel-2 Level-2A surface reflectance imagery (bands B03, B8A) — download instructions in notebook 5.
-- SRTM-derived DEM for Africa — processed version at `Africa_Elevation_Reprojected_tif_path`.
+- HDMA Africa DEM tiles — raw ZIPs in `Africa_Elevation_rast_path`, with the projected crop built at `Africa_Elevation_Reprojected_tif_path`.
 
 Notes:
 

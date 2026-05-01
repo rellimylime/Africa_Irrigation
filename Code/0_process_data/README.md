@@ -106,3 +106,23 @@ Preprocessing pipeline that converts raw external datasets into the cleaned, spa
 - Aridity-layer clipped AEI shapefiles for 2000 and 2015
 
 **Used by:** `1_analyze_data/0_CPIS_vs_Total.ipynb`, `3_Dams_AEI_Targeting_Ratios.ipynb`
+
+---
+
+## 7_Groundwater_Processing.ipynb
+
+**What it does:** Converts the raw British Geological Survey / MacDonald et al. groundwater productivity xyz ASCII grid into `Groundwater_Prod.gpkg`.
+
+**Why it's necessary:** The water-source notebooks need a reproducible groundwater input. The source map is a 5 km continental-scale grid of representative borehole yield classes in L/s, not a newly observed continuous surface.
+
+**Input:**
+- `Groundwater_Productivity_path` - raw BGS xyz ASCII productivity file, usually `xyzASCII_gwprod_v1.txt`
+
+**Output:**
+- `Groundwater_Prod_gpkg_path` - EPSG:4326 point GeoPackage with `X`, `Y`, `Liters_Second`, `productivity_class`, and `yield_range`
+
+**Run:**
+
+Run the notebook from top to bottom after placing the BGS xyz ASCII file at the configured raw path.
+
+**Used by:** `2_water_source_analysis/5_groundwater_productivity_overlay.ipynb`, `6_anomaly_detection.ipynb`, and `7_spatial_statistics.ipynb`.
