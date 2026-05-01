@@ -159,11 +159,25 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+# Local editor settings
+.vscode/
+
 # Data directory
 Data/*
+!Data/Processed/
+Data/Processed/*
+!Data/Processed/Paper1_CommandAreaGrowth/
+!Data/Processed/Paper1_CommandAreaGrowth/README.md
+!Data/Processed/Paper1_CommandAreaGrowth/**/
+Data/Processed/Paper1_CommandAreaGrowth/**
+!Data/Processed/Paper1_CommandAreaGrowth/README.md
+!Data/Processed/Paper1_CommandAreaGrowth/**/
+!Data/Processed/Paper1_CommandAreaGrowth/**/.gitkeep
 
 # Archive folder - experimental/unused notebooks
 Code/Archive/
+!Code/Archive/
+!Code/Archive/README.md
 Nothing_to_see_here.ipynb*
 Dams_Mess.ipynb*
 dem_3857.tif*
@@ -179,3 +193,13 @@ Anna_groundwater.ipynb*
 */.DS_Store
 
 Output/percent_cropland_per_country.csv
+
+# Generated paper outputs
+Output/Paper1_CommandAreaGrowth/**
+!Output/Paper1_CommandAreaGrowth/
+!Output/Paper1_CommandAreaGrowth/README.md
+!Output/Paper1_CommandAreaGrowth/**/
+!Output/Paper1_CommandAreaGrowth/**/.gitkeep
+
+# External detector checkout and large model payloads
+global_cpis_codes/
