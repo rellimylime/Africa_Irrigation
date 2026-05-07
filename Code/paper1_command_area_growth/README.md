@@ -18,9 +18,12 @@ Run from the repository root:
 
 ```powershell
 python Code/paper1_command_area_growth/00_prepare_paper_inputs.py
-python Code/paper1_command_area_growth/01_prepare_yearly_command_areas.py --overwrite
-python Code/paper1_command_area_growth/02_extract_irrigation_inside_outside.py --all-touched
-python Code/paper1_command_area_growth/03_growth_decomposition.py
+python Code/paper1_command_area_growth/01_prepare_yearly_command_areas.py --command-area No_Crop_Vectorized_Command_Area_shp_path --overwrite
+python Code/paper1_command_area_growth/02_extract_irrigation_inside_outside.py --area-weighted
+python Code/paper1_command_area_growth/03_growth_decomposition.py --base-year 2000 --end-year 2015
+python Code/paper1_command_area_growth/04_qa_sensitivity_tables.py
+python Code/paper1_command_area_growth/05_make_paper1_figures_tables.py
+python Code/paper1_command_area_growth/06_validate_command_area_dem_plausibility.py
 ```
 
 Or run the wrapper:
@@ -30,7 +33,44 @@ bash Code/paper1_command_area_growth/run_paper1_pipeline.sh
 ```
 
 See `RUNBOOK.md` for the research estimand, assumptions, current blockers, and
-expected outputs.
+expected outputs. See `COMMAND_AREA_SOURCE.md` for the command-area source
+assessment.
+
+## Command-area source choice
+
+The primary analysis uses `No_Crop_Vectorized_Command_Area_shp_path`, which
+should point to the Earth Engine export
+`Physical_Envelope_Command_Areas_AnyUse_Hgt15`. This Earth Engine export has
+one cleaned, vectorized physical-envelope command-area feature per valid GDW
+dam, includes validity/capacity diagnostics, and is the most defensible
+large-dam service-area proxy in the current repository. The local export's
+`type` field should contain `vectorized_physical_envelope_anyuse`, which is
+important: a cropland-masked final command-area export would not be appropriate
+as the main 1980-2015 infrastructure mask. The yearly command-area builder
+checks this metadata for the final/vectorized source and stops unless
+physical-envelope provenance is confirmed.
+
+The `No_Crop_Initial_CA` and `No_Crop_All_Height_Initial_CA` exports are raw
+initial candidate masks. They are useful for sensitivity checks, but they are
+much larger, highly fragmented, and lack the vectorized layer's QA fields. They
+should not silently replace the vectorized layer in the main paper run.
+
+Dam inclusion should follow the paper definition: irrigation as any listed GDW
+use. The input-preparation script uses `USE_IRRI` when present, so dams marked
+`Main`, `Major`, or `Sec` irrigation are retained after the height filter. The
+command-area export itself must be generated with the same any-use filter before
+final paper runs. The updated Earth Engine export script is
+`gee_export_no_crop_anyuse_command_areas.js`.
+
+Do not use the superseded `No_Crop_Vectorized_Command_Areas_AnyUse_Hgt15`
+download for final results. That run produced only 24 command-area records and
+about 6,000 ha of command area. Also do not use the strict pure-no-crop
+`No_Crop_Vectorized_Command_Areas_AnyUse_Hgt15_ModelUnits` export as the main
+source: removing the crop mask from the older distance-calibration lineage
+collapsed the final footprint to 27 records and about 6,500 ha. The corrected
+primary export uses a physical service envelope derived from capacity, country
+yield, elevation/basin context, and a 50 km maximum radius cap, and widens dam
+selection to any listed irrigation use.
 
 The notebook-facing paper workflow is:
 
@@ -45,30 +85,50 @@ The notebook-facing paper workflow is:
    - Build processed GDW arid-SSA and irrigation-dam layers if they are missing.
 
 3. `01_prepare_yearly_command_areas.py`
-   - Filter dams by commissioning year.
+   - Filter dams by commissioning year and removal/decommission year when present.
    - Keep only command areas attached to dams active by each analysis year.
    - Dissolve overlaps so pixels are counted once.
    - Save one merged command-area layer per year.
 
 4. `02_extract_irrigation_inside_outside.py`
-   - Mask gridded irrigation rasters by yearly command areas.
+   - Area-weight gridded irrigation rasters by yearly command areas and country
+     masks.
    - Compute irrigation inside and outside command areas by year and country.
    - Save the core inside/outside panel table.
 
 5. `03_growth_decomposition.py`
    - Decompose net irrigation growth into inside-command-area and outside-command-area components.
    - Estimate what share of expansion occurred outside modeled large-dam service zones.
+   - The canonical wrapper uses `2000-2015` for the main AEI growth result.
 
-6. `notebooks/04_country_robustness.ipynb`
+6. `04_qa_sensitivity_tables.py`
+   - Write input and yearly command-area QA tables.
+   - Preserve area-weighted, all-touched, and center-cell extraction variants.
+   - Write the extraction sensitivity summary used to defend the headline result.
+
+7. `05_make_paper1_figures_tables.py`
+   - Build manuscript-ready tables from the final checked CSVs.
+   - Build core figures for growth decomposition, sensitivity, yearly totals,
+     top country contributors, and the 2015 command-area map.
+   - Write an asset manifest under the paper diagnostics folder.
+
+8. `06_validate_command_area_dem_plausibility.py`
+   - Sample the local HDMA-derived DEM inside each command-area envelope.
+   - Check whether modeled command areas are below reservoir elevation and below
+     reservoir elevation plus the 10 m tolerance used in the GEE export.
+   - Compare exported reservoir elevation to local DEM elevation at the dam
+     point and write red-flag diagnostics.
+
+9. `notebooks/04_country_robustness.ipynb`
    - Repeat growth decomposition by country.
    - Test sensitivity to influential countries and sparse command-area coverage.
 
-7. `notebooks/05_cpis_supporting_evidence.ipynb`
+10. `notebooks/05_cpis_supporting_evidence.ipynb`
    - Compare CPIS inside/outside command areas using year-matched CPIS inputs.
    - Use CPIS as supporting evidence for decentralized irrigation, not as the primary outcome.
 
-8. `notebooks/06_paper_figures_tables.ipynb`
-   - Generate only final manuscript-ready figures and tables from saved intermediate CSVs.
+11. `notebooks/06_paper_figures_tables.ipynb`
+   - Optional polish layer for figures and tables generated by the script.
 
 ## Core output table
 

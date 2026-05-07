@@ -44,17 +44,16 @@ from paper1_common import (
     existing_aei_raster_path,
     find_column,
     find_vector_path,
-    first_existing_vector,
 )
 
 from Code.utils.utility import ssa_iso
 
 
-COMMAND_AREA_KEYS = (
-    "No_Crop_Vectorized_Command_Area_shp_path",
-    "No_Crop_Initial_CA_shp_path",
-    "No_Crop_All_Height_Initial_CA_shp_path",
-)
+PRIMARY_COMMAND_AREA_KEY = "No_Crop_Vectorized_Command_Area_shp_path"
+EXPECTED_COMMAND_AREA_EXPORT = "No_CropOutput_CropCalibrated_Command_Areas_AnyUse_Hgt15_ModelUnits"
+SUPERSEDED_COMMAND_AREA_EXPORT = "No_Crop_Vectorized_Command_Areas_AnyUse_Hgt15"
+SUPERSEDED_PURE_NO_CROP_EXPORT = "No_Crop_Vectorized_Command_Areas_AnyUse_Hgt15_ModelUnits"
+MIN_PRIMARY_COMMAND_AREA_FEATURES = 100
 
 
 def _repair_geometry(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
@@ -73,6 +72,54 @@ def _repair_geometry(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
 def _write_vector(gdf: gpd.GeoDataFrame, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     gdf.to_file(path)
+
+
+def _optional_column(columns, candidates: tuple[str, ...]) -> str | None:
+    lowered = {str(col).lower(): col for col in columns}
+    for candidate in candidates:
+        match = lowered.get(candidate.lower())
+        if match is not None:
+            return match
+    return None
+
+
+def _has_any_use(series: pd.Series) -> pd.Series:
+    values = series.astype("string").str.strip().str.lower()
+    no_use_values = {"", "0", "false", "f", "no", "n", "none", "nan", "-99", "-999", "-9999"}
+    return values.notna() & ~values.isin(no_use_values)
+
+
+def _validate_primary_command_area_source(ca_source) -> None:
+    """Stop on known-bad/suspicious primary command-area exports."""
+
+    source_text = str(ca_source.path)
+    if SUPERSEDED_COMMAND_AREA_EXPORT in source_text and EXPECTED_COMMAND_AREA_EXPORT not in source_text:
+        raise WorkflowInputError(
+            "The primary command-area source points to the superseded any-use export "
+            f"({ca_source.path}). That export produced only 24 command-area records and "
+            "should not be used for Paper 1. Download the corrected Earth Engine export "
+            f"{EXPECTED_COMMAND_AREA_EXPORT} into "
+            f"Data/Raw/{EXPECTED_COMMAND_AREA_EXPORT}-shp and keep "
+            f"{PRIMARY_COMMAND_AREA_KEY} pointed there."
+        )
+    if SUPERSEDED_PURE_NO_CROP_EXPORT in source_text and EXPECTED_COMMAND_AREA_EXPORT not in source_text:
+        raise WorkflowInputError(
+            "The primary command-area source points to the strict no-crop sensitivity export "
+            f"({ca_source.path}). That run produced only 27 command-area records because removing "
+            "the crop mask from distance calibration collapses many command areas below the vector "
+            f"threshold. Download {EXPECTED_COMMAND_AREA_EXPORT} into "
+            f"Data/Raw/{EXPECTED_COMMAND_AREA_EXPORT}-shp and keep "
+            f"{PRIMARY_COMMAND_AREA_KEY} pointed there."
+        )
+
+    ca = gpd.read_file(ca_source.path)
+    if len(ca) < MIN_PRIMARY_COMMAND_AREA_FEATURES:
+        raise WorkflowInputError(
+            "The primary command-area source has too few features for the expected "
+            f"any-use, height >15 m large-dam export: {len(ca):,} features in "
+            f"{ca_source.path}. Expected at least {MIN_PRIMARY_COMMAND_AREA_FEATURES:,}. "
+            f"Regenerate/download {EXPECTED_COMMAND_AREA_EXPORT} before rerunning the pipeline."
+        )
 
 
 def _load_africa_boundaries(target_crs: str | None = None) -> gpd.GeoDataFrame:
@@ -194,8 +241,14 @@ def ensure_gdw_dam_outputs(overwrite: bool = False, min_height_m: float = 15.0) 
 
     dam_id_col = find_column(dams.columns, ("GDW_ID", "GDWID", "dam_id", "DAM_ID"), "GDW dam id")
     year_col = find_column(dams.columns, ("YEAR_DAM", "YEAR", "Year", "yr", "commission_year"), "dam year")
-    main_use_col = find_column(dams.columns, ("MAIN_USE", "main_use", "PURPOSE", "purpose"), "GDW main use")
     height_col = find_column(dams.columns, ("DAM_HGT_M", "HEIGHT", "DAM_HEIGHT", "height_m"), "GDW dam height")
+    use_irri_col = _optional_column(dams.columns, ("USE_IRRI", "use_irri", "IRRIGATION", "USE_IRR", "IRR_USE"))
+    main_use_col = None
+    if use_irri_col is None:
+        main_use_col = find_column(dams.columns, ("MAIN_USE", "main_use", "PURPOSE", "purpose"), "GDW main use")
+        use_filter_label = f"{main_use_col} contains Irrigation"
+    else:
+        use_filter_label = f"{use_irri_col} has any listed irrigation use"
 
     print("Spatially filtering raw GDW barriers to arid SSA.")
     joined = gpd.sjoin(
@@ -221,26 +274,32 @@ def ensure_gdw_dam_outputs(overwrite: bool = False, min_height_m: float = 15.0) 
     joined.to_file(all_out)
     print(f"Wrote GDW arid-SSA dam layer: {all_out} ({len(joined):,} features)")
 
-    irrigation = joined[
-        joined[main_use_col].astype(str).str.contains("Irrigation", case=False, na=False)
-        & (joined[height_col] > min_height_m)
-    ].copy()
+    if use_irri_col is not None:
+        irrigation_use = _has_any_use(joined[use_irri_col])
+    else:
+        irrigation_use = joined[main_use_col].astype(str).str.contains("Irrigation", case=False, na=False)
+
+    irrigation = joined[irrigation_use & (joined[height_col] > min_height_m)].copy()
     if irrigation.empty:
         raise WorkflowInputError(
             f"GDW irrigation dam filter produced zero features. "
-            f"Checked {main_use_col} contains Irrigation and {height_col} > {min_height_m}."
+            f"Checked {use_filter_label} and {height_col} > {min_height_m}."
         )
 
     irrigation.to_file(irr_out)
-    print(f"Wrote GDW arid-SSA irrigation dam layer: {irr_out} ({len(irrigation):,} features)")
+    print(
+        f"Wrote GDW arid-SSA irrigation dam layer: {irr_out} "
+        f"({len(irrigation):,} features; {use_filter_label}; {height_col} > {min_height_m})"
+    )
     return all_out, irr_out
 
 
 def validate_direct_inputs(years: list[int]) -> None:
     """Validate inputs consumed directly by Paper 1 scripts."""
 
-    ca_source = first_existing_vector(COMMAND_AREA_KEYS)
-    print(f"Command-area raw input found: {ca_source.path}")
+    ca_source = find_vector_path(PRIMARY_COMMAND_AREA_KEY)
+    _validate_primary_command_area_source(ca_source)
+    print(f"Primary command-area raw input found: {ca_source.path}")
 
     available = set(available_aei_years(AEI_YEARS))
     missing = [year for year in years if year not in available]

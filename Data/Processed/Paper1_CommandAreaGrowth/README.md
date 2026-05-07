@@ -2,6 +2,10 @@
 
 Canonical processed artifacts for the command-area growth paper live here.
 
+The main run uses the raw `No_Crop_Vectorized_Command_Area` export as the
+command-area source. Initial command-area masks are exploratory/sensitivity
+inputs and are not the default source for paper tables.
+
 ## Subdirectories
 
 - `yearly_command_areas/`: merged, overlap-free command-area layers by analysis year.

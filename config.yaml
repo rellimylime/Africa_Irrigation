@@ -34,7 +34,7 @@ Africa_Countries_shp_path: 'Data/Raw/Africa_Countries-shp' # from https://open.a
 
 
 AridAfrica_Barriers_shp_path: 'Data/Raw/AridAfrica_Barriers-shp' # from https://code.earthengine.google.com/dbec0a510527b5b728043b949da64c02
-No_Crop_Vectorized_Command_Area_shp_path: 'Data/Raw/No_Crop_Vectorized_Command_Area-shp' # from https://code.earthengine.google.com/4f8dde95dd1e6b853c020b5b1a4771ff
+No_Crop_Vectorized_Command_Area_shp_path: 'Data/Raw/Physical_Envelope_Command_Areas_AnyUse_Hgt15-shp' # GEE export Physical_Envelope_Command_Areas_AnyUse_Hgt15; irrigation as any listed GDW use, dam height >15 m, capacity-derived radius envelope (no cropland calibration). Config key kept for backwards compatibility with downstream scripts.
 No_Crop_Initial_CA_shp_path: 'Data/Raw/No_Crop_Initial_CA-shp/Initial_CA_Masks_No.shp' # from https://code.earthengine.google.com/4f8dde95dd1e6b853c020b5b1a4771ff
 No_Crop_All_Height_Initial_CA_shp_path: 'Data/Raw/No_Crop_All_Height_Initial_CA-shp' # from https://code.earthengine.google.com/4f8dde95dd1e6b853c020b5b1a4771ff
 #--------------------------------------------
@@ -106,7 +106,7 @@ Africa_Dam_Irrigation_csv_path: 'Data/Processed/Africa_Dams_Irrigation.csv' # Af
 Africa_Dam_Irrigation_Only_csv_path: 'Data/Processed/Africa_Dams_Irrigation_Only.csv' # Africa_Dam_csv_path filtered to dams that ONLY have 'Irrigation' listed under 'purpose'
                                                                                       # 
 GDW_Arid_SSA_Final_shp_path: 'Data/Processed/GDW_Arid_SSA_Final-shp/GDW_Arid_SSA_Final.shp' # GDW_barrier_shp_path filtered to arid regions and SSA and manually corrected 
-GDW_Arid_SSA_Final_Irr_shp_path: 'Data/Processed/GDW_Arid_SSA_Final-shp/GDW_Arid_SSA_Final_Irr.shp' # GDW_Arid_SSA_Final_shp_path filtered to dams that have 'Irrigation' listed under 'purpose'
+GDW_Arid_SSA_Final_Irr_shp_path: 'Data/Processed/GDW_Arid_SSA_Final-shp/GDW_Arid_SSA_Final_Irr.shp' # GDW_Arid_SSA_Final_shp_path filtered to dams that have irrigation as any listed use
 
 
 # These are all SSA filtered (this can be adjusted by changing ssa_iso to african_isos in the 'Filter the dam data' cell)

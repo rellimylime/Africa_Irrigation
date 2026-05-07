@@ -17,10 +17,51 @@ if str(SCRIPT_DIR) not in sys.path:
 from paper1_common import WorkflowInputError, config_path, ensure_paper_dirs
 
 
+def _tagged_csv_path(path: Path, output_tag: str | None) -> Path:
+    """Return a variant-specific CSV path without changing canonical defaults."""
+
+    if output_tag is None:
+        return path
+    tag = output_tag.strip().replace("-", "_")
+    if not tag or not tag.replace("_", "").isalnum():
+        raise WorkflowInputError(
+            f"Output tag must use only letters, numbers, underscores, or hyphens: {output_tag!r}"
+        )
+    return path.with_name(f"{path.stem}_{tag}{path.suffix}")
+
+
 def _growth_share(part: float, total: float) -> float:
     if total == 0 or not np.isfinite(total):
         return np.nan
     return part / total
+
+
+def _first_nonempty(values: pd.Series):
+    for value in values:
+        if pd.notna(value) and str(value).strip() and str(value).strip().lower() not in {"nan", "none"}:
+            return value
+    return pd.NA
+
+
+def _aggregate_panel_by_country_year(panel: pd.DataFrame) -> pd.DataFrame:
+    """Guarantee one row per ISO-year before comparing base and end years."""
+
+    value_cols = ["inside_AEI_ha", "outside_AEI_ha", "total_AEI_ha"]
+    panel = panel.copy()
+    panel["ISO"] = panel["ISO"].astype(str).str.strip().replace({"nan": pd.NA, "None": pd.NA})
+    panel = panel.dropna(subset=["ISO", "year"]).copy()
+    panel["year"] = pd.to_numeric(panel["year"], errors="coerce")
+    panel = panel.dropna(subset=["year"]).copy()
+    panel["year"] = panel["year"].astype(int)
+    for col in value_cols:
+        panel[col] = pd.to_numeric(panel[col], errors="coerce").fillna(0.0)
+
+    values = panel.groupby(["year", "ISO"], as_index=False)[value_cols].sum()
+    names = panel.groupby(["year", "ISO"])["country_name"].agg(_first_nonempty).reset_index()
+    out = values.merge(names, on=["year", "ISO"], how="left")
+    out["inside_share"] = out.apply(lambda row: _growth_share(row["inside_AEI_ha"], row["total_AEI_ha"]), axis=1)
+    out["outside_share"] = out.apply(lambda row: _growth_share(row["outside_AEI_ha"], row["total_AEI_ha"]), axis=1)
+    return out
 
 
 def decompose_growth(panel: pd.DataFrame, base_year: int | None, end_year: int | None) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -31,6 +72,7 @@ def decompose_growth(panel: pd.DataFrame, base_year: int | None, end_year: int |
     if missing:
         raise WorkflowInputError(f"Inside/outside panel is missing required columns: {', '.join(sorted(missing))}")
 
+    panel = _aggregate_panel_by_country_year(panel)
     years = sorted(int(y) for y in panel["year"].dropna().unique())
     if len(years) < 2:
         raise WorkflowInputError("Growth decomposition needs at least two years in the panel.")
@@ -47,10 +89,11 @@ def decompose_growth(panel: pd.DataFrame, base_year: int | None, end_year: int |
 
     merged = base.merge(
         end,
-        on=["ISO", "country_name"],
+        on=["ISO"],
         suffixes=("_base", "_end"),
         how="outer",
     )
+    merged["country_name"] = merged["country_name_end"].combine_first(merged["country_name_base"])
     for col in (
         "inside_AEI_ha_base",
         "outside_AEI_ha_base",
@@ -146,18 +189,28 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-year", type=int, default=None, help="Baseline year. Default: earliest panel year.")
     parser.add_argument("--end-year", type=int, default=None, help="End year. Default: latest panel year.")
+    parser.add_argument("--panel-path", default=None, help="Inside/outside panel CSV to decompose. Default: configured canonical panel.")
+    parser.add_argument(
+        "--output-tag",
+        default=None,
+        help="Read/write variant CSVs with this tag when --panel-path is omitted; always tags growth outputs.",
+    )
     args = parser.parse_args(argv)
 
     ensure_paper_dirs()
-    panel_path = config_path("Paper1_inside_outside_panel_csv_path")
+    panel_path = (
+        Path(args.panel_path)
+        if args.panel_path is not None
+        else _tagged_csv_path(config_path("Paper1_inside_outside_panel_csv_path"), args.output_tag)
+    )
     if not panel_path.exists():
         raise WorkflowInputError(f"Missing inside/outside panel: {panel_path}")
 
     panel = pd.read_csv(panel_path)
     country, summary = decompose_growth(panel, args.base_year, args.end_year)
 
-    country_path = config_path("Paper1_growth_decomposition_csv_path")
-    summary_path = config_path("Paper1_growth_summary_csv_path")
+    country_path = _tagged_csv_path(config_path("Paper1_growth_decomposition_csv_path"), args.output_tag)
+    summary_path = _tagged_csv_path(config_path("Paper1_growth_summary_csv_path"), args.output_tag)
     country_path.parent.mkdir(parents=True, exist_ok=True)
     country.to_csv(country_path, index=False)
     summary.to_csv(summary_path, index=False)
@@ -173,4 +226,3 @@ if __name__ == "__main__":
         raise SystemExit(main())
     except WorkflowInputError as exc:
         raise SystemExit(f"ERROR: {exc}") from None
-
