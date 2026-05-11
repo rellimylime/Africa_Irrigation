@@ -200,3 +200,6 @@ Output/percent_cropland_per_country.csv
 
 # External detector checkout and large model payloads
 global_cpis_codes/
+
+# Remove anna doodles
+Code/Anna_doodles/
