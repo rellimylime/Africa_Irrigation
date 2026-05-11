@@ -1,0 +1,3 @@
+scope,n_command_areas,n_with_dem_samples,median_pct_below_reservoir,median_pct_below_reservoir_plus10m,median_pct_above_reservoir_plus10m,p95_pct_above_reservoir_plus10m,median_head_m,median_dam_reservoir_dem_difference_m,n_tiny_dem_sample_lt_10,n_above_allowed_gt_5pct,n_low_positive_head_lt_75pct,n_low_allowed_head_lt_95pct,n_reservoir_dem_mismatch_gt_100m,n_any_major_flag
+all_source_command_areas,174,174,14.746057299190394,75.20614702955874,24.793852970441264,44.46173816286423,-5.667451858520508,0.0,1,143,171,143,0,173
+active_by_2015,169,169,14.79770627588404,75.7871064467766,24.212893553223388,44.639100091523325,-5.6514892578125,0.0,1,139,166,139,0,168

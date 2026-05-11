@@ -1,49 +1,43 @@
 # Paper 1 Workflow Runbook
 
-This folder now has a script-first canonical workflow. The notebooks can call
-these scripts later, but the paper results should come from the stable files
-written under `Data/Processed/Paper1_CommandAreaGrowth/final_tables/`.
+This runbook is the operational checklist for regenerating the command-area
+growth paper outputs. For the scientific framing, see `README.md`. For the
+command-area source decision, see `COMMAND_AREA_SOURCE.md`.
 
-## Research Estimand
+## Before Running
 
-Primary estimand:
+Confirm these inputs are configured in `config.yaml`:
 
-> For arid Sub-Saharan Africa, what share of gridded AEI growth occurred inside
-> modeled large-dam command areas versus outside those command areas?
+- AEI rasters for 2000 and 2015, plus any intermediate AEI years used in the
+  time-series panel.
+- `No_Crop_Vectorized_Command_Area_shp_path`, currently pointing to
+  `Data/Raw/Physical_Envelope_Command_Areas_AnyUse_Hgt15-shp`.
+- Arid-SSA country mask inputs.
+- GDW dam data with commissioning year, height, irrigation-use fields, and
+  reservoir metadata.
+- Local HDMA-derived DEM if running the DEM plausibility step.
 
-Interpretation rule:
+Run from the repository root.
 
-- `inside command area` means spatially inside a modeled command area attached
-  to a dam commissioned by that year and not removed by that year. The local GDW
-  copy has a `REM_YEAR` field, but the current arid-SSA records use the missing
-  value `-99`, so no dams are excluded as decommissioned in the present run.
-- The main command-area source is `No_Crop_Vectorized_Command_Area_shp_path`,
-  currently expected to point to
-  `Physical_Envelope_Command_Areas_AnyUse_Hgt15`. The Initial and All-Height
-  Initial exports are retained for sensitivity checks, not as the default paper
-  source.
-- The primary source should remain the physical-envelope final export. It does
-  not condition the command-area geometry on 2019 cropland, so the
-  infrastructure mask is not mechanically defined by a late-period land-cover
-  outcome. The yearly builder now stops on an unverified final/vectorized source
-  unless explicitly allowed for exploratory runs.
-- Dam inclusion should mean irrigation is any listed GDW use. The local dam layer
-  uses `USE_IRRI` when present, but the GEE command-area export must be
-  regenerated with the same any-use filter before final paper results. The
-  superseded `No_Crop_Vectorized_Command_Areas_AnyUse_Hgt15` export is not
-  acceptable for final results because it produced only 24 records and a tiny
-  command-area footprint. The strict pure-no-crop
-  `No_Crop_Vectorized_Command_Areas_AnyUse_Hgt15_ModelUnits` export is a
-  sensitivity run only because it produced only 27 records.
-- `outside command area` means outside those modeled areas. It is evidence of
-  irrigation not explained by the modeled large-dam command-area layer, not proof
-  of groundwater use.
-- CPIS, NDVI/NDWI activity, groundwater productivity, DEM accessibility, and
-  flow-connectivity analyses are supporting evidence.
+## Full Pipeline
 
-## Run Order
+```bash
+bash Code/paper1_command_area_growth/run_paper1_pipeline.sh
+```
 
-From the repository root:
+PowerShell:
+
+```powershell
+.\Code\paper1_command_area_growth\run_paper1_pipeline.ps1
+```
+
+If needed, pin the Python executable:
+
+```bash
+PYTHON=/path/to/python bash Code/paper1_command_area_growth/run_paper1_pipeline.sh
+```
+
+## Individual Steps
 
 ```powershell
 python Code/paper1_command_area_growth/00_prepare_paper_inputs.py
@@ -53,70 +47,54 @@ python Code/paper1_command_area_growth/03_growth_decomposition.py --base-year 20
 python Code/paper1_command_area_growth/04_qa_sensitivity_tables.py
 python Code/paper1_command_area_growth/05_make_paper1_figures_tables.py
 python Code/paper1_command_area_growth/06_validate_command_area_dem_plausibility.py
+python Code/paper1_command_area_growth/07_missing_dam_accounting.py
 ```
 
-Wrapper commands:
+## Expected Final Outputs
 
-```bash
-bash Code/paper1_command_area_growth/run_paper1_pipeline.sh
-```
+Analytical source tables:
 
-In Git Bash on Windows, activate the project conda environment first:
+- `Data/Processed/Paper1_CommandAreaGrowth/final_tables/inside_outside_irrigation_by_country_year_area_weighted.csv`
+- `Data/Processed/Paper1_CommandAreaGrowth/final_tables/growth_decomposition_by_country_area_weighted.csv`
+- `Data/Processed/Paper1_CommandAreaGrowth/final_tables/growth_decomposition_summary_area_weighted.csv`
+- `Data/Processed/Paper1_CommandAreaGrowth/final_tables/paper1_extraction_sensitivity_summary.csv`
+- `Data/Processed/Paper1_CommandAreaGrowth/final_tables/paper1_command_area_dem_plausibility_summary.csv`
+- `Data/Processed/Paper1_CommandAreaGrowth/final_tables/paper1_missing_dam_tipping_points.csv`
 
-```bash
-cd /c/Users/ermil/Documents/Africa_Irrigation
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate irrigation
-bash Code/paper1_command_area_growth/run_paper1_pipeline.sh
-```
+Compiled manuscript outputs:
 
-```powershell
-.\Code\paper1_command_area_growth\run_paper1_pipeline.ps1
-```
-
-The current local machine may need the project conda environment activated first.
-
-## Outputs
-
-- `Data/Processed/SSA_All_Arid_by_Country-shp/SSA_All_Arid_by_Country.shp`
-- `Data/Processed/GDW_Arid_SSA_Final-shp/GDW_Arid_SSA_Final.shp`
-- `Data/Processed/GDW_Arid_SSA_Final-shp/GDW_Arid_SSA_Final_Irr.shp`
-- `yearly_command_areas/command_areas_<year>.gpkg`
-- `final_tables/yearly_command_area_inventory.csv`
-- `final_tables/inside_outside_irrigation_by_country_year.csv`
-- `extracted_irrigation/inside_outside_extraction_diagnostics.csv`
-- `final_tables/growth_decomposition_by_country.csv`
-- `final_tables/growth_decomposition_summary.csv`
-- `final_tables/paper1_input_qa_summary.csv`
-- `final_tables/paper1_yearly_command_area_qa.csv`
-- `final_tables/paper1_extraction_sensitivity_summary.csv`
-- `Output/Paper1_CommandAreaGrowth/tables/table_*.csv`
-- `Output/Paper1_CommandAreaGrowth/tables/table_*.md`
-- `Output/Paper1_CommandAreaGrowth/figures/figure_*.png`
+- `Output/Paper1_CommandAreaGrowth/tables/table_1_headline_summary.csv`
+- `Output/Paper1_CommandAreaGrowth/tables/table_2_extraction_sensitivity.csv`
+- `Output/Paper1_CommandAreaGrowth/tables/table_3_top_country_growth_contributors.csv`
+- `Output/Paper1_CommandAreaGrowth/tables/table_4_yearly_inside_outside_totals.csv`
+- `Output/Paper1_CommandAreaGrowth/tables/table_5_dem_plausibility_summary.csv`
+- `Output/Paper1_CommandAreaGrowth/tables/table_6_missing_dam_accounting.csv`
+- `Output/Paper1_CommandAreaGrowth/tables/table_7_standardized_growth_contribution.csv`
+- `Output/Paper1_CommandAreaGrowth/tables/table_8_country_concentration_checks.csv`
+- `Output/Paper1_CommandAreaGrowth/tables/table_9_dam_cohort_growth_context.csv`
+- `Output/Paper1_CommandAreaGrowth/figures/figure_1_growth_decomposition.png`
+- `Output/Paper1_CommandAreaGrowth/figures/figure_2_extraction_sensitivity.png`
+- `Output/Paper1_CommandAreaGrowth/figures/figure_3_inside_outside_timeseries.png`
+- `Output/Paper1_CommandAreaGrowth/figures/figure_4_top_country_growth_contributors.png`
+- `Output/Paper1_CommandAreaGrowth/figures/figure_6_dem_plausibility_head_checks.png`
+- `Output/Paper1_CommandAreaGrowth/figures/figure_7_reservoir_dem_sanity_check.png`
+- `Output/Paper1_CommandAreaGrowth/figures/figure_8_missing_dam_tipping_points.png`
 - `Output/Paper1_CommandAreaGrowth/diagnostics/paper1_manuscript_asset_manifest.csv`
-- `final_tables/paper1_command_area_dem_plausibility_by_dam.csv`
-- `final_tables/paper1_command_area_dem_plausibility_summary.csv`
 - `Output/Paper1_CommandAreaGrowth/diagnostics/paper1_command_area_dem_plausibility_flagged.csv`
 
-## Current Blockers To Resolve
+## Interpretation Checks
 
-The scripts are intentionally strict. If they stop early, use the error message
-as the next acquisition/preprocessing task.
+- The 2000-2015 headline should use the area-weighted extraction.
+- Extraction sensitivity should stay near 97.3-97.8% outside growth.
+- DEM QA is a caveat check, not validation of true command-area boundaries.
+- Missing-dam accounting should be framed mainly as a tipping-point bound, not as
+  proof that dam-associated irrigation is losing mode share.
 
-Known likely blockers from the repository audit:
+## Troubleshooting
 
-- If starting from raw-only data, `00_prepare_paper_inputs.py` now rebuilds the
-  SSA arid country mask and GDW processed dam layers when they are missing.
-- Command-area polygons and AEI rasters are direct inputs. They are validated but
-  not transformed before Paper 1 processing.
-- Manuscript tables and figures are regenerated by `05_make_paper1_figures_tables.py`
-  from the checked final tables; edit the script rather than hand-editing outputs.
-- DEM plausibility checks are QA checks against the local DEM, not ground-truth
-  command-area validation. Treat flags as evidence to revisit or caveat the
-  command-area envelope model.
-
-## Recommended Paper Framing
-
-Use `2000-2015` for total-AEI command-area growth unless a credible 2020/2021 AEI
-surface is added. Use `2000-2021` for CPIS expansion and continued-use supporting
-evidence. Do not mix those date ranges in a single headline without a clear caveat.
+- If a script stops on a missing input, update `config.yaml` or regenerate the
+  upstream processed layer named in the error.
+- If `python` points to the wrong environment, set `PYTHON` before running the
+  wrapper.
+- If manuscript tables or figures look stale, rerun steps `05` through `07`;
+  those steps rebuild compiled outputs and update the asset manifest.

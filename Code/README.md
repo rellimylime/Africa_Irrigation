@@ -1,22 +1,30 @@
 # Code
 
-This folder contains all Jupyter notebooks used to prepare, analyze, and interpret data for the Africa_Irrigation project.
+This directory contains the analysis code for the Africa irrigation project.
+The paper workflow is now script-first; notebooks outside that workflow are
+supporting or legacy material.
 
-Each subfolder has its own README with more detailed instructions, inputs, and outputs. The main subfolders are:
+## Directory Guide
 
-- **paper1_command_area_growth/**
-  Canonical workflow for the paper asking whether irrigation expansion in arid Sub-Saharan Africa occurred inside or outside modeled large-dam command areas. Final paper figures and tables should trace back to this folder.
+| Directory | Status | Purpose |
+| --- | --- | --- |
+| `paper1_command_area_growth/` | Primary | Canonical Paper 1 workflow for AEI growth inside/outside modeled large-dam command-area envelopes. |
+| `0_process_data/` | Supporting/older | Raw-data preprocessing notebooks used by earlier CPIS and water-source analyses. |
+| `1_analyze_data/` | Supporting/older | CPIS expansion notebooks and motivation figures. |
+| `2_water_source_analysis/` | Supporting | CPIS activity, elevation, groundwater, dam-accessibility, anomaly, and spatial-statistics analyses used to interpret outside-command-area irrigation. |
+| `Archive/` | Archive | Pointer to archived exploratory material. |
+| `utils/` | Shared | Utility functions used by notebooks and scripts. |
 
-- **0_process_data/**
-  Contains notebooks that download, filter, and preprocess raw datasets. Outputs from these notebooks are stored in `Data/Processed` and `Output/Process`. These outputs are required inputs for all subsequent analysis notebooks.
+## Source Of Truth
 
-- **1_analyze_data/**
-  Contains notebooks that examine the expansion of center pivot irrigation systems (CPIS) compared to total irrigation in Africa and Sub-Saharan Africa from 2000 to 2021. Analyses include continental trends, country-level comparisons, and regional (aridity/SSA) breakdowns. Outputs are stored in `Output/Analyze`.
+For the current paper, start in `paper1_command_area_growth/`.
 
-- **2_water_source_analysis/**
-  Supporting evidence for interpreting outside-command-area irrigation and CPIS water-source plausibility. Analyses include elevation-based dam accessibility, NDWI activity classification, Gaussian process groundwater interpolation, anomaly detection, and spatial statistics.
+Final manuscript-facing outputs should trace to:
 
-- **Archive/**
-  Pointer folder. The old command-area archive notebooks were moved to `paper1_command_area_growth/legacy_notebooks/` so they remain available as paper references.
+- `Data/Processed/Paper1_CommandAreaGrowth/final_tables/`
+- `Output/Paper1_CommandAreaGrowth/tables/`
+- `Output/Paper1_CommandAreaGrowth/figures/`
+- `Output/Paper1_CommandAreaGrowth/diagnostics/`
 
-For dataset locations and descriptions, see the `config.yaml` file at the root of the repository.
+The older notebook folders remain useful context, but they should not override
+the script-first Paper 1 workflow.

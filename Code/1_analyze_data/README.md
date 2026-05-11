@@ -1,6 +1,12 @@
 # 1_analyze_data
 
-Expansion analysis notebooks that quantify how CPIS growth compares to total irrigation growth across Africa and Sub-Saharan Africa from 2000 to 2021. These notebooks answer the "how fast and where" question before the water source notebooks ask "why."
+Supporting/older expansion-analysis notebooks that quantify how CPIS growth
+compares to total irrigation growth across Africa and Sub-Saharan Africa from
+2000 to 2021.
+
+For the current command-area growth paper, these notebooks are motivation and
+context. The canonical paper results come from
+`Code/paper1_command_area_growth/`.
 
 Run `Code/0_process_data` notebooks first.
 

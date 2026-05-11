@@ -1,6 +1,12 @@
 # 0_process_data
 
-Preprocessing pipeline that converts raw external datasets into the cleaned, spatially harmonized inputs required by all analysis notebooks. Run these in order before anything in `1_analyze_data/` or `2_water_source_analysis/`.
+Supporting/older preprocessing notebooks that convert raw external datasets into
+cleaned, spatially harmonized inputs used by the CPIS and water-source notebooks.
+
+For the current command-area growth paper, `Code/paper1_command_area_growth/`
+is the canonical workflow. Use this folder when you need to regenerate upstream
+inputs such as the arid-SSA mask, CPIS country joins, GDW dam layers, AEI
+preprocessing, or groundwater productivity products.
 
 ---
 

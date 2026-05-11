@@ -178,6 +178,10 @@ Data/Processed/Paper1_CommandAreaGrowth/**
 Code/Archive/
 !Code/Archive/
 !Code/Archive/README.md
+
+# Generated outputs should live under Output/, not inside Code/
+Code/**/Output/
+
 Nothing_to_see_here.ipynb*
 Dams_Mess.ipynb*
 dem_3857.tif*

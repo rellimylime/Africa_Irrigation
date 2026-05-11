@@ -50,9 +50,10 @@ from Code.utils.utility import ssa_iso
 
 
 PRIMARY_COMMAND_AREA_KEY = "No_Crop_Vectorized_Command_Area_shp_path"
-EXPECTED_COMMAND_AREA_EXPORT = "No_CropOutput_CropCalibrated_Command_Areas_AnyUse_Hgt15_ModelUnits"
+EXPECTED_COMMAND_AREA_EXPORT = "Physical_Envelope_Command_Areas_AnyUse_Hgt15"
 SUPERSEDED_COMMAND_AREA_EXPORT = "No_Crop_Vectorized_Command_Areas_AnyUse_Hgt15"
 SUPERSEDED_PURE_NO_CROP_EXPORT = "No_Crop_Vectorized_Command_Areas_AnyUse_Hgt15_ModelUnits"
+SUPERSEDED_CROP_CALIBRATED_EXPORT = "No_CropOutput_CropCalibrated_Command_Areas_AnyUse_Hgt15_ModelUnits"
 MIN_PRIMARY_COMMAND_AREA_FEATURES = 100
 
 
@@ -110,6 +111,12 @@ def _validate_primary_command_area_source(ca_source) -> None:
             f"threshold. Download {EXPECTED_COMMAND_AREA_EXPORT} into "
             f"Data/Raw/{EXPECTED_COMMAND_AREA_EXPORT}-shp and keep "
             f"{PRIMARY_COMMAND_AREA_KEY} pointed there."
+        )
+    if SUPERSEDED_CROP_CALIBRATED_EXPORT in source_text and EXPECTED_COMMAND_AREA_EXPORT not in source_text:
+        raise WorkflowInputError(
+            "The primary command-area source points to a superseded crop-calibrated export "
+            f"({ca_source.path}). Use the current physical-envelope any-use export "
+            f"{EXPECTED_COMMAND_AREA_EXPORT} in Data/Raw/{EXPECTED_COMMAND_AREA_EXPORT}-shp."
         )
 
     ca = gpd.read_file(ca_source.path)
