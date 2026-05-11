@@ -194,12 +194,5 @@ Anna_groundwater.ipynb*
 
 Output/percent_cropland_per_country.csv
 
-# Generated paper outputs
-Output/Paper1_CommandAreaGrowth/**
-!Output/Paper1_CommandAreaGrowth/
-!Output/Paper1_CommandAreaGrowth/README.md
-!Output/Paper1_CommandAreaGrowth/**/
-!Output/Paper1_CommandAreaGrowth/**/.gitkeep
-
 # External detector checkout and large model payloads
 global_cpis_codes/
