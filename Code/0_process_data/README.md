@@ -125,4 +125,4 @@ Preprocessing pipeline that converts raw external datasets into the cleaned, spa
 
 Run the notebook from top to bottom after placing the BGS xyz ASCII file at the configured raw path.
 
-**Used by:** `2_water_source_analysis/5_groundwater_productivity_overlay.ipynb`, `6_anomaly_detection.ipynb`, and `7_spatial_statistics.ipynb`.
+**Used by:** `2_water_source_analysis/5_groundwater_productivity_overlay.ipynb`, `6_anomaly_detection.ipynb`, and `8_spatial_statistics.ipynb`.

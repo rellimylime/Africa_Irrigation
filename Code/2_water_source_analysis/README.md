@@ -15,8 +15,9 @@ Run in order:
 3. `3_preprocess_hdma_elevation.py`
 4. `4_dem_flow_analysis.ipynb`
 5. `5_groundwater_productivity_overlay.ipynb`
-6. `6_dam_explained_irrigation_classification.ipynb`
-7. `7_spatial_statistics.ipynb`
+6. `6_anomaly_detection.ipynb` (legacy exploratory check)
+7. `7_dam_explained_irrigation_classification.ipynb`
+8. `8_spatial_statistics.ipynb`
 
 The download step pulls the HDMA Africa DEM and flow-direction ZIP tiles into `Data/Raw/HDMA_Africa/`. The preprocessing step builds `Data/Processed/Africa_Elevation_Reprojected.tif`, which the downstream elevation-aware notebooks use.
 The old PowerShell and shell wrappers have been removed so the download step now has a single Python entry point.
@@ -77,7 +78,16 @@ Required preprocessing:
 Outputs:
 - `CPIS_GP_Groundwater_csv_path` with `source_gw_productivity`, `productivity_class`, and `yield_range`
 
-## 6_dam_explained_irrigation_classification.ipynb
+## 6_anomaly_detection.ipynb
+
+Legacy exploratory Isolation Forest workflow for identifying CPIS outliers. Retained for provenance, but it should not be treated as the main answer to the inside-vs-outside dam infrastructure question.
+
+Outputs:
+- `CPIS_Feature_Matrix_csv_path`
+- `CPIS_Anomaly_Scores_csv_path`
+- `CPIS_Anomalies_shp_path`
+
+## 7_dam_explained_irrigation_classification.ipynb
 
 Classifies each CPIS by whether it is plausibly explained by large-dam access using distance to nearest dam and elevation feasibility. Groundwater productivity and NDWI activity are joined afterward as interpretive context, not as criteria for the dam-explained classification.
 
@@ -85,9 +95,7 @@ Outputs:
 - `CPIS_Dam_Explained_csv_path`
 - `CPIS_Dam_Explained_shp_path`
 
-`6_anomaly_detection.ipynb` is retained as a legacy exploratory outlier workflow, but it should not be treated as the main answer to the inside-vs-outside dam infrastructure question.
-
-## 7_spatial_statistics.ipynb
+## 8_spatial_statistics.ipynb
 
 Runs the cross-K function, geographically weighted regression, and D8 flow-path connectivity analysis to complement the simpler targeting-ratio story.
 

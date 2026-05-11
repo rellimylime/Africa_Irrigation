@@ -65,7 +65,7 @@ Run `Code/0_process_data` notebooks first.
 
 ## 3_Dams_AEI_Targeting_Ratios.ipynb
 
-> **Archived.** Superseded by `Code/2_water_source_analysis/7_spatial_statistics.ipynb`.
+> **Archived.** Superseded by `Code/2_water_source_analysis/8_spatial_statistics.ipynb`.
 
 ---
 

@@ -113,7 +113,7 @@ What it shows:
 - Country-level maps of new dams constructed 2000–2021.
 
 ### D. CPIS–dam spatial association
-Notebook: [Code/2_water_source_analysis/7_spatial_statistics.ipynb](Code/2_water_source_analysis/7_spatial_statistics.ipynb)
+Notebook: [Code/2_water_source_analysis/8_spatial_statistics.ipynb](Code/2_water_source_analysis/8_spatial_statistics.ipynb)
 
 What it tests:
 
@@ -156,7 +156,7 @@ What it does:
 - Exports CPIS groundwater productivity values for dam-explained classification context and spatial statistics.
 
 ### H. Dam-explained irrigation classification
-Notebook: [Code/2_water_source_analysis/6_dam_explained_irrigation_classification.ipynb](Code/2_water_source_analysis/6_dam_explained_irrigation_classification.ipynb)
+Notebook: [Code/2_water_source_analysis/7_dam_explained_irrigation_classification.ipynb](Code/2_water_source_analysis/7_dam_explained_irrigation_classification.ipynb)
 
 What it does:
 
@@ -167,7 +167,7 @@ What it does:
 Headline takeaway: The main support analysis should report which CPIS are least explained by large-dam access, then ask whether those systems are active and whether local groundwater or other surface-water sources plausibly explain them.
 
 ### I. Spatial statistics
-Notebook: [Code/2_water_source_analysis/7_spatial_statistics.ipynb](Code/2_water_source_analysis/7_spatial_statistics.ipynb)
+Notebook: [Code/2_water_source_analysis/8_spatial_statistics.ipynb](Code/2_water_source_analysis/8_spatial_statistics.ipynb)
 
 What it does:
 
