@@ -216,14 +216,16 @@ GP_Groundwater_Prediction_tif_path: 'Data/Processed/GP_Groundwater_Prediction.ti
 GP_Groundwater_Uncertainty_tif_path: 'Data/Processed/GP_Groundwater_Uncertainty.tif' # Legacy/unused; GP interpolation was removed from the formal groundwater workflow
 CPIS_GP_Groundwater_csv_path: 'Data/Processed/CPIS_Groundwater_Productivity.csv' # Direct BGS/MacDonald source-map groundwater productivity class/value at each CPIS centroid
 
-### 6_dam_explained_irrigation_classification
-CPIS_Dam_Explained_csv_path: 'Data/Processed/CPIS_Dam_Explained_Classification.csv' # Directional classification of whether each CPIS is plausibly explained by large-dam access
-CPIS_Dam_Explained_shp_path: 'Data/Processed/CPIS_Dam_Explained-shp/CPIS_Dam_Explained.shp' # Spatial output of dam-explained / least-dam-explained CPIS classification
+### 6_anomaly_detection
 CPIS_Feature_Matrix_csv_path: 'Data/Processed/CPIS_Feature_Matrix.csv' # Legacy anomaly workflow feature matrix; use dam-explained classification for the main paper framing
 CPIS_Anomaly_Scores_csv_path: 'Data/Processed/CPIS_Anomaly_Scores.csv' # Legacy Isolation Forest anomaly scores
 CPIS_Anomalies_shp_path: 'Data/Processed/CPIS_Anomalies-shp/CPIS_Anomalies.shp' # Legacy Isolation Forest anomaly shapefile
 
-### 7_spatial_statistics
+### 7_dam_explained_irrigation_classification
+CPIS_Dam_Explained_csv_path: 'Data/Processed/CPIS_Dam_Explained_Classification.csv' # Directional classification of whether each CPIS is plausibly explained by large-dam access
+CPIS_Dam_Explained_shp_path: 'Data/Processed/CPIS_Dam_Explained-shp/CPIS_Dam_Explained.shp' # Spatial output of dam-explained / least-dam-explained CPIS classification
+
+### 8_spatial_statistics
 CPIS_GWR_Results_csv_path: 'Data/Processed/CPIS_GWR_Results.csv' # GWR local R² and local coefficients (groundwater, aridity, elevation) per sampled CPIS centroid
 CPIS_Flow_Connectivity_shp_path: 'Data/Processed/CPIS_Flow_Connectivity-shp/CPIS_Flow_Connectivity.shp' # Elevation-feasible CPIS reclassified by D8 flow path connectivity to nearest dam
 
