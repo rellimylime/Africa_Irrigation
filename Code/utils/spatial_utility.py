@@ -1,9 +1,16 @@
+import os
+import zipfile
+from contextlib import ExitStack
+from pathlib import Path
+
 import numpy as np
 import geopandas as gpd
 from scipy.spatial import cKDTree
 from shapely.ops import unary_union
 from tqdm import tqdm
 import rasterio
+from rasterio.merge import merge
+from rasterio.vrt import WarpedVRT
 from rasterio.warp import calculate_default_transform, reproject, Resampling
 
 
@@ -79,24 +86,15 @@ def optimized_clip(source_gdf, clip_gdf):
     """
     # Create a unary union of the clip geometries
     clip_union = unary_union(clip_gdf.geometry)
-    
-    # Compute the centroids of the source geometries
-    source_gdf['centroid'] = source_gdf.geometry.centroid
-    
-    # Create a GeoDataFrame from the centroids
-    centroids_gdf = gpd.GeoDataFrame(source_gdf, geometry='centroid')
-    
+
+    # Build a centroid GeoDataFrame without modifying source_gdf
+    centroids_gdf = gpd.GeoDataFrame(geometry=source_gdf.geometry.centroid, crs=source_gdf.crs)
+
     # Use spatial join to filter geometries whose centroids intersect the clipping area
     clip_gdf_union = gpd.GeoDataFrame(geometry=[clip_union], crs=clip_gdf.crs)
     joined = gpd.sjoin(centroids_gdf, clip_gdf_union, how="inner", predicate="intersects")
-    
-    # Use the original geometries, but filtered by centroid intersection
-    filtered_gdf = source_gdf.loc[joined.index].copy()
-    
-    # Drop the centroid column to avoid multiple geometry columns
-    filtered_gdf = filtered_gdf.drop(columns=['centroid'])
-    
-    return filtered_gdf
+
+    return source_gdf.loc[joined.index].copy()
 
 # Statistical functions
 def bootstrap_targeting_ratio(numerator, denominator, num_bootstrap=10000):
@@ -147,7 +145,7 @@ def load_and_reproject(file_path, target_crs="EPSG:3857"):
         Loaded and reprojected GeoDataFrame
     """
     try:
-        gdf = gpd.read_file(resolve_path(file_path))
+        gdf = gpd.read_file(file_path)
         if gdf.crs != target_crs:
             gdf = gdf.to_crs(target_crs)
         return gdf
@@ -168,7 +166,6 @@ def load_raster_and_reproject(file_path, target_crs="EPSG:4326"):
     - transform : Affine
     - metadata : dict
     """
-    file_path = resolve_path(file_path)
     with rasterio.open(file_path) as src:
         if src.crs.to_string() == target_crs:
             data = src.read(1)
@@ -200,6 +197,109 @@ def load_raster_and_reproject(file_path, target_crs="EPSG:4326"):
         return reprojected_data, transform, kwargs
 
 
+def _open_hdma_zip_raster(zip_path):
+    """Open the single DEM/flow GeoTIFF stored inside a ScienceBase ZIP attachment."""
+    zip_path = Path(zip_path)
+    with zipfile.ZipFile(zip_path) as zf:
+        tif_names = [name for name in zf.namelist() if name.lower().endswith(".tif")]
+
+    if not tif_names:
+        raise FileNotFoundError(f"No GeoTIFF found inside {zip_path}")
+
+    tif_name = tif_names[0]
+    return rasterio.open(f"zip://{zip_path.resolve().as_posix()}!{tif_name}")
+
+
+def build_hdma_africa_dem(
+    dem_zip_dir,
+    output_tif_path,
+    aoi_path=None,
+    target_crs="EPSG:3857",
+    resampling=Resampling.bilinear,
+):
+    """
+    Build a projected Africa DEM crop from the HDMA ScienceBase ZIP tiles.
+
+    The raw HDMA tiles are stored in EPSG:4326. This helper warps the tiles into a
+    single projected raster cropped to the supplied AOI, which keeps the output small
+    enough for the notebook workflow.
+    """
+    import time
+
+    dem_zip_dir = Path(dem_zip_dir)
+    zip_paths = sorted(dem_zip_dir.glob("*.zip"))
+    if not zip_paths:
+        raise FileNotFoundError(f"No HDMA DEM ZIP files found in {dem_zip_dir}")
+    print(f"Found {len(zip_paths)} HDMA DEM ZIP tiles in {dem_zip_dir}", flush=True)
+
+    bounds = None
+    if aoi_path is not None:
+        print(f"Loading AOI: {aoi_path}", flush=True)
+        aoi = gpd.read_file(aoi_path)
+        if aoi.crs is None:
+            raise ValueError(f"AOI layer {aoi_path} has no CRS")
+        aoi = aoi.to_crs(target_crs)
+        bounds = tuple(aoi.total_bounds)
+        print(f"AOI bounds ({target_crs}): {bounds}", flush=True)
+
+    output_tif_path = Path(output_tif_path)
+    output_tif_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with ExitStack() as stack:
+        vrt_sources = []
+        for i, zip_path in enumerate(zip_paths, 1):
+            print(f"  Opening tile {i}/{len(zip_paths)}: {zip_path.name}", flush=True)
+            src = stack.enter_context(_open_hdma_zip_raster(zip_path))
+            vrt = stack.enter_context(
+                WarpedVRT(
+                    src,
+                    crs=target_crs,
+                    resampling=resampling,
+                    dtype="float32",
+                    src_nodata=src.nodata,
+                    nodata=src.nodata,
+                )
+            )
+            vrt_sources.append(vrt)
+
+        if not vrt_sources:
+            raise FileNotFoundError(f"No readable HDMA DEM tiles found in {dem_zip_dir}")
+
+        res = (abs(vrt_sources[0].transform.a), abs(vrt_sources[0].transform.e))
+        nodata = vrt_sources[0].nodata
+        print(f"Merging {len(vrt_sources)} tiles (this is the slow step — may take 10-30 min)...", flush=True)
+        t0 = time.time()
+        mosaic, out_transform = merge(
+            vrt_sources,
+            bounds=bounds,
+            res=res,
+            nodata=nodata,
+            method="first",
+        )
+        print(f"Merge complete in {(time.time() - t0) / 60:.1f} min. Output shape: {mosaic.shape}", flush=True)
+
+        meta = vrt_sources[0].meta.copy()
+        meta.update(
+            driver="GTiff",
+            height=mosaic.shape[1],
+            width=mosaic.shape[2],
+            crs=target_crs,
+            transform=out_transform,
+            nodata=nodata,
+            dtype=str(mosaic.dtype),
+            compress="DEFLATE",
+            tiled=True,
+            bigtiff="YES",
+        )
+
+        print(f"Writing output: {output_tif_path}", flush=True)
+        with rasterio.open(output_tif_path, "w", **meta) as dst:
+            dst.write(mosaic)
+        print(f"Done. File size: {output_tif_path.stat().st_size / 1e6:.1f} MB", flush=True)
+
+    return str(output_tif_path)
+
+
 def load_aei_dataset(dataset_type="standard", target_crs="EPSG:3857"):
     """
     Load the appropriate AEI dataset based on the specified type.
@@ -224,7 +324,7 @@ def load_aei_dataset(dataset_type="standard", target_crs="EPSG:3857"):
         path_key = 'AEI_2015_reproj_gpkg_path'
     
     try:
-        return load_and_reproject(config[path_key], target_crs)
+        return load_and_reproject(resolve_path(config[path_key]), target_crs)
     except Exception as e:
         print(f"Error loading {dataset_type} AEI dataset: {e}")
         return None
@@ -258,9 +358,8 @@ def process_aei_by_aridity(dataset_type="standard", layers=None):
         return results
     
     # Load Africa boundaries
-    boundaries_path = config['Africa_boundaries_shp_path']
-    africa_boundaries = load_and_reproject(boundaries_path, aei_gdf.crs)
-    
+    africa_boundaries = load_and_reproject(resolve_path(config['Africa_boundaries_shp_path']), aei_gdf.crs)
+
     # Process each layer
     for layer in tqdm(layers, desc=f"Processing {dataset_type} AEI by aridity layers"):
         try:
@@ -269,10 +368,9 @@ def process_aei_by_aridity(dataset_type="standard", layers=None):
                 output_path = config[f'AEI_MEIER_2015_{layer}_shp_path']
             else:
                 output_path = config[f'AEI_2015_{layer}_shp_path']
-            
+
             # Load the shapefile for the current layer
-            shp_path = config[f'Africa_{layer}_shp_path']
-            gdf_shp = load_and_reproject(shp_path, aei_gdf.crs)
+            gdf_shp = load_and_reproject(resolve_path(config[f'Africa_{layer}_shp_path']), aei_gdf.crs)
             
             # Perform the clip operation
             gdf_cropped = optimized_clip(aei_gdf, gdf_shp)
