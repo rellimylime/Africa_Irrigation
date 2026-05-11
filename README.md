@@ -1,71 +1,53 @@
 # Africa Irrigation
 
-This repository supports a paper on whether recent irrigation expansion in arid
-Sub-Saharan Africa occurred inside modeled large-dam command-area envelopes or
-outside them.
+This repository contains code, documentation, and selected outputs for remote
+sensing analyses of irrigation expansion and water-source context in Africa,
+with a current paper workflow focused on arid Sub-Saharan Africa.
 
-The primary paper workflow is script-first and lives in:
+The main active paper workflow is:
 
 `Code/paper1_command_area_growth/`
 
-Compiled manuscript tables, figures, and diagnostics are written to:
-
-`Output/Paper1_CommandAreaGrowth/`
-
-## Current Paper Result
-
-For 2000-2015, total area equipped for irrigation (AEI) grows by about
-533,000 ha in arid Sub-Saharan Africa. About 11,900 ha of that growth occurs
-inside the modeled large-dam command-area envelopes, and about 521,500 ha occurs
-outside them.
-
-The headline result is therefore:
-
-> 97.8% of 2000-2015 AEI growth occurs outside modeled large-dam
-> command-area envelopes.
-
-This should not be framed as a claim about true observed service boundaries or
-about every possible dam, diversion, canal, farm pond, or groundwater system.
-The measured claim is about AEI growth relative to the modeled large-dam
-command-area layer used in this repository.
+That folder has its own paper-centered README with the research question,
+headline results, caveats, run order, and manuscript output guide.
 
 ## Where To Start
 
 | Need | Start here |
 | --- | --- |
-| Run or inspect the main paper workflow | `Code/paper1_command_area_growth/README.md` |
-| See exact run commands and outputs | `Code/paper1_command_area_growth/RUNBOOK.md` |
-| Understand the command-area source | `Code/paper1_command_area_growth/COMMAND_AREA_SOURCE.md` |
-| Find manuscript-ready outputs | `Output/Paper1_CommandAreaGrowth/README.md` |
-| Inspect supporting CPIS/water-source analyses | `Code/2_water_source_analysis/README.md` |
-| Check dataset paths | `config.yaml` |
+| Understand or run the current paper workflow | `Code/paper1_command_area_growth/README.md` |
+| See exact Paper 1 run commands | `Code/paper1_command_area_growth/RUNBOOK.md` |
+| Check the command-area source and assumptions | `Code/paper1_command_area_growth/COMMAND_AREA_SOURCE.md` |
+| Find Paper 1 figures, tables, and diagnostics | `Output/Paper1_CommandAreaGrowth/README.md` |
+| Inspect supporting CPIS and water-source analyses | `Code/2_water_source_analysis/README.md` |
+| Check configured input/output paths | `config.yaml` |
 
 ## Repository Layout
 
 ```txt
 Africa_Irrigation/
 |-- Code/
-|   |-- paper1_command_area_growth/  primary Paper 1 workflow
-|   |-- 0_process_data/              older/raw preprocessing notebooks
-|   |-- 1_analyze_data/              CPIS expansion notebooks
-|   |-- 2_water_source_analysis/     supporting CPIS water-source analyses
+|   |-- paper1_command_area_growth/  current Paper 1 workflow
+|   |-- 0_process_data/              preprocessing notebooks and scripts
+|   |-- 1_analyze_data/              CPIS expansion analyses
+|   |-- 2_water_source_analysis/     supporting water-source analyses
 |   |-- Archive/                     archived exploratory material
 |   `-- utils/                       shared helpers
 |-- Data/
-|   |-- Raw/                         external inputs
-|   `-- Processed/                   derived analytical inputs
+|   |-- Raw/                         external inputs, not tracked
+|   `-- Processed/                   derived analytical inputs, mostly not tracked
 |-- Output/
-|   |-- Paper1_CommandAreaGrowth/    manuscript-ready Paper 1 assets
+|   |-- Paper1_CommandAreaGrowth/    selected Paper 1 manuscript assets
 |   |-- Archive/                     preserved legacy/generated outputs
-|   |-- Analyze/                     older CPIS analysis outputs
+|   |-- Analyze/                     older analysis outputs
 |   `-- Process/                     older preprocessing outputs
 |-- config.yaml                      dataset paths and output locations
 `-- requirements.yml                 conda environment specification
 ```
 
-## Primary Workflow
+## Current Paper Workflow
 
-Run the full Paper 1 pipeline from the repository root:
+The active paper workflow is script-first. From the repository root:
 
 ```bash
 bash Code/paper1_command_area_growth/run_paper1_pipeline.sh
@@ -77,35 +59,56 @@ On Windows PowerShell:
 .\Code\paper1_command_area_growth\run_paper1_pipeline.ps1
 ```
 
-The wrapper runs steps `00` through `07` in order. Each script has a short
-module docstring explaining its role, and the paper runbook lists the outputs
-written by each stage.
+The wrapper runs numbered scripts `00` through `07`. Each script writes stable
+tables, figures, diagnostics, or intermediate data documented in the Paper 1
+runbook.
 
-## Documentation Rules
+## Supporting Workflows
 
-- `config.yaml` is the source of truth for local paths.
-- Paper claims should trace to `Code/paper1_command_area_growth/` and
-  `Output/Paper1_CommandAreaGrowth/`.
-- `Code/2_water_source_analysis/` is supporting evidence for interpretation,
-  not the primary measured outcome.
-- Legacy notebooks are retained for provenance; do not cite a legacy result
-  unless it has been ported into the script-first paper workflow or regenerated
-  as a stable table/figure.
+The older CPIS and water-source notebooks remain in the repository because they
+provide context for interpreting irrigation expansion:
 
-## Recommended Language
+- `Code/0_process_data/` prepares shared inputs.
+- `Code/1_analyze_data/` summarizes CPIS expansion and regional patterns.
+- `Code/2_water_source_analysis/` explores CPIS activity, elevation feasibility,
+  groundwater productivity, dam-accessibility classes, anomaly checks, and
+  spatial statistics.
 
-Use:
+These supporting analyses are useful context, but the current manuscript-facing
+inside/outside command-area results are generated from
+`Code/paper1_command_area_growth/`.
 
-> modeled large-dam command-area envelopes
+## Outputs
 
-Avoid:
+Selected Paper 1 manuscript assets are tracked under:
 
-> true command areas
+`Output/Paper1_CommandAreaGrowth/`
 
-Avoid:
+Legacy generated dam-analysis outputs that used to live under `Code/` are
+preserved under:
 
-> proof of groundwater irrigation
+`Output/Archive/Dam_Analysis/`
 
-The outside-command-area result means that observed AEI growth is not explained
-by the modeled large-dam command-area layer. Groundwater, CPIS activity, DEM
-accessibility, and flow-connectivity analyses help interpret that outside growth.
+Large raw data and most intermediate processed data are not tracked. Paths are
+configured in `config.yaml`.
+
+## Environment
+
+Create the project environment from:
+
+```bash
+conda env create -n irrigation -f requirements.yml
+conda activate irrigation
+```
+
+Some local runs may need a GIS-enabled Python environment for geospatial
+packages such as GeoPandas, Rasterio, Fiona, and Shapely.
+
+## Documentation Notes
+
+- Use `config.yaml` as the path index.
+- Use the README inside each workflow directory for purpose, inputs, outputs,
+  and run notes.
+- Keep generated outputs under `Output/`, not inside `Code/`.
+- Treat legacy notebooks as provenance unless their logic has been ported into a
+  current workflow or regenerated as a stable table/figure.
